@@ -29,6 +29,7 @@ interface MintPanelProps {
   currentGalleryImage?: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function MintPanel({ currentGalleryImage }: MintPanelProps) {
   const {
     collection,

@@ -262,6 +262,7 @@ export function MintDetails() {
                           // Remove presale stage
                           const currentStages = getValues("stages");
                           if (currentStages?.[0]) {
+                            // eslint-disable-next-line @typescript-eslint/no-unused-vars
                             const { presale, ...rest } = currentStages[0];
                             setValue("stages", [rest]);
                           }
