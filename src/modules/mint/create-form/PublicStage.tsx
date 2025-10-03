@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import {
@@ -19,7 +18,7 @@ interface PublicStageProps {
 }
 
 export function PublicStage({ isOpen, onOpenChange }: PublicStageProps) {
-  const { register, formState, setValue, getValues, watch } = useFormContext();
+  const { formState, setValue, watch } = useFormContext();
   const stages = watch("stages");
   const mintStartAt = watch("mintStartAt");
 
@@ -33,41 +32,6 @@ export function PublicStage({ isOpen, onOpenChange }: PublicStageProps) {
   const publicData = stages?.[0]?.public || {
     price: undefined,
     duration: null,
-  };
-
-  // Calculate public stage start date based on mint start + presale duration
-  const getPublicStartDate = () => {
-    if (!mintStartAt) return undefined;
-
-    const mintStart = new Date(mintStartAt);
-
-    // If there's a presale stage, public starts after presale ends
-    if (stages?.[0]?.presale?.duration) {
-      const presaleDuration = stages[0].presale.duration;
-      const publicStart = new Date(mintStart);
-      publicStart.setDate(publicStart.getDate() + (presaleDuration.days || 0));
-      publicStart.setHours(
-        publicStart.getHours() + (presaleDuration.hours || 0)
-      );
-      return publicStart;
-    }
-
-    // If no presale, public starts at mint start time
-    return mintStart;
-  };
-
-  // Calculate minimum start date for public stage
-  const getMinPublicStartDate = () => {
-    const now = new Date();
-    const calculatedStart = getPublicStartDate();
-
-    if (calculatedStart) {
-      return new Date(
-        Math.max(calculatedStart.getTime(), now.getTime() + 5 * 60 * 1000)
-      );
-    }
-
-    return new Date(now.getTime() + 5 * 60 * 1000);
   };
 
   return (
