@@ -213,7 +213,7 @@ export function AllowlistStage({ isOpen, onOpenChange }: AllowlistStageProps) {
             <Button
               type="button"
               onClick={() => {
-                // TODO: Save allowlist stage data to form
+                // Data is already saved in real-time via onChange handlers
                 onOpenChange(false);
               }}
               className="w-full bg-pink-600 hover:bg-pink-700 text-white"

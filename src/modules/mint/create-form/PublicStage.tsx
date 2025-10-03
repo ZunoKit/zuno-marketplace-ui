@@ -205,7 +205,7 @@ export function PublicStage({ isOpen, onOpenChange }: PublicStageProps) {
             <Button
               type="button"
               onClick={() => {
-                // TODO: Save public stage data to form
+                // Data is already saved in real-time via onChange handlers
                 onOpenChange(false);
               }}
               className="w-full bg-pink-600 hover:bg-pink-700 text-white"
