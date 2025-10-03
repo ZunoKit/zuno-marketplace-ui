@@ -1,6 +1,5 @@
 // ---------------- mockCollection.ts ----------------
-import { TokenStandard } from "@/shared/types";
-import type { Collection, ChainBinding } from "@/shared/types/collection";
+import type { Collection } from "@/shared/types/collection";
 import { randomImage } from "@/shared/utils/mock/randomImage";
 
 /** simple helpers */
@@ -12,25 +11,6 @@ const rand = (n = 8) =>
 const randInt = (min: number, max: number) =>
   Math.floor(Math.random() * (max - min + 1)) + min;
 
-const BASE58 = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
-
-/** Generate a pseudo EVM address (0x + 40 hex) */
-function randomEvmAddress(): `0x${string}` {
-  const hex = Array.from(
-    { length: 40 },
-    () => "0123456789abcdef"[randInt(0, 15)]
-  ).join("");
-  return ("0x" + hex) as `0x${string}`;
-}
-
-/** Generate a pseudo Solana base58 address (length ~ 44) */
-function randomSolanaAddress(len = 44): string {
-  return Array.from(
-    { length: len },
-    () => BASE58[randInt(0, BASE58.length - 1)]
-  ).join("");
-}
-
 /** Options to shape the mock */
 export type MockCollectionKind =
   | "ethereum"
@@ -39,60 +19,6 @@ export type MockCollectionKind =
   | "arbitrum"
   | "optimism"
   | "solana";
-
-type KindSpec = {
-  chainId: string; // CAIP2
-  tokenStandard: TokenStandard;
-  contractAddress?: `0x${string}`; // EVM
-  mintAuthority?: string; // Solana
-};
-
-function kindToBinding(kind: MockCollectionKind): ChainBinding {
-  switch (kind) {
-    case "ethereum":
-      return {
-        chainId: "eip155:1",
-        tokenStandard: "ERC721",
-        contractAddress: randomEvmAddress(),
-        isPrimary: true,
-      };
-    case "polygon":
-      return {
-        chainId: "eip155:137",
-        tokenStandard: "ERC721",
-        contractAddress: randomEvmAddress(),
-        isPrimary: true,
-      };
-    case "base":
-      return {
-        chainId: "eip155:8453",
-        tokenStandard: "ERC721",
-        contractAddress: randomEvmAddress(),
-        isPrimary: true,
-      };
-    case "arbitrum":
-      return {
-        chainId: "eip155:42161",
-        tokenStandard: "ERC721",
-        contractAddress: randomEvmAddress(),
-        isPrimary: true,
-      };
-    case "optimism":
-      return {
-        chainId: "eip155:10",
-        tokenStandard: "ERC721",
-        contractAddress: randomEvmAddress(),
-        isPrimary: true,
-      };
-    case "solana":
-      return {
-        chainId: "solana:mainnet",
-        tokenStandard: "SPL",
-        mintAuthority: randomSolanaAddress(44),
-        isPrimary: true,
-      };
-  }
-}
 
 /** Build a slug-ish string */
 function toSlug(name: string) {
@@ -109,24 +35,10 @@ function toSlug(name: string) {
 /** Main factory */
 export function makeMockCollection(
   name = "Sample Collection",
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   kind: MockCollectionKind = "ethereum",
   overrides: Partial<Collection> = {}
 ): Collection {
-  const primary = kindToBinding(kind);
-
-  // ~50% chance to be multi-chain (add an extra binding from a different kind)
-  const maybeExtra: ChainBinding[] = (() => {
-    const kinds: MockCollectionKind[] = [
-      "polygon",
-      "base",
-      "arbitrum",
-      "optimism",
-      "solana",
-    ];
-    const extraKind = kinds.find((k) => k !== kind && Math.random() < 0.25);
-    return extraKind ? [{ ...kindToBinding(extraKind), isPrimary: false }] : [];
-  })();
-
   const slug = overrides.slug ?? toSlug(name);
   const createdAt = nowIso();
 
