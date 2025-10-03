@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Discord Community
+    url: https://discord.gg/zuno
+    about: Join our Discord for general questions and community discussions
+  - name: 📚 Documentation
+    url: https://docs.zuno-marketplace.com
+    about: Check our documentation for setup and usage guides
+  - name: 🐞 Security Issues
+    url: mailto:security@zuno.com
+    about: Report security vulnerabilities privately
