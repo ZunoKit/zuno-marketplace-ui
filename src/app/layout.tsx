@@ -4,7 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/shared/components/theme-provider";
 import Wrapper from "@/app/_WrapperUI";
 import { Toaster } from "@/shared/components/ui/sonner";
-
+import { SpeedInsights } from "@vercel/speed-insights/next";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -33,13 +33,13 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
           <Wrapper>{children}</Wrapper>
         </ThemeProvider>
-
+        <SpeedInsights />
         <Toaster />
       </body>
     </html>
