@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import ClientWrapper from "./_WrapperUI";
-import { Toaster } from "@/shared/components/ui/toaster";
+import { Toaster } from "@/shared/components/ui/sonner";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({

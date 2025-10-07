@@ -19,6 +19,7 @@ import {
   UserMinus,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { type UserProfile } from "@/shared/types/profile";
 
 interface ProfileHeaderProps {
@@ -156,10 +157,10 @@ export function ProfileHeader({
           <div className="flex gap-2">
             {isCurrentUser ? (
               <Button variant="outline" asChild>
-                <a href="/profile/settings">
+                <Link href="/profile/settings/">
                   <Settings className="h-4 w-4 mr-2" />
                   Edit Profile
-                </a>
+                </Link>
               </Button>
             ) : (
               <>
