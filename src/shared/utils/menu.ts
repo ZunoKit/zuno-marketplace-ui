@@ -10,18 +10,41 @@ export type NavItem = {
 // Items that are always visible regardless of authentication status
 export const publicNavItems: NavItem[] = [
   {
-    id: "Mint",
-    label: "Mint",
-    href: "/mint/create-or-manage",
+    id: "marketplace",
+    label: "Marketplace",
+    href: "/marketplace",
     hasDropdown: false,
     dropdownItems: [],
-    requiresAuth: true,
+    requiresAuth: false,
   },
-
   {
-    id: "Create",
+    id: "collections",
+    label: "Collections",
+    href: "/collections",
+    hasDropdown: false,
+    dropdownItems: [],
+    requiresAuth: false,
+  },
+  {
+    id: "stats",
+    label: "Stats",
+    href: "/stats",
+    hasDropdown: false,
+    dropdownItems: [],
+    requiresAuth: false,
+  },
+  {
+    id: "launchpad",
+    label: "Launchpad",
+    href: "/launch-pad",
+    hasDropdown: false,
+    dropdownItems: [],
+    requiresAuth: false,
+  },
+  {
+    id: "create",
     label: "Create",
-    href: "/mint/create",
+    href: "/create",
     hasDropdown: true,
     dropdownItems: [
       {
@@ -29,19 +52,14 @@ export const publicNavItems: NavItem[] = [
         href: "/mint/create/nft",
       },
       {
-        label: "Create NFT",
+        label: "Create Collection",
         href: "/mint/create",
       },
+      {
+        label: "Manage Collections",
+        href: "/mint/create-or-manage",
+      },
     ],
-    requiresAuth: true,
-  },
-
-  {
-    id: "Launchpad",
-    label: "Launchpad",
-    href: "/launch-pad/xxxxxxx",
-    hasDropdown: false,
-    dropdownItems: [],
     requiresAuth: true,
   },
 ];
