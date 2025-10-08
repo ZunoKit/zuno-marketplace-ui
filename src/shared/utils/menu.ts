@@ -26,18 +26,18 @@ export const publicNavItems: NavItem[] = [
   {
     id: "marketplace",
     label: "Marketplace",
-    href: "/marketplace",
+    href: "/explore",
     hasDropdown: true,
     dropdownItems: [
       {
-        label: "All NFTs",
-        href: "/marketplace",
+        label: "Explore All",
+        href: "/explore",
         description: "Browse all available NFTs",
         icon: "Grid3x3",
       },
       {
         label: "Trending",
-        href: "/marketplace/trending",
+        href: "/marketplace",
         description: "Hot NFTs right now",
         icon: "TrendingUp",
         badge: "🔥 Hot",
@@ -45,7 +45,7 @@ export const publicNavItems: NavItem[] = [
       },
       {
         label: "New Listings",
-        href: "/marketplace/new",
+        href: "/marketplace?sort=recent",
         description: "Recently listed NFTs",
         icon: "Sparkles",
         badge: "New",
@@ -53,9 +53,15 @@ export const publicNavItems: NavItem[] = [
       },
       {
         label: "Live Auctions",
-        href: "/marketplace/auctions",
+        href: "/auctions",
         description: "Bid on exclusive NFTs",
         icon: "Gavel",
+      },
+      {
+        label: "Top Sales",
+        href: "/explore?sort=price-high",
+        description: "Highest value NFTs",
+        icon: "DollarSign",
       },
     ],
     requiresAuth: false,
@@ -98,22 +104,22 @@ export const publicNavItems: NavItem[] = [
     requiresAuth: false,
   },
   {
-    id: "stats",
-    label: "Stats",
-    href: "/stats",
+    id: "activity",
+    label: "Activity",
+    href: "/activity",
     hasDropdown: true,
     dropdownItems: [
+      {
+        label: "All Activity",
+        href: "/activity",
+        description: "Real-time market activity",
+        icon: "Activity",
+      },
       {
         label: "Rankings",
         href: "/stats/rankings",
         description: "Top performers by volume",
         icon: "BarChart3",
-      },
-      {
-        label: "Activity",
-        href: "/stats/activity",
-        description: "Real-time market activity",
-        icon: "Activity",
       },
       {
         label: "Analytics",
@@ -122,6 +128,12 @@ export const publicNavItems: NavItem[] = [
         icon: "ChartLine",
         badge: "Pro",
         badgeVariant: "default",
+      },
+      {
+        label: "My Activity",
+        href: "/profile/activity",
+        description: "Your transaction history",
+        icon: "User",
       },
     ],
     requiresAuth: false,
