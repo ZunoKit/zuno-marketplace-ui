@@ -1,23 +1,33 @@
 "use client";
 import MobileMenu from "@/shared/components/layout/nav-bar/MobileMenu";
 import { ModeToggle } from "@/shared/components/layout/dark-mode/ModeToggle";
-import NavLink from "@/shared/components/layout/nav-bar/NavBar";
+import NavDropdown from "@/shared/components/layout/nav-bar/NavDropdown";
 import SearchBar from "@/shared/components/layout/nav-bar/SearchBar";
 import { useIsMobile } from "@/shared/hooks/use-mobile";
+import { useScroll } from "@/shared/hooks/use-scroll";
 import { getNavItems } from "@/shared/utils/menu";
 import Link from "next/link";
 import { useState } from "react";
+import { cn } from "@/shared/utils/tailwind-utils";
 
 export default function Header() {
   const [activeTab] = useState("collections");
   const isMobile = useIsMobile();
+  const isScrolled = useScroll(10);
   // Get authentication status from Redux
   //   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
 
   // Get the appropriate nav items based on authentication status
   const navItems = getNavItems(true);
   return (
-    <header className="bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-gray-200 py-3 dark:bg-[#1A1F2C]/80 dark:supports-[backdrop-filter]:bg-[#1A1F2C]/60 dark:border-white/5 transition-colors">
+    <header
+      className={cn(
+        "border-b py-3 transition-all duration-300",
+        isScrolled
+          ? "bg-white/80 backdrop-blur-md supports-[backdrop-filter]:bg-white/70 dark:bg-[#1A1F2C]/80 dark:supports-[backdrop-filter]:bg-[#1A1F2C]/70 border-gray-200/70 dark:border-white/5"
+          : "bg-white dark:bg-[#1A1F2C] border-gray-200 dark:border-white/5"
+      )}
+    >
       <div className="flex items-center justify-between px-2 sm:px-4 mx-auto">
         <Link href="/" className="flex items-center mr-2 xl:mr-5">
           <span className="text-3xl font-extrabold tracking-tight text-gray-900 mr-2 dark:text-white">
@@ -32,7 +42,7 @@ export default function Header() {
         {!isMobile && (
           <nav className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => (
-              <NavLink
+              <NavDropdown
                 key={item.id}
                 href={item.href}
                 active={activeTab === item.id}
@@ -40,7 +50,7 @@ export default function Header() {
                 dropdownItems={item.dropdownItems}
               >
                 {item.label}
-              </NavLink>
+              </NavDropdown>
             ))}
           </nav>
         )}

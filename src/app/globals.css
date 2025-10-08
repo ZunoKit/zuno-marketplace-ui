@@ -120,3 +120,40 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Smooth dropdown animations */
+@keyframes dropdown-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes dropdown-slide-up {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+  }
+}
+
+.dropdown-enter {
+  animation: dropdown-slide-down 0.2s ease-out;
+}
+
+.dropdown-exit {
+  animation: dropdown-slide-up 0.15s ease-in;
+}
+
+/* Prevent layout shift on hover */
+.nav-dropdown {
+  will-change: opacity, transform;
+  transform-origin: top left;
+}
