@@ -131,6 +131,7 @@ export default function NFTCardSeller({
                     alt="Info"
                     width={12}
                     height={12}
+                    unoptimized
                   />
                 </Button>
                 <Button variant="ghost" size="icon" className="h-5 w-5">
@@ -139,6 +140,7 @@ export default function NFTCardSeller({
                     alt="Copy"
                     width={12}
                     height={12}
+                    unoptimized
                   />
                 </Button>
                 <Button variant="ghost" size="icon" className="h-5 w-5">
