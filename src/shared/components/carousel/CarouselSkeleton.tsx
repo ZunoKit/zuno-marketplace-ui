@@ -5,7 +5,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/shared/components/ui/carousel";
-import { CarouselItemSkeleton } from "./CarouselCardSkeleton";
+import { CarouselItemSkeleton } from "@/shared/components/carousel/CarouselCardSkeleton";
 
 export function CollectionCarouselSkeleton() {
   // Create an array of 5 items for the skeleton

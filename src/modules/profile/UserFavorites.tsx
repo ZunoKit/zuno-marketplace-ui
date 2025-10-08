@@ -1,9 +1,9 @@
 "use client";
 
-import { ProfileHeader } from "./ProfileHeader";
+import { ProfileHeader } from "@/modules/profile/ProfileHeader";
 import NFTGrid from "@/modules/marketplace/NFTGrid";
 import { type UserProfile } from "@/shared/types/profile";
-import { type Nft, NftStatus } from "@/modules/marketplace/types/types";
+import { type Nft, NftStatus } from "@/modules/marketplace/types";
 
 interface UserFavoritesProps {
   profile: UserProfile;

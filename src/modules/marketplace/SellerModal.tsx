@@ -18,7 +18,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/shared/components/ui/tabs";
-import { Nft, NftStatus } from "./types/types";
+import { Nft, NftStatus } from "@/modules/marketplace/types";
 
 interface SellerModalProps {
   nft: Nft;

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { AuctionCard } from "./AuctionCard";
-import { AuctionsFilter } from "./AuctionsFilter";
+import { AuctionCard } from "@/modules/auctions/AuctionCard";
+import { AuctionsFilter } from "@/modules/auctions/AuctionsFilter";
 import { type Auction, type AuctionFilter } from "@/shared/types/auction";
 import { mockAuctions } from "@/shared/utils/mock/auction";
 import {

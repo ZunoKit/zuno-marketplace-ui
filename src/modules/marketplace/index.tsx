@@ -16,20 +16,20 @@ import {
   TabsTrigger,
 } from "@/shared/components/ui/tabs";
 import { cn } from "@/shared/utils/tailwind-utils";
-import ControlBar from "./ControlBar";
-import FooterBar from "./FooterBar";
-import NFTListView from "./NFTListView";
-import NFTGrid from "./NFTGrid";
+import ControlBar from "@/modules/marketplace/ControlBar";
+import FooterBar from "@/modules/marketplace/FooterBar";
+import NFTListView from "@/modules/marketplace/NFTListView";
+import NFTGrid from "@/modules/marketplace/NFTGrid";
 // import CartModal from "./components/cart/CartModal";
-import InformationNFT from "./InformationNFT";
-import FilterSidebar from "./FilterSidebar";
-import SellerModal from "./SellerModal";
+import InformationNFT from "@/modules/marketplace/InformationNFT";
+import FilterSidebar from "@/modules/marketplace/FilterSidebar";
+import SellerModal from "@/modules/marketplace/SellerModal";
 // import { BuyerModal } from "./components/modals/BuyerModal";
-import { useNFTSelection } from "./hooks/useNFTSelection";
-import { useMyItems } from "./hooks/useMyItems";
+import { useNFTSelection } from "@/modules/marketplace/hooks/useNFTSelection";
+import { useMyItems } from "@/modules/marketplace/hooks/useMyItems";
 import type { Collection } from "@/shared/utils/mock/collection";
-import type { Nft } from "./types/types";
-import { NftStatus } from "./types/types";
+import type { Nft } from "@/modules/marketplace/types";
+import { NftStatus } from "@/modules/marketplace/types";
 
 // Type definitions for sorting and filtering
 interface SortingState {

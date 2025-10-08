@@ -1,4 +1,4 @@
-import { TeamMemberCard } from "./TeamMemberCard";
+import { TeamMemberCard } from "@/modules/mint/mint-nft/TeamMemberCard";
 interface TeamMember {
   name: string;
   title: string;

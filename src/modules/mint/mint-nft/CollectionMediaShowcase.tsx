@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import CollectionGallery from "./CollectionGallery";
-import CollectionImageCarousel from "./CollectionImageCarousel";
+import CollectionGallery from "@/modules/mint/mint-nft/CollectionGallery";
+import CollectionImageCarousel from "@/modules/mint/mint-nft/CollectionImageCarousel";
 import { Collection } from "@/shared/types";
 import { makeMockCollection } from "@/shared/utils/mock/mockCollection";
 

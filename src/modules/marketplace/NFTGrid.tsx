@@ -1,8 +1,8 @@
 "use client";
 
 import { cn } from "@/shared/utils/tailwind-utils";
-import { type Nft } from "./types/types";
-import NFTCardSeller from "./NFTCardSeller";
+import { type Nft } from "@/modules/marketplace/types";
+import NFTCardSeller from "@/modules/marketplace/NFTCardSeller";
 // import NFTCardBuyer from "./NFTCardBuyer"; // Will add when needed
 
 interface NFTGridProps {

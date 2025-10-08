@@ -9,10 +9,10 @@ import { Label } from "@/shared/components/ui/label";
 import { cn } from "@/shared/utils/tailwind-utils";
 import { CheckCircle2, Info } from "lucide-react";
 
-import { useMintState } from "./hooks/useMintState";
-import EditionSelector from "./EditionSelector";
-import MintProgress from "./MintProgress";
-import MintAmount from "./MintAmount";
+import { useMintState } from "@/modules/mint/mint-nft/hooks/useMintState";
+import EditionSelector from "@/modules/mint/mint-nft/EditionSelector";
+import MintProgress from "@/modules/mint/mint-nft/MintProgress";
+import MintAmount from "@/modules/mint/mint-nft/MintAmount";
 
 export default function MintForm() {
   const {

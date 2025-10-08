@@ -10,7 +10,7 @@ import {
   Package,
 } from "lucide-react";
 import { cn } from "@/shared/utils/tailwind-utils";
-import { useMintState } from "./hooks/useMintState";
+import { useMintState } from "@/modules/mint/mint-nft/hooks/useMintState";
 
 type ButtonVariant = "default" | "destructive" | "secondary";
 type ButtonConfig = {
