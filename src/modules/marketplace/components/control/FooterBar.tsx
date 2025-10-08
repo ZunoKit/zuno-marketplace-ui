@@ -43,31 +43,31 @@ export default function FooterBar({
       <div className="fixed bottom-0 left-0 right-0 bg-background border-t z-50">
         <div className="grid grid-cols-4 divide-x">
           {/* Analytics Button */}
-          <button
+          <a
+            href="/stats/analytics"
             className="flex flex-col items-center justify-center py-3 px-2 hover:bg-accent transition-colors"
-            onClick={() => console.log("Analytics clicked")}
           >
             <TrendingUp className="h-5 w-5 mb-1" />
             <span className="text-xs">Analytics</span>
-          </button>
+          </a>
 
-          {/* Chart Button */}
-          <button
+          {/* Rankings Button */}
+          <a
+            href="/stats/rankings"
             className="flex flex-col items-center justify-center py-3 px-2 hover:bg-accent transition-colors"
-            onClick={() => console.log("Chart clicked")}
           >
             <BarChart3 className="h-5 w-5 mb-1" />
-            <span className="text-xs">Chart</span>
-          </button>
+            <span className="text-xs">Rankings</span>
+          </a>
 
-          {/* Card/Payment Button */}
-          <button
+          {/* Activity Button */}
+          <a
+            href="/stats/activity"
             className="flex flex-col items-center justify-center py-3 px-2 hover:bg-accent transition-colors"
-            onClick={() => console.log("Card clicked")}
           >
             <CreditCard className="h-5 w-5 mb-1" />
-            <span className="text-xs">Card</span>
-          </button>
+            <span className="text-xs">Activity</span>
+          </a>
 
           {/* Cart Button */}
           <button
