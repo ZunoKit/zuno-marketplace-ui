@@ -2,9 +2,9 @@ import { UserNFTs } from "@/modules/profile/UserNFTs";
 import { mockUserProfiles } from "@/shared/utils/mock/profile";
 
 interface UserNFTsPageProps {
-  params: {
+  params: Promise<{
     username: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({ params }: UserNFTsPageProps) {

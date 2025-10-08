@@ -2,9 +2,9 @@ import { UserFavorites } from "@/modules/profile/UserFavorites";
 import { mockUserProfiles } from "@/shared/utils/mock/profile";
 
 interface UserFavoritesPageProps {
-  params: {
+  params: Promise<{
     username: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({ params }: UserFavoritesPageProps) {

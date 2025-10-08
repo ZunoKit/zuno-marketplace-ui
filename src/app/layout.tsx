@@ -4,6 +4,10 @@ import "./globals.css";
 import ClientWrapper from "./_WrapperUI";
 import { Toaster } from "@/shared/components/ui/sonner";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import {
+  OrganizationJsonLd,
+  WebSiteJsonLd,
+} from "@/shared/components/seo/JsonLd";
 
 const inter = Inter({
   subsets: ["latin", "vietnamese"],
@@ -120,6 +124,8 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className={`${inter.className} antialiased`}>
+        <OrganizationJsonLd />
+        <WebSiteJsonLd />
         <ClientWrapper>{children}</ClientWrapper>
         <Toaster />
         <SpeedInsights />

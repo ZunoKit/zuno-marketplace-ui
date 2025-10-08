@@ -7,9 +7,9 @@ import {
 import { Metadata } from "next";
 
 interface NFTDetailPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({

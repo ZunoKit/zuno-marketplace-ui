@@ -31,41 +31,45 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/discover`,
+      lastModified: new Date(),
+      changeFrequency: "daily" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/launch-pad`,
+      lastModified: new Date(),
+      changeFrequency: "daily" as const,
+      priority: 0.7,
+    },
+    {
       url: `${baseUrl}/create`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
-      priority: 0.7,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/mint/create`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/stats`,
+      lastModified: new Date(),
+      changeFrequency: "daily" as const,
+      priority: 0.5,
     },
     {
       url: `${baseUrl}/wallets`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/profile`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 0.6,
+      priority: 0.4,
     },
   ];
 
-  // Dynamic pages (in production, fetch from database)
-  // Example dynamic collections
-  const collections = ["cosmic-dreams", "pixel-warriors"].map((slug) => ({
-    url: `${baseUrl}/collections/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "daily" as const,
-    priority: 0.7,
-  }));
+  // In production, you would fetch dynamic pages from database
+  // For now, we'll just return static pages
 
-  // Example NFT pages
-  const nfts = Array.from({ length: 10 }, (_, i) => ({
-    url: `${baseUrl}/nft/nft-${i}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly" as const,
-    priority: 0.6,
-  }));
-
-  return [...staticPages, ...collections, ...nfts];
+  return staticPages;
 }

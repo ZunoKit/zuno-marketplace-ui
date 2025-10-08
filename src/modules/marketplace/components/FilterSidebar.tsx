@@ -132,8 +132,9 @@ export function FilterSidebar({
                     <Checkbox
                       id={`${trait}-${value}`}
                       onCheckedChange={(checked) => {
-                        const newAttributes =
-                          { ...localFilters.attributes } || {};
+                        const newAttributes = {
+                          ...(localFilters.attributes || {}),
+                        };
                         if (checked) {
                           if (!newAttributes[trait]) {
                             newAttributes[trait] = [];

@@ -2,9 +2,9 @@ import { Marketplace } from "@/modules/marketplace";
 import { mockCollections, mockNFTs } from "@/shared/utils/mock/marketplace";
 
 interface MarketplaceCollectionPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({

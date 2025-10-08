@@ -18,8 +18,8 @@ export function AuctionsFilter({
   filter,
   onFilterChange,
 }: AuctionsFilterProps) {
-  const handleSortChange = (sortBy: AuctionFilter["sortBy"]) => {
-    onFilterChange({ ...filter, sortBy });
+  const handleSortChange = (value: string) => {
+    onFilterChange({ ...filter, sortBy: value as AuctionFilter["sortBy"] });
   };
 
   return (

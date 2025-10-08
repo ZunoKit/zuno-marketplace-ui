@@ -2,9 +2,9 @@ import { UserActivity } from "@/modules/profile/UserActivity";
 import { mockUserProfiles } from "@/shared/utils/mock/profile";
 
 interface UserActivityPageProps {
-  params: {
+  params: Promise<{
     username: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({ params }: UserActivityPageProps) {

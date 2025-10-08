@@ -12,7 +12,7 @@ import {
 import { Clock, Users, Gavel } from "lucide-react";
 import Image from "next/image";
 import { type Auction } from "@/shared/types/auction";
-import { cn } from "@/shared/utils";
+import { cn } from "@/shared/utils/tailwind-utils";
 
 interface AuctionCardProps {
   auction: Auction;

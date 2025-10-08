@@ -68,7 +68,12 @@ export function ControlBar({
       </div>
 
       <div className="flex items-center gap-4">
-        <Select value={sortBy} onValueChange={onSortChange}>
+        <Select
+          value={sortBy}
+          onValueChange={(value) =>
+            onSortChange(value as MarketplaceFilter["sortBy"])
+          }
+        >
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Sort by" />
           </SelectTrigger>

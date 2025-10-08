@@ -2,9 +2,9 @@ import { AuctionDetail } from "@/modules/auctions/AuctionDetail";
 import { mockAuctions } from "@/shared/utils/mock/auction";
 
 interface AuctionDetailPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({ params }: AuctionDetailPageProps) {

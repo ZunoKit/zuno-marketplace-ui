@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 // Image metadata
-export const alt = "NFT Marketplace - Digital Collectibles Platform";
+export const alt = "NFT Marketplace";
 export const size = {
   width: 1200,
   height: 630,
@@ -16,7 +16,7 @@ export default async function Image() {
       <div
         style={{
           fontSize: 128,
-          background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+          background: "linear-gradient(135deg, #6B73FF 0%, #000DFF 100%)",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -29,30 +29,34 @@ export default async function Image() {
       >
         <div
           style={{
-            fontSize: 72,
+            fontSize: 64,
             fontWeight: "bold",
             marginBottom: "20px",
+            textAlign: "center",
           }}
         >
-          NFT Marketplace
+          🎨 NFT Marketplace
         </div>
         <div
           style={{
-            fontSize: 36,
+            fontSize: 32,
             textAlign: "center",
-            maxWidth: "900px",
+            maxWidth: "800px",
+            lineHeight: 1.4,
           }}
         >
-          Buy, Sell & Create Digital Collectibles
+          Discover, collect, and sell extraordinary NFTs
         </div>
         <div
           style={{
             fontSize: 24,
             marginTop: "30px",
-            opacity: 0.8,
+            padding: "10px 30px",
+            background: "rgba(255, 255, 255, 0.2)",
+            borderRadius: "50px",
           }}
         >
-          The Premier Web3 Marketplace
+          Join the Web3 Revolution
         </div>
       </div>
     ),
