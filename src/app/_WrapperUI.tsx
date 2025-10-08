@@ -52,7 +52,7 @@ export default function Wrapper({ children }: { children: ReactNode }) {
         <footer className="fixed bottom-0 left-0 right-0 border-t border-gray-200 dark:border-white/5 py-4 bg-white/95 dark:bg-[#121620]/95 backdrop-blur-sm z-40 transition-colors">
           <div className="mx-auto px-4 w-full md:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row items-center justify-between text-gray-500 dark:text-white/40 text-sm">
-              <div>© 2024 Magic Eden Marketplace</div>
+              <div>© 2024 Zuno Marketplace</div>
               <div className="flex gap-4 mt-2 md:mt-0">
                 <a
                   href="/terms"

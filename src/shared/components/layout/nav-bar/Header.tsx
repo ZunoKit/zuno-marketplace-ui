@@ -7,6 +7,7 @@ import { useIsMobile } from "@/shared/hooks/use-mobile";
 import { useScroll } from "@/shared/hooks/use-scroll";
 import { getNavItems } from "@/shared/utils/menu";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/shared/utils/tailwind-utils";
 
 export default function Header() {
@@ -33,13 +34,13 @@ export default function Header() {
       )}
     >
       <div className="flex items-center justify-between px-2 sm:px-4 mx-auto">
-        <Link href="/" className="flex items-center mr-2 xl:mr-5">
-          <span className="text-3xl font-extrabold tracking-tight text-gray-900 mr-2 dark:text-white">
-            <span className="text-[#ec4899]">M</span>
-            <span className="text-[#9948ec]">E</span>
-          </span>
+        <Link
+          href="/"
+          className="flex items-center mr-2 xl:mr-5 gap-2 md:gap-4"
+        >
+          <Image src="/images/logo.png" alt="Zuno" width={32} height={32} />
           <div className="hidden md:block text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
-            MAGIC EDEN
+            ZUNO
           </div>
         </Link>
 

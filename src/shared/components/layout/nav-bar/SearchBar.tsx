@@ -47,7 +47,7 @@ export default function SearchBar({ isMobile }: SearchBarProps) {
           />
           <Input
             type="search"
-            placeholder="Search collections on Magic Eden"
+            placeholder="Search collections on Zuno"
             className={cn(
               "pl-10 h-9 rounded-md bg-gray-50/80 border border-gray-200 focus:border-gray-300 text-gray-900 placeholder-gray-500 cursor-pointer",
               "dark:bg-[#232836]/80 dark:border-white/10 dark:focus:border-white/20 dark:text-white dark:placeholder-gray-400",

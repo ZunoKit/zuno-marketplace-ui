@@ -16,15 +16,15 @@ import {
   TabsTrigger,
 } from "@/shared/components/ui/tabs";
 import { cn } from "@/shared/utils/tailwind-utils";
-import ControlBar from "./components/control/ControlBar";
-import FooterBar from "./components/control/FooterBar";
-import NFTListView from "./components/nft/NFTListView";
-import NFTGrid from "./components/nft/NFTGrid";
-import CartModal from "./components/cart/CartModal";
-import InformationNFT from "./components/nft/InformationNFT";
-import FilterSidebar from "./components/filter/FilterSidebar";
-import SellerModal from "./components/modals/SellerModal";
-import { BuyerModal } from "./components/modals/BuyerModal";
+import ControlBar from "./ControlBar";
+import FooterBar from "./FooterBar";
+import NFTListView from "./NFTListView";
+import NFTGrid from "./NFTGrid";
+// import CartModal from "./components/cart/CartModal";
+import InformationNFT from "./InformationNFT";
+import FilterSidebar from "./FilterSidebar";
+import SellerModal from "./SellerModal";
+// import { BuyerModal } from "./components/modals/BuyerModal";
 import { useNFTSelection } from "./hooks/useNFTSelection";
 import { useMyItems } from "./hooks/useMyItems";
 import type { Collection } from "@/shared/utils/mock/collection";
@@ -467,7 +467,7 @@ export default function ShopNFTs({
                 openCart={() => setMyItemsCartOpen(true)}
               />
 
-              <CartModal
+              {/* <CartModal
                 open={myItemsCartOpen}
                 onOpenChange={setMyItemsCartOpen}
                 items={safeNFTs.filter((nft) => selectedNFTs.includes(nft.id))}
@@ -478,7 +478,7 @@ export default function ShopNFTs({
                 onClearAllItems={() => {
                   setSelectedNFTs([]);
                 }}
-              />
+              /> */}
             </TabsContent>
           )}
 
@@ -495,13 +495,13 @@ export default function ShopNFTs({
         </Tabs>
       </main>
 
-      {showBuyerModal && selectedNFT && (
+      {/* {showBuyerModal && selectedNFT && (
         <BuyerModal
           nft={selectedNFT}
           open={showBuyerModal}
           onOpenChange={setShowBuyerModal}
         />
-      )}
+      )} */}
       {showSellerModal && selectedNFT && (
         <SellerModal
           nft={selectedNFT}

@@ -1,4 +1,4 @@
-export type Platform = "opensea" | "magiceden" | "other";
+export type Platform = "opensea" | "zuno" | "other";
 
 export interface UserIdentity {
   userId?: string; // nội bộ hệ thống của bạn
@@ -13,7 +13,7 @@ export interface UserIdentity {
 
 export interface UserSocials {
   x?: string; // @handle
-  discord?: string; // chỉ Magic Eden hỗ trợ
+  discord?: string; // chỉ Zuno hỗ trợ
 }
 
 export interface UserWalletLink {
@@ -32,7 +32,7 @@ export interface UserGalleries {
     itemRefs: string[]; // ref NFT
   }[];
   showcases?: {
-    // Magic Eden cross-chain showcase
+    // Zuno cross-chain showcase
     name: string;
     description?: string;
     itemRefs: string[];
@@ -53,13 +53,13 @@ export interface EmailNotificationPrefs {
 }
 
 export interface ChainSpecificPrefs {
-  // Magic Eden — Global
+  // Zuno — Global
   defaultClick?: "addToCart" | "openItem";
-  // Magic Eden — Solana
+  // Zuno — Solana
   feeDisplay?: "includeAllFees" | "excludeRoyalties";
   raritySource?: "moonrank" | "howrare";
   explorerPreference?: "solscan" | "solanafm" | "solanaExplorer";
-  // Magic Eden — Bitcoin
+  // Zuno — Bitcoin
   showInscriptionNumbers?: boolean;
   mempoolProtection?: boolean;
 }
@@ -81,7 +81,7 @@ export interface UserStats {
 }
 
 export interface UserRewardsME {
-  // Magic Eden
+  // Zuno
   season?: string;
   meStaked?: string; // decimal string
   points?: string; // decimal string

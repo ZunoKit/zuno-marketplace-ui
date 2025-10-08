@@ -22,9 +22,9 @@ export function OrganizationJsonLd() {
   const data = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "NFT Marketplace",
-    url: process.env.NEXT_PUBLIC_APP_URL || "https://nftmarketplace.com",
-    logo: `${process.env.NEXT_PUBLIC_APP_URL || "https://nftmarketplace.com"}/logo.png`,
+    name: "Zuno Marketplace",
+    url: process.env.NEXT_PUBLIC_APP_URL || "https://zuno.io",
+    logo: `${process.env.NEXT_PUBLIC_APP_URL || "https://zuno.io"}/images/logo.png`,
     description:
       "The premier marketplace for digital art, gaming items, and collectibles across multiple blockchains.",
     sameAs: [

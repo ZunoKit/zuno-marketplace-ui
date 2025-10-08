@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ProfileHeader } from "./components/ProfileHeader";
-import { ProfileTabs } from "./components/ProfileTabs";
+import { ProfileHeader } from "./ProfileHeader";
+import { ProfileTabs } from "./ProfileTabs";
 import { type UserProfile, type ProfileTab } from "@/shared/types/profile";
 import { mockCurrentUser } from "@/shared/utils/mock/profile";
 
@@ -49,6 +49,6 @@ export function Profile({
   );
 }
 
-export { ProfileHeader } from "./components/ProfileHeader";
-export { ProfileTabs } from "./components/ProfileTabs";
-export { ActivityList } from "./components/ActivityList";
+export { ProfileHeader } from "./ProfileHeader";
+export { ProfileTabs } from "./ProfileTabs";
+export { ActivityList } from "./ActivityList";

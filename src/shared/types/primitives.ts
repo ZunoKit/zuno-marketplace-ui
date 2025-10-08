@@ -38,13 +38,13 @@ export type ChainFamily =
 /** ===== Marketplace Names ===== */
 export type MarketplaceName =
   | "opensea"
-  | "magiceden"
+  | "zuno"
   | "blur"
   | "looksrare"
   | string;
 
 /** ===== Metadata Standards ===== */
-export type MetadataStandard = "opensea" | "magiceden" | "custom";
+export type MetadataStandard = "opensea" | "zuno" | "custom";
 
 /** ===== Rarity Methods ===== */
 export type RarityMethod =

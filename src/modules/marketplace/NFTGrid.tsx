@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/shared/utils/tailwind-utils";
-import { type Nft } from "../../types/types";
+import { type Nft } from "./types/types";
 import NFTCardSeller from "./NFTCardSeller";
 // import NFTCardBuyer from "./NFTCardBuyer"; // Will add when needed
 

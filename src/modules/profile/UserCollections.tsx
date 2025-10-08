@@ -1,6 +1,6 @@
 "use client";
 
-import { ProfileHeader } from "./components/ProfileHeader";
+import { ProfileHeader } from "./ProfileHeader";
 import { Card, CardContent } from "@/shared/components/ui/card";
 import { Badge } from "@/shared/components/ui/badge";
 import { type UserProfile } from "@/shared/types/profile";

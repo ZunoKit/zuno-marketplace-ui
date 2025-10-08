@@ -6,7 +6,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/shared/components/ui/tabs";
-import NFTGrid from "@/modules/marketplace/components/nft/NFTGrid";
+import NFTGrid from "@/modules/marketplace/NFTGrid";
 import { ActivityList } from "./ActivityList";
 import { type UserProfile, type ProfileTab } from "@/shared/types/profile";
 import { type Nft, NftStatus } from "@/modules/marketplace/types/types";
