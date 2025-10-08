@@ -26,12 +26,10 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_APP_URL || "https://nftmarketplace.com"
-  ),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://zuno.io"),
   title: {
-    default: "NFT Marketplace - Buy, Sell & Create Digital Collectibles",
-    template: "%s | NFT Marketplace",
+    default: "Zuno Marketplace - Buy, Sell & Create Digital Collectibles",
+    template: "%s | Zuno Marketplace",
   },
   description:
     "Discover, collect, and sell extraordinary NFTs. The premier marketplace for digital art, gaming items, and collectibles across multiple blockchains.",
@@ -52,9 +50,9 @@ export const metadata: Metadata = {
     "NFT auction",
     "crypto collectibles",
   ],
-  authors: [{ name: "NFT Marketplace Team" }],
-  creator: "NFT Marketplace",
-  publisher: "NFT Marketplace",
+  authors: [{ name: "Zuno Team" }],
+  creator: "Zuno Marketplace",
+  publisher: "Zuno Marketplace",
   formatDetection: {
     email: false,
     address: false,
@@ -64,8 +62,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "/",
-    siteName: "NFT Marketplace",
-    title: "NFT Marketplace - Buy, Sell & Create Digital Collectibles",
+    siteName: "Zuno Marketplace",
+    title: "Zuno Marketplace - Buy, Sell & Create Digital Collectibles",
     description:
       "Discover, collect, and sell extraordinary NFTs. The premier marketplace for digital art, gaming items, and collectibles.",
     images: [
@@ -73,18 +71,18 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "NFT Marketplace - Digital Collectibles Platform",
+        alt: "Zuno Marketplace - Digital Collectibles Platform",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "NFT Marketplace - Buy, Sell & Create Digital Collectibles",
+    title: "Zuno Marketplace - Buy, Sell & Create Digital Collectibles",
     description:
       "Discover, collect, and sell extraordinary NFTs on the premier Web3 marketplace.",
     images: ["/twitter-image.png"],
-    creator: "@nftmarketplace",
-    site: "@nftmarketplace",
+    creator: "@zunomarketplace",
+    site: "@zunomarketplace",
   },
   robots: {
     index: true,

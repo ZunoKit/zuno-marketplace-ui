@@ -1,6 +1,6 @@
 // Hook for managing NFT selection with slider
 import { useState, useCallback, useEffect } from "react";
-import { Nft } from "../types/types";
+import { Nft } from "@/modules/marketplace/types";
 
 interface UseNFTSelectionProps {
   initialNFTs: Nft[];

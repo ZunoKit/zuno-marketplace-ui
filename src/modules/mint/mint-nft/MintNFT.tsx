@@ -5,7 +5,7 @@ import MintPanel from "@/modules/mint/mint-nft/MintPanel";
 import ExploreCollectionButton from "@/modules/mint/mint-nft/ExploreCollectionButton";
 import { useTheme } from "next-themes";
 import MintNFTSkeleton from "@/modules/mint/mint-nft/MintNFTSkeleton";
-import { useMintState } from "./hooks/useMintState";
+import { useMintState } from "@/modules/mint/mint-nft/hooks/useMintState";
 
 type MintNFTProps = { slug: string };
 

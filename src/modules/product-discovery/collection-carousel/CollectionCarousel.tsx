@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { BaseCarousel } from "@/shared/components/carousel/BaseCarousel";
-import { CollectionCard } from "./CollectionCard";
+import { CollectionCard } from "@/modules/product-discovery/collection-carousel/CollectionCard";
 import { Collection } from "@/shared/types/collection";
 import { makeMockCollections } from "@/shared/utils/mock/mockCollection";
 

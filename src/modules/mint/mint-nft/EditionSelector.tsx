@@ -12,7 +12,7 @@ import {
   SelectValue,
 } from "@/shared/components/ui/select";
 import { Grid, List, Search } from "lucide-react";
-import { useMintState } from "./hooks/useMintState";
+import { useMintState } from "@/modules/mint/mint-nft/hooks/useMintState";
 
 export default function EditionSelector() {
   const {

@@ -19,7 +19,7 @@ import {
   TabsTrigger,
 } from "@/shared/components/ui/tabs";
 import { ShoppingCart, Tag } from "lucide-react";
-import { Nft, NftStatus } from "../../types/types";
+import { Nft, NftStatus } from "@/modules/marketplace/types";
 
 interface BuyerModalProps {
   nft: Nft;

@@ -1,6 +1,6 @@
 // Mock hook for fetching user's NFT items
 import { useState, useEffect } from "react";
-import { Nft, NftStatus } from "../types/types";
+import { Nft, NftStatus } from "@/modules/marketplace/types";
 
 interface UseMyItemsProps {
   contractAddress: string;

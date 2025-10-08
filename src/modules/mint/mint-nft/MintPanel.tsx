@@ -3,9 +3,9 @@
 import type React from "react";
 import Image from "next/image";
 
-import MintStages from "./MintStages";
-import MintForm from "./MintForm";
-import MintButton from "./MintButton";
+import MintStages from "@/modules/mint/mint-nft/MintStages";
+import MintForm from "@/modules/mint/mint-nft/MintForm";
+import MintButton from "@/modules/mint/mint-nft/MintButton";
 
 import {
   Dialog,
@@ -23,7 +23,7 @@ import {
 } from "@/shared/components/ui/tabs";
 import { Sparkles, Loader2 } from "lucide-react";
 import { ScrollArea } from "@/shared/components/ui/scroll-area";
-import { useMintState } from "./hooks/useMintState";
+import { useMintState } from "@/modules/mint/mint-nft/hooks/useMintState";
 
 interface MintPanelProps {
   currentGalleryImage?: string;

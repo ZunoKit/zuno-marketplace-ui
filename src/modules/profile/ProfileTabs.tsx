@@ -6,10 +6,10 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/shared/components/ui/tabs";
-import NFTGrid from "@/modules/marketplace/components/nft/NFTGrid";
-import { ActivityList } from "./ActivityList";
+import NFTGrid from "@/modules/marketplace/NFTGrid";
+import { ActivityList } from "@/modules/profile/ActivityList";
 import { type UserProfile, type ProfileTab } from "@/shared/types/profile";
-import { type Nft, NftStatus } from "@/modules/marketplace/types/types";
+import { type Nft, NftStatus } from "@/modules/marketplace/types";
 import { mockUserActivities } from "@/shared/utils/mock/profile";
 import { Package, Heart, Activity, Tag, Grid3x3 } from "lucide-react";
 

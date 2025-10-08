@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ProfileHeader } from "./components/ProfileHeader";
-import NFTGrid from "@/modules/marketplace/components/nft/NFTGrid";
+import { ProfileHeader } from "@/modules/profile/ProfileHeader";
+import NFTGrid from "@/modules/marketplace/NFTGrid";
 import {
   Select,
   SelectContent,
@@ -13,7 +13,7 @@ import {
 import { Input } from "@/shared/components/ui/input";
 import { Search } from "lucide-react";
 import { type UserProfile } from "@/shared/types/profile";
-import { type Nft, NftStatus } from "@/modules/marketplace/types/types";
+import { type Nft, NftStatus } from "@/modules/marketplace/types";
 
 interface UserNFTsProps {
   profile: UserProfile;

@@ -16,20 +16,20 @@ import {
   TabsTrigger,
 } from "@/shared/components/ui/tabs";
 import { cn } from "@/shared/utils/tailwind-utils";
-import ControlBar from "./components/control/ControlBar";
-import FooterBar from "./components/control/FooterBar";
-import NFTListView from "./components/nft/NFTListView";
-import NFTGrid from "./components/nft/NFTGrid";
-import CartModal from "./components/cart/CartModal";
-import InformationNFT from "./components/nft/InformationNFT";
-import FilterSidebar from "./components/filter/FilterSidebar";
-import SellerModal from "./components/modals/SellerModal";
-import { BuyerModal } from "./components/modals/BuyerModal";
-import { useNFTSelection } from "./hooks/useNFTSelection";
-import { useMyItems } from "./hooks/useMyItems";
+import ControlBar from "@/modules/marketplace/ControlBar";
+import FooterBar from "@/modules/marketplace/FooterBar";
+import NFTListView from "@/modules/marketplace/NFTListView";
+import NFTGrid from "@/modules/marketplace/NFTGrid";
+// import CartModal from "./components/cart/CartModal";
+import InformationNFT from "@/modules/marketplace/InformationNFT";
+import FilterSidebar from "@/modules/marketplace/FilterSidebar";
+import SellerModal from "@/modules/marketplace/SellerModal";
+// import { BuyerModal } from "./components/modals/BuyerModal";
+import { useNFTSelection } from "@/modules/marketplace/hooks/useNFTSelection";
+import { useMyItems } from "@/modules/marketplace/hooks/useMyItems";
 import type { Collection } from "@/shared/utils/mock/collection";
-import type { Nft } from "./types/types";
-import { NftStatus } from "./types/types";
+import type { Nft } from "@/modules/marketplace/types";
+import { NftStatus } from "@/modules/marketplace/types";
 
 // Type definitions for sorting and filtering
 interface SortingState {
@@ -467,7 +467,7 @@ export default function ShopNFTs({
                 openCart={() => setMyItemsCartOpen(true)}
               />
 
-              <CartModal
+              {/* <CartModal
                 open={myItemsCartOpen}
                 onOpenChange={setMyItemsCartOpen}
                 items={safeNFTs.filter((nft) => selectedNFTs.includes(nft.id))}
@@ -478,7 +478,7 @@ export default function ShopNFTs({
                 onClearAllItems={() => {
                   setSelectedNFTs([]);
                 }}
-              />
+              /> */}
             </TabsContent>
           )}
 
@@ -495,13 +495,13 @@ export default function ShopNFTs({
         </Tabs>
       </main>
 
-      {showBuyerModal && selectedNFT && (
+      {/* {showBuyerModal && selectedNFT && (
         <BuyerModal
           nft={selectedNFT}
           open={showBuyerModal}
           onOpenChange={setShowBuyerModal}
         />
-      )}
+      )} */}
       {showSellerModal && selectedNFT && (
         <SellerModal
           nft={selectedNFT}

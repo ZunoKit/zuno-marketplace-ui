@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Checkbox } from "@/shared/components/ui/checkbox";
 import { Badge } from "@/shared/components/ui/badge";
 import { Button } from "@/shared/components/ui/button";
-import { Nft, NftStatus } from "../../types/types";
+import { Nft, NftStatus } from "@/modules/marketplace/types";
 import { useIsMobile } from "@/shared/hooks/use-mobile";
 import { cn } from "@/shared/utils/tailwind-utils";
 

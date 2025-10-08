@@ -12,8 +12,8 @@ import {
   DropdownMenuTrigger,
 } from "@/shared/components/ui/dropdown-menu";
 import { HelpCircle, MoreVertical, Plus } from "lucide-react";
-import { AllowlistStage } from "./AllowlistStage";
-import { PublicStage } from "./PublicStage";
+import { AllowlistStage } from "@/modules/mint/create-form/AllowlistStage";
+import { PublicStage } from "@/modules/mint/create-form/PublicStage";
 import {
   FormField,
   FormItem,

@@ -1,3 +1,3 @@
-export { AuctionsList } from "./components/AuctionsList";
-export { AuctionCard } from "./components/AuctionCard";
-export { AuctionsFilter } from "./components/AuctionsFilter";
+export { AuctionsList } from "@/modules/auctions/AuctionsList";
+export { AuctionCard } from "@/modules/auctions/AuctionCard";
+export { AuctionsFilter } from "@/modules/auctions/AuctionsFilter";

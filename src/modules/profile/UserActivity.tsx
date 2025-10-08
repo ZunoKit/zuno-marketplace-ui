@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ProfileHeader } from "./components/ProfileHeader";
-import { ActivityList } from "./components/ActivityList";
+import { ProfileHeader } from "@/modules/profile/ProfileHeader";
+import { ActivityList } from "@/modules/profile/ActivityList";
 import {
   Tabs,
   TabsContent,

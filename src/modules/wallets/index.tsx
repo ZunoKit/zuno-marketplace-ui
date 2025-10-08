@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { WalletCard } from "./components/WalletCard";
+import { WalletCard } from "@/modules/wallets/WalletCard";
 import {
   Tabs,
   TabsContent,
@@ -134,5 +134,3 @@ export function Wallets() {
     </div>
   );
 }
-
-export { WalletCard } from "./components/WalletCard";

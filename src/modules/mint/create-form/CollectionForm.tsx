@@ -3,9 +3,9 @@
 import { Button } from "@/shared/components/ui/button";
 import { Form } from "@/shared/components/ui/form";
 import { RotateCcw } from "lucide-react";
-import { CollectionDetails } from "./CollectionDetails";
-import { ArtSection } from "./ArtSection";
-import { MintDetails } from "./MintDetails";
+import { CollectionDetails } from "@/modules/mint/create-form/CollectionDetails";
+import { ArtSection } from "@/modules/mint/create-form/ArtSection";
+import { MintDetails } from "@/modules/mint/create-form/MintDetails";
 import { CollectionProcess } from "@/modules/mint/create-form/CollectionProcess";
 import { useForm } from "react-hook-form";
 import {

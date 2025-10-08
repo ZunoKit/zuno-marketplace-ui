@@ -3,8 +3,8 @@ import Image from "next/image";
 import { Button } from "@/shared/components/ui/button";
 import { Plus, Check, Zap } from "lucide-react";
 import { cn } from "@/shared/utils/tailwind-utils";
-import type { Nft } from "../../types/types";
-import { NftStatus } from "../../types/types";
+import type { Nft } from "@/modules/marketplace/types";
+import { NftStatus } from "@/modules/marketplace/types";
 
 interface NFTCardProps {
   nft: Nft;
