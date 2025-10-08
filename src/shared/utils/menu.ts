@@ -37,7 +37,7 @@ export const publicNavItems: NavItem[] = [
       },
       {
         label: "Trending",
-        href: "/marketplace?sort=trending",
+        href: "/marketplace/trending",
         description: "Hot NFTs right now",
         icon: "TrendingUp",
         badge: "🔥 Hot",
@@ -45,7 +45,7 @@ export const publicNavItems: NavItem[] = [
       },
       {
         label: "New Listings",
-        href: "/marketplace?sort=new",
+        href: "/marketplace/new",
         description: "Recently listed NFTs",
         icon: "Sparkles",
         badge: "New",
@@ -53,7 +53,7 @@ export const publicNavItems: NavItem[] = [
       },
       {
         label: "Live Auctions",
-        href: "/auctions",
+        href: "/marketplace/auctions",
         description: "Bid on exclusive NFTs",
         icon: "Gavel",
       },
@@ -74,7 +74,7 @@ export const publicNavItems: NavItem[] = [
       },
       {
         label: "Top Collections",
-        href: "/collections?sort=volume",
+        href: "/collections/top",
         description: "Highest trading volume",
         icon: "Trophy",
         badge: "Top 100",
@@ -82,13 +82,13 @@ export const publicNavItems: NavItem[] = [
       },
       {
         label: "Verified Collections",
-        href: "/collections?filter=verified",
+        href: "/collections/verified",
         description: "Official verified projects",
         icon: "BadgeCheck",
       },
       {
         label: "Upcoming Drops",
-        href: "/launch-pad",
+        href: "/collections/drops",
         description: "Don't miss new launches",
         icon: "Rocket",
         badge: "5 New",
@@ -105,7 +105,7 @@ export const publicNavItems: NavItem[] = [
     dropdownItems: [
       {
         label: "Rankings",
-        href: "/stats",
+        href: "/stats/rankings",
         description: "Top performers by volume",
         icon: "BarChart3",
       },
@@ -129,15 +129,36 @@ export const publicNavItems: NavItem[] = [
   {
     id: "launchpad",
     label: "Launchpad",
-    href: "/launch-pad",
-    hasDropdown: false,
-    dropdownItems: [],
+    href: "/launchpad",
+    hasDropdown: true,
+    dropdownItems: [
+      {
+        label: "Active Launches",
+        href: "/launchpad",
+        description: "Live minting projects",
+        icon: "Rocket",
+      },
+      {
+        label: "Upcoming",
+        href: "/launchpad/upcoming",
+        description: "Projects launching soon",
+        icon: "Sparkles",
+        badge: "Coming Soon",
+        badgeVariant: "secondary",
+      },
+      {
+        label: "Completed",
+        href: "/launchpad/completed",
+        description: "Past successful launches",
+        icon: "Trophy",
+      },
+    ],
     requiresAuth: false,
   },
   {
     id: "create",
     label: "Create",
-    href: "/create",
+    href: "/mint/create",
     hasDropdown: true,
     dropdownItems: [
       {
@@ -150,7 +171,7 @@ export const publicNavItems: NavItem[] = [
       },
       {
         label: "Single NFT",
-        href: "/mint/create#nft",
+        href: "/mint/single",
         description: "Mint individual NFTs",
         icon: "Image",
       },
@@ -164,7 +185,7 @@ export const publicNavItems: NavItem[] = [
       },
       {
         label: "Manage Collections",
-        href: "/mint/create-or-manage",
+        href: "/mint/manage",
         description: "Edit your existing collections",
         icon: "Settings",
       },
