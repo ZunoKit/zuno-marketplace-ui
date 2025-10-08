@@ -1,5 +1,3 @@
-import { Marketplace } from "@/modules/marketplace";
-
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -28,5 +26,6 @@ export const metadata: Metadata = {
 };
 
 export default function MarketplacePage() {
-  return <Marketplace />;
+  // return <Marketplace />;
+  return <div>MarketplacePage</div>;
 }

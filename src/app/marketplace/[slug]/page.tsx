@@ -1,55 +1,88 @@
-import { Marketplace } from "@/modules/marketplace";
-import { mockCollections, mockNFTs } from "@/shared/utils/mock/marketplace";
+import ShopNFTs from "@/modules/marketplace";
+import { fetchCollection } from "@/shared/utils/mock/collection";
+import {
+  validateChain,
+  validateContractAddress,
+} from "@/shared/utils/validate";
 
-interface MarketplaceCollectionPageProps {
+interface MarketplacePageProps {
   params: Promise<{
     slug: string;
   }>;
 }
 
-export async function generateMetadata({
-  params,
-}: MarketplaceCollectionPageProps) {
+async function getCollectionData(slug: string) {
+  try {
+    // For mock data, we'll use slug as collection identifier
+    // In production, this would parse chain-contractAddress format
+    const chainName = "ethereum"; // Mock chain
+    const contractAddress = `0x${slug.padEnd(40, "0")}`; // Mock address from slug
+
+    const chain = validateChain(chainName);
+    const validatedAddress = validateContractAddress(contractAddress);
+    const collection = await fetchCollection(
+      String(chain?.id),
+      validatedAddress
+    );
+
+    return {
+      chain,
+      validatedAddress,
+      collection,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      chain: null,
+      validatedAddress: null,
+      collection: null,
+      error:
+        error instanceof Error ? error.message : "An unknown error occurred",
+    };
+  }
+}
+
+export async function generateMetadata({ params }: MarketplacePageProps) {
   const { slug } = await params;
-  const collection =
-    mockCollections.find(
-      (c) => c.name.toLowerCase().replace(/\s+/g, "-") === slug
-    ) || mockCollections[0];
+  const { chain, collection, error } = await getCollectionData(slug);
+
+  if (error || !collection) {
+    return {
+      title: "Collection Not Found | NFT Marketplace",
+      description: error || "The requested collection does not exist",
+    };
+  }
 
   return {
-    title: `Shop ${collection.name} NFTs | NFT Marketplace`,
-    description: `Buy and sell NFTs from the ${collection.name} collection`,
+    title: `${collection.name} | ${chain?.name} | NFT Marketplace`,
+    description:
+      collection.description ||
+      `Discover, buy, and sell unique NFTs from the ${collection.name} collection on ${chain?.name} blockchain`,
+    openGraph: {
+      title: `${collection.name} Collection on ${chain?.name}`,
+      description:
+        collection.description ||
+        `Explore the ${collection.name} NFT collection on ${chain?.name} blockchain`,
+    },
   };
 }
 
-export default async function MarketplaceCollectionPage({
-  params,
-}: MarketplaceCollectionPageProps) {
+export default async function Page({ params }: MarketplacePageProps) {
   const { slug } = await params;
+  const { validatedAddress, collection, error } = await getCollectionData(slug);
 
-  // Find collection by slug
-  const collection =
-    mockCollections.find(
-      (c) => c.name.toLowerCase().replace(/\s+/g, "-") === slug
-    ) || mockCollections[0];
-
-  // Filter NFTs for this collection
-  const collectionNFTs = mockNFTs.filter(
-    (nft) => nft.collection.address === collection.address
-  );
+  if (error || !collection) {
+    return (
+      <div className="text-center p-4">
+        Error: {error || "Collection not found"}
+      </div>
+    );
+  }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold mb-2">
-          {collection.name} Marketplace
-        </h1>
-        <p className="text-muted-foreground">
-          Buy and trade NFTs from this collection
-        </p>
-      </div>
-
-      <Marketplace initialNFTs={collectionNFTs} />
-    </div>
+    <ShopNFTs
+      contractAddress={validatedAddress}
+      initialCollection={collection}
+    />
   );
 }

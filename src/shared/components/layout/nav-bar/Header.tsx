@@ -7,18 +7,22 @@ import { useIsMobile } from "@/shared/hooks/use-mobile";
 import { useScroll } from "@/shared/hooks/use-scroll";
 import { getNavItems } from "@/shared/utils/menu";
 import Link from "next/link";
-import { useState } from "react";
 import { cn } from "@/shared/utils/tailwind-utils";
 
 export default function Header() {
-  const [activeTab] = useState("collections");
   const isMobile = useIsMobile();
   const isScrolled = useScroll(10);
+
   // Get authentication status from Redux
   //   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
 
   // Get the appropriate nav items based on authentication status
-  const navItems = getNavItems(true);
+  const allNavItems = getNavItems(true);
+
+  // Filter out Stats menu on mobile since it's in footer
+  const navItems = isMobile
+    ? allNavItems.filter((item) => item.id !== "stats")
+    : allNavItems;
   return (
     <header
       className={cn(
@@ -45,7 +49,7 @@ export default function Header() {
               <NavDropdown
                 key={item.id}
                 href={item.href}
-                active={activeTab === item.id}
+                active={false}
                 hasDropdown={item.hasDropdown}
                 dropdownItems={item.dropdownItems}
               >
