@@ -7,7 +7,7 @@ import { Badge } from "@/shared/components/ui/badge";
 import { Heart, Eye, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import { type NFT } from "@/shared/types/marketplace";
-import { cn } from "@/shared/utils";
+import { cn } from "@/shared/utils/tailwind-utils";
 
 interface NFTGridProps {
   nfts: NFT[];

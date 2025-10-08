@@ -48,10 +48,6 @@ export const publicNavItems: NavItem[] = [
     hasDropdown: true,
     dropdownItems: [
       {
-        label: "Create NFT",
-        href: "/mint/create/nft",
-      },
-      {
         label: "Create Collection",
         href: "/mint/create",
       },

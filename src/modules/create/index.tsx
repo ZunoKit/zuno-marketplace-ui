@@ -39,7 +39,7 @@ export function CreateHub() {
         "Set royalties and properties",
         "Immediate listing",
       ],
-      href: "/mint",
+      href: "/mint/create",
       badge: "Quick",
       color: "from-blue-500 to-purple-500",
     },

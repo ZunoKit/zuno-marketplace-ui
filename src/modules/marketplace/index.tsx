@@ -79,7 +79,7 @@ export function Marketplace({ initialNFTs = mockNFTs }: MarketplaceProps) {
 
   const handleNFTClick = (nft: NFT) => {
     // Navigate to NFT detail page
-    window.location.href = `/nft/${nft.collection.address}/${nft.tokenId}`;
+    window.location.href = `/nft/${nft.collection.address}`;
   };
 
   const handleAddToCart = (nft: NFT) => {

@@ -11,6 +11,7 @@ import { mockChains } from "@/shared/utils/mock/mockChain";
 export default function ChainMenu() {
   const pathname = usePathname();
   const [selectedChain, setSelectedChain] = useState<string>("all");
+  const [isScrolled, setIsScrolled] = useState(false);
 
   // Đồng bộ giá trị selectedChain với route hiện tại khi component mount
   useEffect(() => {
