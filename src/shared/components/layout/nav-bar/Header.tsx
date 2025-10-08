@@ -1,7 +1,7 @@
 "use client";
 import MobileMenu from "@/shared/components/layout/nav-bar/MobileMenu";
 import { ModeToggle } from "@/shared/components/layout/dark-mode/ModeToggle";
-import NavLink from "@/shared/components/layout/nav-bar/NavBar";
+import NavDropdown from "@/shared/components/layout/nav-bar/NavDropdown";
 import SearchBar from "@/shared/components/layout/nav-bar/SearchBar";
 import { useIsMobile } from "@/shared/hooks/use-mobile";
 import { useScroll } from "@/shared/hooks/use-scroll";
@@ -42,7 +42,7 @@ export default function Header() {
         {!isMobile && (
           <nav className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => (
-              <NavLink
+              <NavDropdown
                 key={item.id}
                 href={item.href}
                 active={activeTab === item.id}
@@ -50,7 +50,7 @@ export default function Header() {
                 dropdownItems={item.dropdownItems}
               >
                 {item.label}
-              </NavLink>
+              </NavDropdown>
             ))}
           </nav>
         )}

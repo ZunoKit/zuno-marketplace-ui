@@ -2,15 +2,54 @@
 
 import Link from "next/link";
 import { cn } from "@/shared/utils/tailwind-utils";
-import { ChevronDown } from "lucide-react";
+import {
+  ChevronDown,
+  Grid3x3,
+  TrendingUp,
+  Sparkles,
+  Gavel,
+  Layers,
+  Trophy,
+  BadgeCheck,
+  Rocket,
+  BarChart3,
+  Activity,
+  ChartLine,
+  FolderPlus,
+  Image,
+  Download,
+  Settings,
+  LucideIcon,
+} from "lucide-react";
 import { useRef, useState, useEffect } from "react";
+import { Badge } from "@/shared/components/ui/badge";
+import type { DropdownItem } from "@/shared/utils/menu";
+
+// Icon mapping
+const iconMap: Record<string, LucideIcon> = {
+  Grid3x3,
+  TrendingUp,
+  Sparkles,
+  Gavel,
+  Layers,
+  Trophy,
+  BadgeCheck,
+  Rocket,
+  BarChart3,
+  Activity,
+  ChartLine,
+  FolderPlus,
+  Image,
+  Download,
+  Settings,
+};
 
 type NavLinkProps = {
   href: string;
   children: React.ReactNode;
   active?: boolean;
   hasDropdown?: boolean;
-  dropdownItems?: { label: string; href: string }[];
+  dropdownItems?: DropdownItem[];
 };
 
 export default function NavLink({
@@ -90,7 +129,7 @@ export default function NavLink({
         {/* Custom Dropdown */}
         <div
           className={cn(
-            "absolute left-0 mt-1 w-48 origin-top-left transition-all duration-200 z-50 nav-dropdown",
+            "absolute left-0 mt-1 w-64 origin-top-left transition-all duration-200 z-50 nav-dropdown",
             isOpen
               ? "opacity-100 scale-100 translate-y-0 pointer-events-auto dropdown-enter"
               : "opacity-0 scale-95 -translate-y-1 pointer-events-none"
@@ -98,17 +137,51 @@ export default function NavLink({
         >
           <div className="rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-[#1A1F2C] dark:ring-white/10 overflow-hidden">
             <div className="py-1" role="menu">
-              {dropdownItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-white/5 transition-all duration-150"
-                  role="menuitem"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {dropdownItems.map((item) => {
+                const Icon = item.icon ? iconMap[item.icon] : null;
+
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="block px-4 py-3 hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-150 group"
+                    role="menuitem"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <div className="flex items-start gap-3">
+                      {Icon && (
+                        <Icon className="h-4 w-4 mt-0.5 text-gray-500 dark:text-gray-400 group-hover:text-gray-700 dark:group-hover:text-gray-200" />
+                      )}
+                      <div className="flex-1">
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm font-medium text-gray-900 dark:text-gray-100 group-hover:text-black dark:group-hover:text-white">
+                            {item.label}
+                          </span>
+                          {item.badge && (
+                            <Badge
+                              variant={
+                                (item.badgeVariant as
+                                  | "default"
+                                  | "secondary"
+                                  | "destructive"
+                                  | "outline") || "default"
+                              }
+                              className="ml-2 text-xs py-0 px-1.5 h-5"
+                            >
+                              {item.badge}
+                            </Badge>
+                          )}
+                        </div>
+                        {item.description && (
+                          <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                            {item.description}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>
