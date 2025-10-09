@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/shared/components/ui/button";
+import { logger } from "@/shared/lib/logger";
 
 export default function Error({
   error,
@@ -12,7 +13,9 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    console.error(error);
+    logger.error("Page Error", error, {
+      digest: error.digest,
+    });
   }, [error]);
 
   return (

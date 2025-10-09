@@ -190,17 +190,29 @@ The platform is designed to support multiple blockchain networks:
 
 ## 🧪 Testing
 
-_Testing framework setup in progress..._
+We use Vitest for unit tests and Playwright for E2E tests.
 
 ```bash
-# Run tests (when implemented)
+# Run unit tests
 pnpm test
 
-# Run tests in watch mode
-pnpm test:watch
+# Run unit tests with UI
+pnpm test:ui
+
+# Run unit tests (single run)
+pnpm test:run
 
 # Generate coverage report
 pnpm test:coverage
+
+# Run E2E tests
+pnpm test:e2e
+
+# Run E2E tests with UI
+pnpm test:e2e:ui
+
+# Run E2E tests in headed mode
+pnpm test:e2e:headed
 ```
 
 ## 📦 Deployment

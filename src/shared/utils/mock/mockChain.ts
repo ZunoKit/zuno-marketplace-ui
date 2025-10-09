@@ -1,30 +1,13 @@
 import { ChainInfo } from "@/shared/types/chain";
+import { SUPPORTED_CHAINS } from "@/shared/constants/chains";
 
+/**
+ * Mock chains for development and testing
+ * Uses SUPPORTED_CHAINS from constants + adds local dev chains
+ */
 export const mockChains = (): ChainInfo[] => [
-  {
-    id: "eip155:1",
-    family: "EVM",
-    name: "Ethereum",
-    shortName: "ETH",
-    vm: "EVM",
-    nativeCurrency: { symbol: "ETH", decimals: 18, name: "Ether" },
-    addressFormat: "EVM_HEX",
-    addressRegex: "^0x[a-fA-F0-9]{40}$",
-    evm: { chainId: 1, supports1559: true },
-    blockTimeSeconds: 12,
-    finality: { type: "probabilistic", typicalConfirmations: 64 },
-    explorers: [
-      {
-        name: "Etherscan",
-        url: "https://etherscan.io",
-        txPath: "/tx/{hash}",
-        addressPath: "/address/{address}",
-      },
-    ],
-    testnets: ["eip155:11155111"], // Sepolia
-    icon: "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1746019748",
-    slug: "ethereum",
-  },
+  ...SUPPORTED_CHAINS,
+  // Local development chain
   {
     id: "eip155:31337",
     family: "EVM",
@@ -34,13 +17,13 @@ export const mockChains = (): ChainInfo[] => [
     nativeCurrency: { symbol: "ETH", decimals: 18, name: "Ether" },
     addressFormat: "EVM_HEX",
     addressRegex: "^0x[a-fA-F0-9]{40}$",
-    evm: { chainId: 31337, supports1559: true }, // <— thêm dòng này nếu thiếu
+    evm: { chainId: 31337, supports1559: true },
     blockTimeSeconds: 0,
     finality: { type: "probabilistic", typicalConfirmations: 0 },
     explorers: [],
-    rpcHints: { public: ["http://127.0.0.1:8545"] }, // <— thêm gợi ý RPC local
+    rpcHints: { public: ["http://127.0.0.1:8545"] },
     testnets: [],
-    icon: "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1746019748",
+    icon: "https://assets.coingecko.com/coins/images/279/large/ethereum.png",
     slug: "anvil",
   },
 ];
