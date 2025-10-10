@@ -1,0 +1,148 @@
+---
+alwaysApply: true
+---
+
+# Zuno Marketplace Development Rules
+
+## Project Overview
+
+Next.js 15 NFT marketplace with TypeScript, React 19, and Tailwind CSS. Uses modular architecture with clear separation of concerns.
+
+## Package Manager
+
+**ALWAYS use PNPM** - Never use npm or yarn.
+
+## Development Workflow - RED-GREEN-REFACTOR (MANDATORY)
+
+### 🔴 RED: Write Failing Tests FIRST
+
+- ALWAYS write tests before implementation
+- Run tests to verify they fail
+- No exceptions, even for "simple" changes
+
+### 🟢 GREEN: Write Minimal Code to Pass Tests
+
+- Implement only what's needed
+- All tests must pass before moving forward
+- No extra features or "nice-to-haves"
+
+### 🔵 REFACTOR: Improve While Keeping Tests Green
+
+- Clean up code while tests pass
+- Run tests after each refactoring step
+
+### FORBIDDEN ❌
+
+- Writing implementation before tests
+- Skipping/removing tests to make code "work"
+- Leaving any tests failing
+- Committing without running tests
+- Making changes without test coverage
+
+## Test Coverage Requirements
+
+- **Minimum Coverage**: 80% for statements, branches, functions, and lines
+- **Unit Tests**: All utility functions, hooks, isolated components
+- **Integration Tests**: Feature workflows and component interactions
+- **E2E Tests**: Critical user journeys and happy paths
+
+## Code Quality Standards
+
+- Always run `pnpm lint:fix` before committing
+- TypeScript strict mode compliance (no `any`)
+- Keep components small and focused (< 200 lines)
+- Follow existing code patterns
+
+## Testing Best Practices
+
+- Unit tests: `src/__tests__/` or alongside components
+- E2E tests: `src/tests/e2e/`
+- Descriptive test names that explain behavior
+- Mock external dependencies and API calls
+- Test error states and edge cases, not just happy paths
+- Keep tests independent and isolated
+
+## Architecture - Module Structure
+
+Each feature module in `src/modules/[feature-name]/`:
+
+```
+src/modules/feature-name/
+├── components/              # Feature components + tests
+│   ├── FeatureComponent.tsx
+│   └── FeatureComponent.test.tsx
+├── hooks/                   # Feature hooks + tests
+│   ├── useFeature.ts
+│   └── useFeature.test.ts
+├── services/                # API/business logic + tests
+│   ├── feature.service.ts
+│   └── feature.service.test.ts
+├── types/                   # Feature types
+│   └── feature.types.ts
+├── utils/                   # Feature utilities + tests
+│   ├── helpers.ts
+│   └── helpers.test.ts
+└── index.tsx                # Public API exports
+```
+
+## Adding New Features - Process
+
+1. **Create Structure**: `mkdir -p src/modules/feature-name/{components,hooks,services,types,utils}`
+2. **Write Tests First (RED)**: Create test files, verify they fail
+3. **Implement Feature (GREEN)**: types → services → components → hooks → utils
+4. **Create Page Route** (if needed): `src/app/(group)/feature-name/page.tsx`
+5. **Export Public API**: `src/modules/feature-name/index.tsx`
+6. **Add E2E Tests**: `src/tests/e2e/feature-name.spec.ts`
+7. **Update Documentation**: README.md, CLAUDE.md, API docs
+
+## Shared vs Module-Specific
+
+### Use `src/shared/` for:
+
+- UI components used across multiple features
+- Generic hooks (useMediaQuery, useDebounce)
+- Common utilities (date formatting, validation)
+- Global types (User, API Response)
+
+### Use `src/modules/[feature]/` for:
+
+- Feature-specific components
+- Feature-specific business logic
+- Feature-specific hooks
+- Feature-specific types
+
+## Path Aliases
+
+- `@/*` maps to `./src/*`
+- `@/shared/components` for components
+- `@/shared/components/ui` for UI components
+- `@/shared/hooks` for hooks
+
+## Key Technologies
+
+- Next.js 15 (App Router) + React 19
+- TypeScript (strict mode)
+- Tailwind CSS v4
+- Radix UI primitives
+- Framer Motion
+- React Hook Form + Zod
+- Jest + React Testing Library
+- Playwright (E2E)
+
+## Testing Commands
+
+- `pnpm test` - Run unit tests
+- `pnpm test:watch` - Watch mode
+- `pnpm test:coverage` - Coverage report
+- `pnpm test:e2e` - E2E tests
+- `pnpm test:e2e:ui` - E2E with UI
+- `pnpm test:e2e:headed` - E2E with browser visible
+
+## Remember
+
+- Test-first development is NOT optional
+- 80% coverage minimum
+- Use PNPM only
+- Keep components < 200 lines
+- No `any` types
+- Run `pnpm lint:fix` before commits
