@@ -116,10 +116,10 @@ describe('Button', () => {
 
 ### E2E Tests
 
-Place E2E tests in `e2e/`:
+Place E2E tests in `src/tests/e2e/`:
 
 ```typescript
-// e2e/marketplace.spec.ts
+// src/tests/e2e/marketplace.spec.ts
 import { test, expect } from "@playwright/test";
 
 test("should display NFTs", async ({ page }) => {

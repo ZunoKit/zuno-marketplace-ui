@@ -193,7 +193,7 @@ pnpm test:e2e:ui
 pnpm test:e2e:headed
 
 # Run specific test file
-pnpm test:e2e e2e/homepage.spec.ts
+pnpm test:e2e src/tests/e2e/homepage.spec.ts
 
 # Run tests in specific browser
 pnpm test:e2e --project=chromium
@@ -206,7 +206,7 @@ pnpm test:e2e --project=webkit
 #### Basic Test
 
 ```typescript
-// e2e/marketplace.spec.ts
+// src/tests/e2e/marketplace.spec.ts
 import { test, expect } from "@playwright/test";
 
 test.describe("Marketplace", () => {
@@ -243,7 +243,7 @@ test.describe("Marketplace", () => {
 #### User Journey Test
 
 ```typescript
-// e2e/user-flow.spec.ts
+// src/tests/e2e/user-flow.spec.ts
 import { test, expect } from "@playwright/test";
 
 test.describe("User Journey", () => {
@@ -308,7 +308,7 @@ test.describe("Mobile Experience", () => {
 #### Page Object Pattern
 
 ```typescript
-// e2e/pages/marketplace.page.ts
+// src/tests/e2e/pages/marketplace.page.ts
 export class MarketplacePage {
   constructor(private page: Page) {}
 
@@ -390,13 +390,14 @@ src/
 │   ├── example.test.tsx   # Example tests
 │   └── integration/       # Integration tests
 │
-e2e/
-├── homepage.spec.ts       # Homepage E2E tests
-├── marketplace.spec.ts    # Marketplace E2E tests
-├── user-flow.spec.ts      # User journey tests
-└── pages/                 # Page objects
-    ├── marketplace.page.ts
-    └── nft-detail.page.ts
+├── tests/
+│   └── e2e/
+│       ├── homepage.spec.ts       # Homepage E2E tests
+│       ├── marketplace.spec.ts    # Marketplace E2E tests
+│       ├── user-flow.spec.ts      # User journey tests
+│       └── pages/                 # Page objects
+│           ├── marketplace.page.ts
+│           └── nft-detail.page.ts
 ```
 
 ## CI/CD Integration
