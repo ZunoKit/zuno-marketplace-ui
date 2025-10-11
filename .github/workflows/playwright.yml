@@ -10,11 +10,6 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        project: [chromium, Mobile Chrome]
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -48,7 +43,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Install Playwright Browsers
-        run: pnpm exec playwright install --with-deps ${{ matrix.project }}
+        run: pnpm exec playwright install --with-deps
 
       - name: Build Next.js application
         run: pnpm build
@@ -56,7 +51,7 @@ jobs:
           NEXT_PUBLIC_APP_URL: http://localhost:3000
 
       - name: Run Playwright tests
-        run: pnpm test:e2e --project=${{ matrix.project }}
+        run: pnpm test:e2e
         env:
           NEXT_PUBLIC_APP_URL: http://localhost:3000
 
@@ -64,7 +59,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: blob-report-${{ matrix.project }}
+          name: blob-report
           path: blob-report/
           retention-days: 30
 
@@ -72,7 +67,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: test-results-${{ matrix.project }}
+          name: test-results
           path: test-results/
           retention-days: 30
 
@@ -97,28 +92,27 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Download all blob reports
+      - name: Download blob report
         uses: actions/download-artifact@v4
         with:
-          path: all-blob-reports/
-          pattern: blob-report-*
-          merge-multiple: true
+          path: blob-report/
+          name: blob-report
 
-      - name: Merge reports
+      - name: Generate HTML report
         run: |
-          if [ -d "all-blob-reports" ] && [ "$(ls -A all-blob-reports)" ]; then
-            echo "Merging reports from $(pwd)/all-blob-reports"
-            ls -la all-blob-reports/
-            pnpm exec playwright merge-reports --reporter html ./all-blob-reports
+          if [ -d "blob-report" ] && [ "$(ls -A blob-report)" ]; then
+            echo "Generating HTML report from $(pwd)/blob-report"
+            ls -la blob-report/
+            pnpm exec playwright show-report blob-report --reporter html
           else
-            echo "No blob reports found to merge"
+            echo "No blob report found"
             exit 1
           fi
 
-      - name: Upload merged HTML report
+      - name: Upload HTML report
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: playwright-report-merged
+          name: playwright-report
           path: playwright-report/
           retention-days: 30
