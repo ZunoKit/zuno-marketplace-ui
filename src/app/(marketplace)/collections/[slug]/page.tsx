@@ -19,9 +19,7 @@ export async function generateMetadata({ params }: CollectionPageProps) {
 
   return {
     title: `${collection.name} Collection | NFT Marketplace`,
-    description:
-      collection.description ||
-      `Browse NFTs from ${collection.name} collection`,
+    description: collection.description || `Browse NFTs from ${collection.name} collection`,
   };
 }
 
@@ -29,14 +27,11 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
   const { slug } = await params;
   // In real app, fetch collection and its NFTs based on slug
   const collection =
-    mockCollections.find(
-      (c) => c.name.toLowerCase().replace(/\s+/g, "-") === slug
-    ) || mockCollections[0];
+    mockCollections.find(c => c.name.toLowerCase().replace(/\s+/g, "-") === slug) ||
+    mockCollections[0];
 
   // Filter NFTs for this collection
-  const collectionNFTs = mockNFTs.filter(
-    (nft) => nft.collection.address === collection.address
-  );
+  const collectionNFTs = mockNFTs.filter(nft => nft.collection.address === collection.address);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -46,9 +41,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
           <div
             className="absolute inset-0 bg-gradient-to-br from-purple-500 to-pink-500"
             style={{
-              backgroundImage: collection.banner
-                ? `url(${collection.banner})`
-                : undefined,
+              backgroundImage: collection.banner ? `url(${collection.banner})` : undefined,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
@@ -99,11 +92,8 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {collectionNFTs.map((nft) => (
-            <Card
-              key={nft.id}
-              className="group hover:shadow-lg transition-shadow"
-            >
+          {collectionNFTs.map(nft => (
+            <Card key={nft.id} className="group hover:shadow-lg transition-shadow">
               <CardContent className="p-0">
                 <Link href={`/nft/${nft.id}`}>
                   <div className="aspect-square relative overflow-hidden rounded-t-lg">
@@ -118,7 +108,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
                         size="icon"
                         variant="ghost"
                         className="bg-white/80 backdrop-blur-sm"
-                        onClick={(e) => {
+                        onClick={e => {
                           e.preventDefault();
                           // Handle like action
                         }}
@@ -132,9 +122,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
                 <div className="p-4">
                   <div className="flex justify-between items-start mb-2">
                     <div>
-                      <p className="text-xs text-muted-foreground">
-                        {collection.name}
-                      </p>
+                      <p className="text-xs text-muted-foreground">{collection.name}</p>
                       <h3 className="font-semibold">{nft.name}</h3>
                     </div>
                     <Badge variant="outline" className="text-xs">
@@ -144,9 +132,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
 
                   <div className="flex justify-between items-end">
                     <div>
-                      <p className="text-xs text-muted-foreground">
-                        Current Price
-                      </p>
+                      <p className="text-xs text-muted-foreground">Current Price</p>
                       <p className="font-bold">{nft.price} ETH</p>
                     </div>
                     <div className="flex gap-1">
@@ -167,9 +153,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
 
         {collectionNFTs.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-muted-foreground">
-              No NFTs found in this collection
-            </p>
+            <p className="text-muted-foreground">No NFTs found in this collection</p>
           </div>
         )}
       </div>

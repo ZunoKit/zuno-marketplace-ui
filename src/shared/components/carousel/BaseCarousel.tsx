@@ -84,11 +84,8 @@ export function BaseCarousel<T extends CarouselItemData>({
         ]}
       >
         <CarouselContent className="-ml-2">
-          {items.map((item) => (
-            <CarouselItem
-              key={item.id}
-              className={itemClassName || getResponsiveBasis()}
-            >
+          {items.map(item => (
+            <CarouselItem key={item.id} className={itemClassName || getResponsiveBasis()}>
               {renderItem(
                 item,
                 hoveredId === item.id,

@@ -16,22 +16,14 @@ export class AppError extends Error {
 }
 
 export class APIError extends AppError {
-  constructor(
-    message: string,
-    statusCode: number,
-    context?: Record<string, unknown>
-  ) {
+  constructor(message: string, statusCode: number, context?: Record<string, unknown>) {
     super(message, "API_ERROR", statusCode, context);
     this.name = "APIError";
   }
 }
 
 export class BlockchainError extends AppError {
-  constructor(
-    message: string,
-    code?: string,
-    context?: Record<string, unknown>
-  ) {
+  constructor(message: string, code?: string, context?: Record<string, unknown>) {
     super(message, code, undefined, context);
     this.name = "BlockchainError";
   }
@@ -62,10 +54,7 @@ export function handleError(error: unknown): AppError {
 /**
  * Log error to console (in development) or monitoring service (in production)
  */
-export function logError(
-  error: AppError | Error,
-  context?: Record<string, unknown>
-): void {
+export function logError(error: AppError | Error, context?: Record<string, unknown>): void {
   const errorInfo = {
     name: error.name,
     message: error.message,
@@ -175,7 +164,7 @@ export async function retry<T>(
 
       if (i < maxRetries) {
         const waitTime = delay * Math.pow(backoff, i);
-        await new Promise((resolve) => setTimeout(resolve, waitTime));
+        await new Promise(resolve => setTimeout(resolve, waitTime));
       }
     }
   }

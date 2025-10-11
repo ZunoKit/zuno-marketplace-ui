@@ -4,8 +4,7 @@
 
 export const siteConfig = {
   name: "Zuno Marketplace",
-  description:
-    "NFT Marketplace for buying, selling, and trading digital assets",
+  description: "NFT Marketplace for buying, selling, and trading digital assets",
   url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
   ogImage: "/images/og-image.png",
   links: {

@@ -2,11 +2,7 @@
 
 import { Card } from "@/shared/components/ui/card";
 import { Button } from "@/shared/components/ui/button";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/shared/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/shared/components/ui/avatar";
 import { Badge } from "@/shared/components/ui/badge";
 import { Clock } from "lucide-react";
 import { type NFTOffer } from "@/shared/types/nft-detail";
@@ -18,11 +14,7 @@ interface NFTOffersProps {
   isOwner?: boolean;
 }
 
-export function NFTOffers({
-  offers,
-  currentPrice,
-  isOwner = false,
-}: NFTOffersProps) {
+export function NFTOffers({ offers, currentPrice, isOwner = false }: NFTOffersProps) {
   const handleAcceptOffer = (offerId: string) => {
     console.log("Accept offer:", offerId);
   };
@@ -51,7 +43,7 @@ export function NFTOffers({
 
   return (
     <div className="space-y-3">
-      {offers.map((offer) => {
+      {offers.map(offer => {
         const percentage = getOfferPercentage(offer.price);
         const isHighOffer = percentage >= 0;
 
@@ -60,13 +52,8 @@ export function NFTOffers({
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <Avatar className="h-10 w-10">
-                  <AvatarImage
-                    src={offer.offerer.avatar}
-                    alt={offer.offerer.name}
-                  />
-                  <AvatarFallback>
-                    {offer.offerer.name?.[0] || "?"}
-                  </AvatarFallback>
+                  <AvatarImage src={offer.offerer.avatar} alt={offer.offerer.name} />
+                  <AvatarFallback>{offer.offerer.name?.[0] || "?"}</AvatarFallback>
                 </Avatar>
 
                 <div>
@@ -92,29 +79,18 @@ export function NFTOffers({
                   <p className="font-semibold text-lg">
                     {offer.price} {offer.currency}
                   </p>
-                  <Badge
-                    variant={isHighOffer ? "default" : "secondary"}
-                    className="text-xs"
-                  >
+                  <Badge variant={isHighOffer ? "default" : "secondary"} className="text-xs">
                     {percentage >= 0 ? "+" : ""}
-                    {percentage.toFixed(1)}%{isHighOffer ? " above" : " below"}{" "}
-                    listing
+                    {percentage.toFixed(1)}%{isHighOffer ? " above" : " below"} listing
                   </Badge>
                 </div>
 
                 {isOwner && offer.status === "active" && (
                   <div className="flex gap-2">
-                    <Button
-                      size="sm"
-                      onClick={() => handleAcceptOffer(offer.id)}
-                    >
+                    <Button size="sm" onClick={() => handleAcceptOffer(offer.id)}>
                       Accept
                     </Button>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      onClick={() => handleRejectOffer(offer.id)}
-                    >
+                    <Button size="sm" variant="outline" onClick={() => handleRejectOffer(offer.id)}>
                       Reject
                     </Button>
                   </div>

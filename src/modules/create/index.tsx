@@ -23,9 +23,7 @@ import {
 import Link from "next/link";
 
 export function CreateHub() {
-  const [selectedOption, setSelectedOption] = useState<
-    "nft" | "collection" | null
-  >(null);
+  const [selectedOption, setSelectedOption] = useState<"nft" | "collection" | null>(null);
 
   const createOptions = [
     {
@@ -95,7 +93,7 @@ export function CreateHub() {
 
       {/* Create Options */}
       <div className="grid md:grid-cols-2 gap-6 mb-12">
-        {createOptions.map((option) => (
+        {createOptions.map(option => (
           <Card
             key={option.id}
             className={`relative overflow-hidden cursor-pointer transition-all duration-300 ${
@@ -105,24 +103,18 @@ export function CreateHub() {
             }`}
             onClick={() => setSelectedOption(option.id as "nft" | "collection")}
           >
-            <div
-              className={`absolute inset-0 opacity-5 bg-gradient-to-br ${option.color}`}
-            />
+            <div className={`absolute inset-0 opacity-5 bg-gradient-to-br ${option.color}`} />
 
             <CardHeader>
               <div className="flex items-start justify-between mb-2">
-                <div
-                  className={`p-3 rounded-lg bg-gradient-to-br ${option.color} text-white`}
-                >
+                <div className={`p-3 rounded-lg bg-gradient-to-br ${option.color} text-white`}>
                   <option.icon className="h-6 w-6" />
                 </div>
                 <Badge variant="secondary">{option.badge}</Badge>
               </div>
 
               <CardTitle className="text-2xl">{option.title}</CardTitle>
-              <CardDescription className="text-base">
-                {option.description}
-              </CardDescription>
+              <CardDescription className="text-base">{option.description}</CardDescription>
             </CardHeader>
 
             <CardContent>
@@ -145,9 +137,7 @@ export function CreateHub() {
 
       {/* Benefits Section */}
       <div className="mt-16">
-        <h2 className="text-2xl font-bold text-center mb-8">
-          Why Create with Us?
-        </h2>
+        <h2 className="text-2xl font-bold text-center mb-8">Why Create with Us?</h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {benefits.map((benefit, index) => (
@@ -157,9 +147,7 @@ export function CreateHub() {
                   <benefit.icon className="h-6 w-6" />
                 </div>
                 <h3 className="font-semibold mb-2">{benefit.title}</h3>
-                <p className="text-sm text-muted-foreground">
-                  {benefit.description}
-                </p>
+                <p className="text-sm text-muted-foreground">{benefit.description}</p>
               </CardContent>
             </Card>
           ))}
@@ -171,8 +159,8 @@ export function CreateHub() {
         <CardContent className="text-center py-8">
           <h3 className="text-2xl font-bold mb-3">Ready to Create?</h3>
           <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-            Join thousands of creators who are already minting and selling their
-            NFTs on our platform
+            Join thousands of creators who are already minting and selling their NFTs on our
+            platform
           </p>
           <div className="flex gap-4 justify-center">
             <Button size="lg" asChild>

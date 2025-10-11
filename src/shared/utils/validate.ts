@@ -70,9 +70,7 @@ const mockChains: Chain[] = [
 ];
 
 export const validateChain = (chainName: string): Chain | null => {
-  const chain = mockChains.find(
-    (c) => c.name.toLowerCase() === chainName.toLowerCase()
-  );
+  const chain = mockChains.find(c => c.name.toLowerCase() === chainName.toLowerCase());
   if (!chain) {
     return mockChains[0]; // Return default chain for mock
   }

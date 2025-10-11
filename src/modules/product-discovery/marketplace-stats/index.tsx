@@ -1,19 +1,7 @@
 "use client";
 
-import {
-  TrendingUp,
-  Users,
-  ShoppingBag,
-  Activity,
-  ArrowUp,
-  ArrowDown,
-} from "lucide-react";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/shared/components/ui/card";
+import { TrendingUp, Users, ShoppingBag, Activity, ArrowUp, ArrowDown } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui/card";
 import { Progress } from "@/shared/components/ui/progress";
 import Image from "next/image";
 
@@ -111,9 +99,7 @@ export default function MarketplaceStats() {
       <div className="container mx-auto px-4">
         <div className="mb-8">
           <h2 className="text-3xl font-bold mb-2">📊 Marketplace Overview</h2>
-          <p className="text-muted-foreground">
-            Real-time statistics across all supported chains
-          </p>
+          <p className="text-muted-foreground">Real-time statistics across all supported chains</p>
         </div>
 
         {/* Main Stats Grid */}
@@ -121,9 +107,7 @@ export default function MarketplaceStats() {
           {marketStats.map((stat, index) => (
             <Card key={index}>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  {stat.title}
-                </CardTitle>
+                <CardTitle className="text-sm font-medium">{stat.title}</CardTitle>
                 <div className="text-muted-foreground">{stat.icon}</div>
               </CardHeader>
               <CardContent>
@@ -134,16 +118,10 @@ export default function MarketplaceStats() {
                   ) : (
                     <ArrowDown className="h-3 w-3 text-red-500 mr-1" />
                   )}
-                  <span
-                    className={
-                      stat.change > 0 ? "text-green-500" : "text-red-500"
-                    }
-                  >
+                  <span className={stat.change > 0 ? "text-green-500" : "text-red-500"}>
                     {Math.abs(stat.change)}%
                   </span>
-                  <span className="text-muted-foreground ml-1">
-                    {stat.changeLabel}
-                  </span>
+                  <span className="text-muted-foreground ml-1">{stat.changeLabel}</span>
                 </div>
                 {stat.progress !== undefined && (
                   <Progress value={stat.progress} className="mt-3 h-1" />
@@ -189,11 +167,7 @@ export default function MarketplaceStats() {
                       ) : (
                         <ArrowDown className="h-3 w-3 text-red-500 mr-1" />
                       )}
-                      <span
-                        className={
-                          chain.change > 0 ? "text-green-500" : "text-red-500"
-                        }
-                      >
+                      <span className={chain.change > 0 ? "text-green-500" : "text-red-500"}>
                         {Math.abs(chain.change)}%
                       </span>
                     </div>

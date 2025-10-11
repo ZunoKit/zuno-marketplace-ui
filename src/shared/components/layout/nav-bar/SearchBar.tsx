@@ -51,13 +51,11 @@ export default function SearchBar({ isMobile }: SearchBarProps) {
             className={cn(
               "pl-10 h-9 rounded-md bg-gray-50/80 border border-gray-200 focus:border-gray-300 text-gray-900 placeholder-gray-500 cursor-pointer",
               "dark:bg-[#232836]/80 dark:border-white/10 dark:focus:border-white/20 dark:text-white dark:placeholder-gray-400",
-              isMobile &&
-                !isSearchFocused &&
-                "w-8 pl-8 pr-0 opacity-0 pointer-events-none",
+              isMobile && !isSearchFocused && "w-8 pl-8 pr-0 opacity-0 pointer-events-none",
               isMobile && isSearchFocused && "w-full opacity-100 shadow-sm"
             )}
             onClick={() => setIsModalOpen(true)}
-            onFocus={(e) => {
+            onFocus={e => {
               e.target.blur();
               setIsModalOpen(true);
             }}

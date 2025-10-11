@@ -14,12 +14,7 @@ import {
 import { HelpCircle, MoreVertical, Plus } from "lucide-react";
 import { AllowlistStage } from "@/modules/mint/create-form/AllowlistStage";
 import { PublicStage } from "@/modules/mint/create-form/PublicStage";
-import {
-  FormField,
-  FormItem,
-  FormControl,
-  FormMessage,
-} from "@/shared/components/ui/form";
+import { FormField, FormItem, FormControl, FormMessage } from "@/shared/components/ui/form";
 import { DateTimePicker24h } from "@/shared/components/date-time/DateTimePicker24h";
 import { useFormContext } from "react-hook-form";
 
@@ -65,9 +60,7 @@ export function MintDetails() {
         </div>
         <div>
           <div className="flex items-center gap-1">
-            <Label className="text-gray-900 dark:text-white">
-              Royalty Percent
-            </Label>
+            <Label className="text-gray-900 dark:text-white">Royalty Percent</Label>
             <HelpCircle className="h-4 w-4 text-gray-500 dark:text-gray-500" />
           </div>
           {formState.isSubmitting ? (
@@ -86,9 +79,7 @@ export function MintDetails() {
                         max="100"
                         className="bg-gray-50 dark:bg-[#1a1525] border-gray-200 dark:border-[#3a3450] text-gray-900 dark:text-white rounded-r-none focus-visible:ring-0 focus-visible:ring-offset-0"
                         {...field}
-                        onChange={(e) =>
-                          field.onChange(parseFloat(e.target.value) || 0)
-                        }
+                        onChange={e => field.onChange(parseFloat(e.target.value) || 0)}
                       />
                       <div className="bg-gray-100 dark:bg-[#2a2535] border border-gray-200 dark:border-[#3a3450] rounded-r-md px-4 flex items-center text-gray-900 dark:text-white">
                         %
@@ -124,10 +115,8 @@ export function MintDetails() {
                       className="bg-gray-50 dark:bg-[#1a1525] border-gray-200 dark:border-[#3a3450] text-gray-900 dark:text-white mt-2 focus-visible:ring-0 focus-visible:ring-offset-0"
                       {...field}
                       value={field.value || ""}
-                      onChange={(e) =>
-                        field.onChange(
-                          e.target.value ? parseInt(e.target.value) : null
-                        )
+                      onChange={e =>
+                        field.onChange(e.target.value ? parseInt(e.target.value) : null)
                       }
                     />
                   </FormControl>
@@ -139,9 +128,7 @@ export function MintDetails() {
         </div>
         <div>
           <div className="flex items-center gap-1">
-            <Label className="text-gray-900 dark:text-white">
-              Mint Limit per Wallet
-            </Label>
+            <Label className="text-gray-900 dark:text-white">Mint Limit per Wallet</Label>
             <HelpCircle className="h-4 w-4 text-gray-500 dark:text-gray-500" />
           </div>
           {formState.isSubmitting ? (
@@ -159,10 +146,8 @@ export function MintDetails() {
                       className="bg-gray-50 dark:bg-[#1a1525] border-gray-200 dark:border-[#3a3450] text-gray-900 dark:text-white mt-2 focus-visible:ring-0 focus-visible:ring-offset-0"
                       {...field}
                       value={field.value || ""}
-                      onChange={(e) =>
-                        field.onChange(
-                          e.target.value ? parseInt(e.target.value) : null
-                        )
+                      onChange={e =>
+                        field.onChange(e.target.value ? parseInt(e.target.value) : null)
                       }
                     />
                   </FormControl>
@@ -174,9 +159,7 @@ export function MintDetails() {
         </div>
       </div>
       <div>
-        <Label className="text-gray-900 dark:text-white">
-          Mint Start Date & Time
-        </Label>
+        <Label className="text-gray-900 dark:text-white">Mint Start Date & Time</Label>
         {formState.isSubmitting ? (
           <Skeleton className="h-10 w-full mt-1" />
         ) : (
@@ -187,9 +170,7 @@ export function MintDetails() {
                 <FormControl>
                   <DateTimePicker24h
                     value={field.value ? new Date(field.value) : undefined}
-                    onChange={(newDate) =>
-                      field.onChange(newDate.toISOString())
-                    }
+                    onChange={newDate => field.onChange(newDate.toISOString())}
                     className="mt-2 [&>div>button]:bg-gray-50 [&>div>button]:dark:bg-[#1a1525] [&>div>button]:border-gray-200 dark:border-[#3a3450] [&>div>button]:text-gray-900 [&>div>button]:dark:text-white [&>div>button]:focus-visible:ring-0 [&>div>button]:focus-visible:ring-offset-0 [&>div>div>div]:bg-white [&>div>div>div]:dark:bg-[#1a1525] [&>div>div>div]:border-gray-200 dark:border-[#3a3450] [&>div>div>div]:text-gray-900 [&>div>div>div]:dark:text-white"
                   />
                 </FormControl>
@@ -222,14 +203,9 @@ export function MintDetails() {
               >
                 <div className="flex justify-between items-center">
                   <div className="flex items-center gap-2">
-                    <h3 className="font-medium text-gray-900 dark:text-white">
-                      Allowlist Stage
-                    </h3>
+                    <h3 className="font-medium text-gray-900 dark:text-white">Allowlist Stage</h3>
                     <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-xs px-2 py-0.5 rounded">
-                      {stages?.[0]?.presale?.price ||
-                        getValues("mintPrice") ||
-                        "0"}{" "}
-                      ETH
+                      {stages?.[0]?.presale?.price || getValues("mintPrice") || "0"} ETH
                     </span>
                   </div>
                   <DropdownMenu>
@@ -238,7 +214,7 @@ export function MintDetails() {
                         variant="ghost"
                         size="icon"
                         className="h-8 w-8 text-gray-400"
-                        onClick={(e) => e.stopPropagation()}
+                        onClick={e => e.stopPropagation()}
                       >
                         <MoreVertical className="h-4 w-4" />
                       </Button>
@@ -248,7 +224,7 @@ export function MintDetails() {
                       className="bg-white dark:bg-[#1a1525] border-gray-200 dark:border-[#3a3450]"
                     >
                       <DropdownMenuItem
-                        onClick={(e) => {
+                        onClick={e => {
                           e.stopPropagation();
                           setAllowlistDialogOpen(true);
                         }}
@@ -257,7 +233,7 @@ export function MintDetails() {
                         Edit
                       </DropdownMenuItem>
                       <DropdownMenuItem
-                        onClick={(e) => {
+                        onClick={e => {
                           e.stopPropagation();
                           // Remove presale stage
                           const currentStages = getValues("stages");
@@ -274,10 +250,7 @@ export function MintDetails() {
                   </DropdownMenu>
                 </div>
                 <div className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                  <span>
-                    {stages?.[0]?.presale?.allowlistAddresses?.length || 0}{" "}
-                    addresses
-                  </span>
+                  <span>{stages?.[0]?.presale?.allowlistAddresses?.length || 0} addresses</span>
                   {stages?.[0]?.presale?.duration && (
                     <span className="ml-4">
                       Duration: {stages?.[0]?.presale?.duration?.days || 0}d{" "}
@@ -295,14 +268,9 @@ export function MintDetails() {
             >
               <div className="flex justify-between items-center">
                 <div className="flex items-center gap-2">
-                  <h3 className="font-medium text-gray-900 dark:text-white">
-                    Public Stage
-                  </h3>
+                  <h3 className="font-medium text-gray-900 dark:text-white">Public Stage</h3>
                   <span className="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs px-2 py-0.5 rounded">
-                    {stages?.[0]?.public?.price ||
-                      getValues("mintPrice") ||
-                      "0"}{" "}
-                    ETH
+                    {stages?.[0]?.public?.price || getValues("mintPrice") || "0"} ETH
                   </span>
                 </div>
                 <DropdownMenu>
@@ -311,7 +279,7 @@ export function MintDetails() {
                       variant="ghost"
                       size="icon"
                       className="h-8 w-8 text-gray-400"
-                      onClick={(e) => e.stopPropagation()}
+                      onClick={e => e.stopPropagation()}
                     >
                       <MoreVertical className="h-4 w-4" />
                     </Button>
@@ -321,7 +289,7 @@ export function MintDetails() {
                     className="bg-white dark:bg-[#1a1525] border-gray-200 dark:border-[#3a3450]"
                   >
                     <DropdownMenuItem
-                      onClick={(e) => {
+                      onClick={e => {
                         e.stopPropagation();
                         setPublicDialogOpen(true);
                       }}
@@ -375,14 +343,8 @@ export function MintDetails() {
         )}
       </div>
 
-      <AllowlistStage
-        isOpen={allowlistDialogOpen}
-        onOpenChange={setAllowlistDialogOpen}
-      />
-      <PublicStage
-        isOpen={publicDialogOpen}
-        onOpenChange={setPublicDialogOpen}
-      />
+      <AllowlistStage isOpen={allowlistDialogOpen} onOpenChange={setAllowlistDialogOpen} />
+      <PublicStage isOpen={publicDialogOpen} onOpenChange={setPublicDialogOpen} />
     </div>
   );
 }

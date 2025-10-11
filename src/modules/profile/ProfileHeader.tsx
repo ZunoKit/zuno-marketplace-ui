@@ -2,22 +2,9 @@
 
 import { useState } from "react";
 import { Button } from "@/shared/components/ui/button";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/shared/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/shared/components/ui/avatar";
 import { Badge } from "@/shared/components/ui/badge";
-import {
-  Globe,
-  Twitter,
-  Copy,
-  Check,
-  Settings,
-  Share2,
-  UserPlus,
-  UserMinus,
-} from "lucide-react";
+import { Globe, Twitter, Copy, Check, Settings, Share2, UserPlus, UserMinus } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { type UserProfile } from "@/shared/types/profile";
@@ -63,12 +50,7 @@ export function ProfileHeader({
       {/* Banner */}
       <div className="relative h-48 md:h-64 lg:h-80 w-full overflow-hidden rounded-xl">
         {profile.banner ? (
-          <Image
-            src={profile.banner}
-            alt="Profile banner"
-            fill
-            className="object-cover"
-          />
+          <Image src={profile.banner} alt="Profile banner" fill className="object-cover" />
         ) : (
           <div className="h-full w-full bg-gradient-to-br from-purple-500 to-pink-500" />
         )}
@@ -89,9 +71,7 @@ export function ProfileHeader({
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-2">
               <h1 className="text-2xl md:text-3xl font-bold">
-                {profile.displayName ||
-                  profile.username ||
-                  truncateAddress(profile.address)}
+                {profile.displayName || profile.username || truncateAddress(profile.address)}
               </h1>
               {profile.verified && (
                 <Badge variant="secondary" className="gap-1">
@@ -101,20 +81,13 @@ export function ProfileHeader({
               )}
             </div>
 
-            {profile.username && (
-              <p className="text-muted-foreground mb-2">@{profile.username}</p>
-            )}
+            {profile.username && <p className="text-muted-foreground mb-2">@{profile.username}</p>}
 
             <div className="flex items-center gap-2 mb-4">
               <code className="text-sm bg-muted px-2 py-1 rounded">
                 {truncateAddress(profile.address)}
               </code>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={handleCopyAddress}
-                className="h-8 w-8 p-0"
-              >
+              <Button variant="ghost" size="sm" onClick={handleCopyAddress} className="h-8 w-8 p-0">
                 {copied ? (
                   <Check className="h-4 w-4 text-green-500" />
                 ) : (
@@ -127,11 +100,7 @@ export function ProfileHeader({
             <div className="flex items-center gap-2">
               {profile.website && (
                 <Button variant="ghost" size="sm" asChild>
-                  <a
-                    href={profile.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href={profile.website} target="_blank" rel="noopener noreferrer">
                     <Globe className="h-4 w-4" />
                   </a>
                 </Button>
@@ -181,9 +150,7 @@ export function ProfileHeader({
         </div>
 
         {/* Bio */}
-        {profile.bio && (
-          <p className="mt-4 text-muted-foreground max-w-3xl">{profile.bio}</p>
-        )}
+        {profile.bio && <p className="mt-4 text-muted-foreground max-w-3xl">{profile.bio}</p>}
 
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mt-6">
@@ -192,27 +159,15 @@ export function ProfileHeader({
           <StatsCard label="Collections" value={profile.stats.collections} />
           <StatsCard label="Volume" value={profile.stats.totalVolume} />
           <StatsCard label="Floor Price" value={profile.stats.floorPrice} />
-          <StatsCard
-            label="Followers"
-            value={profile.stats.followers.toLocaleString()}
-          />
-          <StatsCard
-            label="Following"
-            value={profile.stats.following.toLocaleString()}
-          />
+          <StatsCard label="Followers" value={profile.stats.followers.toLocaleString()} />
+          <StatsCard label="Following" value={profile.stats.following.toLocaleString()} />
         </div>
       </div>
     </div>
   );
 }
 
-function StatsCard({
-  label,
-  value,
-}: {
-  label: string;
-  value: string | number;
-}) {
+function StatsCard({ label, value }: { label: string; value: string | number }) {
   return (
     <div className="bg-card rounded-lg p-3 border">
       <p className="text-xs text-muted-foreground mb-1">{label}</p>

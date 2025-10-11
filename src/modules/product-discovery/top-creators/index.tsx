@@ -4,11 +4,7 @@ import { TrendingUp, VerifiedIcon, Award } from "lucide-react";
 import { Card, CardContent } from "@/shared/components/ui/card";
 import { Badge } from "@/shared/components/ui/badge";
 import { Button } from "@/shared/components/ui/button";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/shared/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/shared/components/ui/avatar";
 import Link from "next/link";
 
 interface Creator {
@@ -160,7 +156,7 @@ export default function TopCreators() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {mockTopCreators.map((creator) => (
+          {mockTopCreators.map(creator => (
             <Card
               key={creator.id}
               className="group hover:shadow-xl transition-all duration-300 overflow-hidden"
@@ -199,12 +195,8 @@ export default function TopCreators() {
                 </div>
 
                 <div className="mb-4">
-                  <h3 className="font-semibold text-lg truncate">
-                    {creator.name}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    @{creator.username}
-                  </p>
+                  <h3 className="font-semibold text-lg truncate">{creator.name}</h3>
+                  <p className="text-sm text-muted-foreground">@{creator.username}</p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3 mb-4 text-sm">
@@ -218,9 +210,7 @@ export default function TopCreators() {
                   </div>
                   <div>
                     <p className="text-muted-foreground text-xs">Items Sold</p>
-                    <p className="font-bold">
-                      {creator.itemsSold.toLocaleString()}
-                    </p>
+                    <p className="font-bold">{creator.itemsSold.toLocaleString()}</p>
                   </div>
                   <div>
                     <p className="text-muted-foreground text-xs">7d Change</p>
@@ -245,9 +235,7 @@ export default function TopCreators() {
 
                 <div className="flex gap-2">
                   <Button className="flex-1" size="sm" asChild>
-                    <Link href={`/profile/${creator.username}`}>
-                      View Profile
-                    </Link>
+                    <Link href={`/profile/${creator.username}`}>View Profile</Link>
                   </Button>
                   <Button variant="outline" size="sm" className="flex-1">
                     Follow

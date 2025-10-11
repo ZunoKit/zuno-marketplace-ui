@@ -9,9 +9,7 @@ interface UserFavoritesPageProps {
 
 export async function generateMetadata({ params }: UserFavoritesPageProps) {
   const { username } = await params;
-  const profile =
-    mockUserProfiles.find((p) => p.username === username) ||
-    mockUserProfiles[1];
+  const profile = mockUserProfiles.find(p => p.username === username) || mockUserProfiles[1];
 
   return {
     title: `${profile.displayName}'s Favorites | NFT Marketplace`,
@@ -19,13 +17,9 @@ export async function generateMetadata({ params }: UserFavoritesPageProps) {
   };
 }
 
-export default async function UserFavoritesPage({
-  params,
-}: UserFavoritesPageProps) {
+export default async function UserFavoritesPage({ params }: UserFavoritesPageProps) {
   const { username } = await params;
-  const profile =
-    mockUserProfiles.find((p) => p.username === username) ||
-    mockUserProfiles[1];
+  const profile = mockUserProfiles.find(p => p.username === username) || mockUserProfiles[1];
 
   return <UserFavorites profile={profile} />;
 }

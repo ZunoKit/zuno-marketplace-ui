@@ -3,12 +3,7 @@ import { Button } from "@/shared/components/ui/button";
 import { Label } from "@/shared/components/ui/label";
 import { Slider } from "@/shared/components/ui/slider";
 import { RadioGroup, RadioGroupItem } from "@/shared/components/ui/radio-group";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-} from "@/shared/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/shared/components/ui/sheet";
 import { X } from "lucide-react";
 
 interface FilterSidebarProps {
@@ -60,10 +55,7 @@ export default function FilterSidebar({
             </div>
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="not-listed" id="not-listed" />
-              <Label
-                htmlFor="not-listed"
-                className="font-normal cursor-pointer"
-              >
+              <Label htmlFor="not-listed" className="font-normal cursor-pointer">
                 Not Listed
               </Label>
             </div>
@@ -80,9 +72,7 @@ export default function FilterSidebar({
             </div>
             <Slider
               value={priceRange}
-              onValueChange={(value) =>
-                onPriceRangeChange(value as [number, number])
-              }
+              onValueChange={value => onPriceRangeChange(value as [number, number])}
               max={1}
               min={0}
               step={0.001}
@@ -104,19 +94,13 @@ export default function FilterSidebar({
               </div>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="price-low" id="price-low" />
-                <Label
-                  htmlFor="price-low"
-                  className="font-normal cursor-pointer"
-                >
+                <Label htmlFor="price-low" className="font-normal cursor-pointer">
                   Price: Low to High
                 </Label>
               </div>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="price-high" id="price-high" />
-                <Label
-                  htmlFor="price-high"
-                  className="font-normal cursor-pointer"
-                >
+                <Label htmlFor="price-high" className="font-normal cursor-pointer">
                   Price: High to Low
                 </Label>
               </div>
@@ -145,7 +129,7 @@ export default function FilterSidebar({
     return (
       <Sheet
         open={isOpen}
-        onOpenChange={(open) => {
+        onOpenChange={open => {
           if (!open) onClose();
         }}
       >
@@ -170,12 +154,7 @@ export default function FilterSidebar({
     <div className="h-full border-r p-4 space-y-6">
       <div className="flex items-center justify-between">
         <h3 className="font-semibold">Filters</h3>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="h-8 w-8"
-          onClick={onClose}
-        >
+        <Button variant="ghost" size="icon" className="h-8 w-8" onClick={onClose}>
           <X className="h-4 w-4" />
         </Button>
       </div>

@@ -2,15 +2,7 @@
 
 import { Card } from "@/shared/components/ui/card";
 import { Badge } from "@/shared/components/ui/badge";
-import {
-  ShoppingCart,
-  Send,
-  Tag,
-  Gavel,
-  Plus,
-  ArrowRight,
-  ExternalLink,
-} from "lucide-react";
+import { ShoppingCart, Send, Tag, Gavel, Plus, ArrowRight, ExternalLink } from "lucide-react";
 import { type NFTActivity } from "@/shared/types/nft-detail";
 import { formatDistanceToNow } from "date-fns";
 
@@ -82,14 +74,11 @@ export function NFTHistory({ activities }: NFTHistoryProps) {
 
   return (
     <div className="space-y-3">
-      {activities.map((activity) => (
+      {activities.map(activity => (
         <Card key={activity.id} className="p-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Badge
-                variant="secondary"
-                className={`gap-1 ${getActivityColor(activity.type)}`}
-              >
+              <Badge variant="secondary" className={`gap-1 ${getActivityColor(activity.type)}`}>
                 {getActivityIcon(activity.type)}
                 {getActivityLabel(activity.type)}
               </Badge>

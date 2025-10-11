@@ -1,28 +1,11 @@
 "use client";
 
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/shared/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui/card";
 import { Button } from "@/shared/components/ui/button";
 import { Badge } from "@/shared/components/ui/badge";
 import { Progress } from "@/shared/components/ui/progress";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/shared/components/ui/tabs";
-import {
-  Rocket,
-  Clock,
-  Users,
-  Shield,
-  DollarSign,
-  CheckCircle,
-} from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/ui/tabs";
+import { Rocket, Clock, Users, Shield, DollarSign, CheckCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -52,8 +35,7 @@ export function LaunchpadPage() {
     {
       id: "1",
       name: "Cyber Punks 3000",
-      description:
-        "Next-gen cyberpunk NFT collection with utility in the metaverse",
+      description: "Next-gen cyberpunk NFT collection with utility in the metaverse",
       image: "https://picsum.photos/400/400?random=301",
       banner: "https://picsum.photos/1200/400?random=302",
       status: "live",
@@ -121,12 +103,7 @@ export function LaunchpadPage() {
   const renderProjectCard = (project: LaunchpadProject) => (
     <Card key={project.id} className="overflow-hidden">
       <div className="relative h-48">
-        <Image
-          src={project.banner}
-          alt={project.name}
-          fill
-          className="object-cover"
-        />
+        <Image src={project.banner} alt={project.name} fill className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
         <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
           <Badge
@@ -161,8 +138,7 @@ export function LaunchpadPage() {
             <div>
               <h3 className="text-xl font-bold text-white">{project.name}</h3>
               <p className="text-sm text-white/80">
-                {project.mintPrice} ETH • {project.maxSupply.toLocaleString()}{" "}
-                items
+                {project.mintPrice} ETH • {project.maxSupply.toLocaleString()} items
               </p>
             </div>
           </div>
@@ -170,17 +146,14 @@ export function LaunchpadPage() {
       </div>
 
       <CardContent className="p-6 space-y-4">
-        <p className="text-muted-foreground line-clamp-2">
-          {project.description}
-        </p>
+        <p className="text-muted-foreground line-clamp-2">{project.description}</p>
 
         {/* Progress */}
         <div className="space-y-2">
           <div className="flex justify-between text-sm">
             <span className="text-muted-foreground">Progress</span>
             <span className="font-medium">
-              {project.raised} / {project.goal} ETH (
-              {getProjectProgress(project).toFixed(1)}%)
+              {project.raised} / {project.goal} ETH ({getProjectProgress(project).toFixed(1)}%)
             </span>
           </div>
           <Progress value={getProjectProgress(project)} className="h-2" />
@@ -190,9 +163,7 @@ export function LaunchpadPage() {
         <div className="grid grid-cols-3 gap-4 text-center">
           <div>
             <p className="text-sm text-muted-foreground">Participants</p>
-            <p className="font-semibold">
-              {project.participants.toLocaleString()}
-            </p>
+            <p className="font-semibold">{project.participants.toLocaleString()}</p>
           </div>
           <div>
             <p className="text-sm text-muted-foreground">Mint Price</p>
@@ -217,9 +188,7 @@ export function LaunchpadPage() {
             </Button>
           ) : (
             <Button className="flex-1" variant="outline" asChild>
-              <Link
-                href={`/marketplace/${project.name.toLowerCase().replace(/\s+/g, "-")}`}
-              >
+              <Link href={`/marketplace/${project.name.toLowerCase().replace(/\s+/g, "-")}`}>
                 View Collection
               </Link>
             </Button>
@@ -268,9 +237,7 @@ export function LaunchpadPage() {
                 <Rocket className="h-5 w-5 text-green-500" />
               </div>
               <div>
-                <p className="text-sm text-muted-foreground">
-                  Projects Launched
-                </p>
+                <p className="text-sm text-muted-foreground">Projects Launched</p>
                 <p className="text-xl font-bold">45</p>
               </div>
             </div>
@@ -284,9 +251,7 @@ export function LaunchpadPage() {
                 <Users className="h-5 w-5 text-blue-500" />
               </div>
               <div>
-                <p className="text-sm text-muted-foreground">
-                  Total Participants
-                </p>
+                <p className="text-sm text-muted-foreground">Total Participants</p>
                 <p className="text-xl font-bold">23.5K</p>
               </div>
             </div>
@@ -312,35 +277,31 @@ export function LaunchpadPage() {
       <Tabs defaultValue="live" className="space-y-6">
         <TabsList>
           <TabsTrigger value="live">
-            Live Now ({projects.filter((p) => p.status === "live").length})
+            Live Now ({projects.filter(p => p.status === "live").length})
           </TabsTrigger>
           <TabsTrigger value="upcoming">
-            Upcoming ({projects.filter((p) => p.status === "upcoming").length})
+            Upcoming ({projects.filter(p => p.status === "upcoming").length})
           </TabsTrigger>
           <TabsTrigger value="ended">
-            Ended ({projects.filter((p) => p.status === "ended").length})
+            Ended ({projects.filter(p => p.status === "ended").length})
           </TabsTrigger>
         </TabsList>
 
         <TabsContent value="live">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.filter((p) => p.status === "live").map(renderProjectCard)}
+            {projects.filter(p => p.status === "live").map(renderProjectCard)}
           </div>
         </TabsContent>
 
         <TabsContent value="upcoming">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects
-              .filter((p) => p.status === "upcoming")
-              .map(renderProjectCard)}
+            {projects.filter(p => p.status === "upcoming").map(renderProjectCard)}
           </div>
         </TabsContent>
 
         <TabsContent value="ended">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects
-              .filter((p) => p.status === "ended")
-              .map(renderProjectCard)}
+            {projects.filter(p => p.status === "ended").map(renderProjectCard)}
           </div>
         </TabsContent>
       </Tabs>

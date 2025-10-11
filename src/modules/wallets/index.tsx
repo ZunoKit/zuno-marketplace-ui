@@ -2,12 +2,7 @@
 
 import { useState } from "react";
 import { WalletCard } from "@/modules/wallets/WalletCard";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/shared/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/ui/tabs";
 import { Input } from "@/shared/components/ui/input";
 import { Search, Wallet2, Smartphone, Monitor, HardDrive } from "lucide-react";
 import { type Wallet, type WalletCategory } from "@/shared/types/wallet";
@@ -15,8 +10,7 @@ import { mockWallets } from "@/shared/utils/mock/wallet";
 
 export function Wallets() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] =
-    useState<WalletCategory>("all");
+  const [selectedCategory, setSelectedCategory] = useState<WalletCategory>("all");
 
   const handleConnect = (wallet: Wallet) => {
     console.log("Connecting to wallet:", wallet.name);
@@ -29,7 +23,7 @@ export function Wallets() {
     // Filter by search query
     if (searchQuery) {
       filtered = filtered.filter(
-        (wallet) =>
+        wallet =>
           wallet.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
           wallet.description?.toLowerCase().includes(searchQuery.toLowerCase())
       );
@@ -38,23 +32,17 @@ export function Wallets() {
     // Filter by category
     switch (selectedCategory) {
       case "popular":
-        filtered = filtered.filter((w) => w.isPopular);
+        filtered = filtered.filter(w => w.isPopular);
         break;
       case "browser":
-        filtered = filtered.filter(
-          (w) => w.chromeExtensionUrl || w.firefoxExtensionUrl
-        );
+        filtered = filtered.filter(w => w.chromeExtensionUrl || w.firefoxExtensionUrl);
         break;
       case "mobile":
-        filtered = filtered.filter(
-          (w) => w.mobileAppUrl?.ios || w.mobileAppUrl?.android
-        );
+        filtered = filtered.filter(w => w.mobileAppUrl?.ios || w.mobileAppUrl?.android);
         break;
       case "hardware":
         filtered = filtered.filter(
-          (w) =>
-            w.name.toLowerCase().includes("ledger") ||
-            w.name.toLowerCase().includes("trezor")
+          w => w.name.toLowerCase().includes("ledger") || w.name.toLowerCase().includes("trezor")
         );
         break;
     }
@@ -87,7 +75,7 @@ export function Wallets() {
         <Input
           placeholder="Search wallets..."
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={e => setSearchQuery(e.target.value)}
           className="pl-10"
         />
       </div>
@@ -95,10 +83,10 @@ export function Wallets() {
       {/* Categories */}
       <Tabs
         value={selectedCategory}
-        onValueChange={(value) => setSelectedCategory(value as WalletCategory)}
+        onValueChange={value => setSelectedCategory(value as WalletCategory)}
       >
         <TabsList className="w-full justify-start overflow-x-auto mb-6">
-          {categories.map((category) => (
+          {categories.map(category => (
             <TabsTrigger
               key={category.value}
               value={category.value}
@@ -114,18 +102,12 @@ export function Wallets() {
           {filteredWallets.length === 0 ? (
             <div className="text-center py-12">
               <Wallet2 className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-              <p className="text-muted-foreground">
-                No wallets found matching your criteria
-              </p>
+              <p className="text-muted-foreground">No wallets found matching your criteria</p>
             </div>
           ) : (
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {filteredWallets.map((wallet) => (
-                <WalletCard
-                  key={wallet.id}
-                  wallet={wallet}
-                  onConnect={handleConnect}
-                />
+              {filteredWallets.map(wallet => (
+                <WalletCard key={wallet.id} wallet={wallet} onConnect={handleConnect} />
               ))}
             </div>
           )}

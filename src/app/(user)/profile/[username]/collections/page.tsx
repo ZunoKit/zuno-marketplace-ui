@@ -9,9 +9,7 @@ interface UserCollectionsPageProps {
 
 export async function generateMetadata({ params }: UserCollectionsPageProps) {
   const { username } = await params;
-  const profile =
-    mockUserProfiles.find((p) => p.username === username) ||
-    mockUserProfiles[1];
+  const profile = mockUserProfiles.find(p => p.username === username) || mockUserProfiles[1];
 
   return {
     title: `${profile.displayName}'s Collections | NFT Marketplace`,
@@ -19,13 +17,9 @@ export async function generateMetadata({ params }: UserCollectionsPageProps) {
   };
 }
 
-export default async function UserCollectionsPage({
-  params,
-}: UserCollectionsPageProps) {
+export default async function UserCollectionsPage({ params }: UserCollectionsPageProps) {
   const { username } = await params;
-  const profile =
-    mockUserProfiles.find((p) => p.username === username) ||
-    mockUserProfiles[1];
+  const profile = mockUserProfiles.find(p => p.username === username) || mockUserProfiles[1];
 
   return <UserCollections profile={profile} />;
 }

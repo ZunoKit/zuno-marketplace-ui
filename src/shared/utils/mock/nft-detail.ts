@@ -1,19 +1,9 @@
-import {
-  type NFTDetail,
-  type NFTActivity,
-  type NFTOffer,
-} from "@/shared/types/nft-detail";
+import { type NFTDetail, type NFTActivity, type NFTOffer } from "@/shared/types/nft-detail";
 import { mockNFTs } from "./marketplace";
 
 const generateNFTActivities = (tokenId: string): NFTActivity[] => {
   const activities: NFTActivity[] = [];
-  const types: NFTActivity["type"][] = [
-    "mint",
-    "transfer",
-    "sale",
-    "listing",
-    "offer",
-  ];
+  const types: NFTActivity["type"][] = ["mint", "transfer", "sale", "listing", "offer"];
 
   for (let i = 0; i < 10; i++) {
     activities.push({
@@ -42,12 +32,7 @@ const generateNFTActivities = (tokenId: string): NFTActivity[] => {
 
 const generateNFTOffers = (tokenId: string): NFTOffer[] => {
   const offers: NFTOffer[] = [];
-  const statuses: NFTOffer["status"][] = [
-    "active",
-    "accepted",
-    "rejected",
-    "expired",
-  ];
+  const statuses: NFTOffer["status"][] = ["active", "accepted", "rejected", "expired"];
 
   for (let i = 0; i < 5; i++) {
     offers.push({
@@ -65,7 +50,7 @@ const generateNFTOffers = (tokenId: string): NFTOffer[] => {
     });
   }
 
-  return offers.filter((o) => o.status === "active");
+  return offers.filter(o => o.status === "active");
 };
 
 export const generateNFTDetail = (

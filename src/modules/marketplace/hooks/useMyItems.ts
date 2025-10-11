@@ -22,8 +22,7 @@ const generateMockNFTs = (count: number, contractAddress: string): Nft[] => {
     creator: "0x0987654321098765432109876543210987654321",
     status: i % 3 === 0 ? NftStatus.Listed : NftStatus.NotListed,
     mintPrice: (0.01 + Math.random() * 0.09).toFixed(3),
-    listPrice:
-      i % 3 === 0 ? (0.02 + Math.random() * 0.08).toFixed(3) : undefined,
+    listPrice: i % 3 === 0 ? (0.02 + Math.random() * 0.08).toFixed(3) : undefined,
     attributes: [
       {
         trait_type: "Background",
@@ -35,20 +34,12 @@ const generateMockNFTs = (count: number, contractAddress: string): Nft[] => {
       },
       { trait_type: "Level", value: Math.floor(Math.random() * 100) },
     ],
-    createdAt: new Date(
-      Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000
-    ).toISOString(),
-    updatedAt: new Date(
-      Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000
-    ).toISOString(),
+    createdAt: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000).toISOString(),
   }));
 };
 
-export function useMyItems({
-  contractAddress,
-  address,
-  isConnected,
-}: UseMyItemsProps) {
+export function useMyItems({ contractAddress, address, isConnected }: UseMyItemsProps) {
   const [nfts, setNfts] = useState<Nft[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -62,7 +53,7 @@ export function useMyItems({
     // Simulate API call delay
     const loadNFTs = async () => {
       setIsLoading(true);
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await new Promise(resolve => setTimeout(resolve, 500));
 
       // Generate 20 mock NFTs for the user
       const mockNFTs = generateMockNFTs(20, contractAddress);

@@ -15,12 +15,7 @@ import {
   DialogFooter,
 } from "@/shared/components/ui/dialog";
 import { Button } from "@/shared/components/ui/button";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/shared/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/ui/tabs";
 import { Sparkles, Loader2 } from "lucide-react";
 import { ScrollArea } from "@/shared/components/ui/scroll-area";
 import { useMintState } from "@/modules/mint/mint-nft/hooks/useMintState";
@@ -48,20 +43,13 @@ export default function MintPanel({ currentGalleryImage }: MintPanelProps) {
   } = useMintState();
 
   // Check if history tab should be shown
-  const hasHistoryData =
-    nftsData?.getNfts?.nfts && nftsData.getNfts.nfts.length > 0;
-  const shouldShowHistoryTab =
-    isConnected && (hasHistoryData || activeTab === "history");
+  const hasHistoryData = nftsData?.getNfts?.nfts && nftsData.getNfts.nfts.length > 0;
+  const shouldShowHistoryTab = isConnected && (hasHistoryData || activeTab === "history");
 
   return (
     <div className="bg-gray-50 dark:bg-[#0c0916] h-full py-5">
       <div className="max-w-4xl mx-auto p-4">
-        <Tabs
-          defaultValue="mint"
-          className="w-full"
-          onValueChange={setActiveTab}
-          value={activeTab}
-        >
+        <Tabs defaultValue="mint" className="w-full" onValueChange={setActiveTab} value={activeTab}>
           <TabsList
             className={`grid w-full max-w-md mx-auto bg-white border border-gray-200 dark:bg-[#1a1625] dark:border-gray-800/50 ${
               shouldShowHistoryTab ? "grid-cols-2" : "grid-cols-1"
@@ -184,14 +172,12 @@ export default function MintPanel({ currentGalleryImage }: MintPanelProps) {
       <Dialog open={showConfirmModal} onOpenChange={setShowConfirmModal}>
         <DialogContent
           className="bg-white border-gray-200 dark:bg-[#1a1625] dark:border-gray-800/50"
-          onInteractOutside={(e) => {
+          onInteractOutside={e => {
             e.preventDefault();
           }}
         >
           <DialogHeader>
-            <DialogTitle className="text-gray-900 dark:text-white">
-              Confirm Mint
-            </DialogTitle>
+            <DialogTitle className="text-gray-900 dark:text-white">Confirm Mint</DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
             <p className="text-sm text-gray-700 dark:text-gray-300">
@@ -217,14 +203,13 @@ export default function MintPanel({ currentGalleryImage }: MintPanelProps) {
               </p>
               {!isSameArtType && (
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  <span className="font-medium">Batch Mint:</span> Potentially
-                  multiple NFTs if batch provided
+                  <span className="font-medium">Batch Mint:</span> Potentially multiple NFTs if
+                  batch provided
                 </p>
               )}
             </div>
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              Please ensure your wallet has sufficient funds. This action cannot
-              be undone.
+              Please ensure your wallet has sufficient funds. This action cannot be undone.
             </p>
           </div>
           <DialogFooter>

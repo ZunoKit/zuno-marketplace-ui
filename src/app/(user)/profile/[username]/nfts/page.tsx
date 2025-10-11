@@ -9,9 +9,7 @@ interface UserNFTsPageProps {
 
 export async function generateMetadata({ params }: UserNFTsPageProps) {
   const { username } = await params;
-  const profile =
-    mockUserProfiles.find((p) => p.username === username) ||
-    mockUserProfiles[1];
+  const profile = mockUserProfiles.find(p => p.username === username) || mockUserProfiles[1];
 
   return {
     title: `${profile.displayName}'s NFTs | NFT Marketplace`,
@@ -21,9 +19,7 @@ export async function generateMetadata({ params }: UserNFTsPageProps) {
 
 export default async function UserNFTsPage({ params }: UserNFTsPageProps) {
   const { username } = await params;
-  const profile =
-    mockUserProfiles.find((p) => p.username === username) ||
-    mockUserProfiles[1];
+  const profile = mockUserProfiles.find(p => p.username === username) || mockUserProfiles[1];
 
   return <UserNFTs profile={profile} />;
 }

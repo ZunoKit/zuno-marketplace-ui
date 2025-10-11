@@ -25,12 +25,7 @@ const generateMockBids = (auctionId: string, count: number): AuctionBid[] => {
 
 // Generate mock auctions
 const generateMockAuction = (index: number): Auction => {
-  const statuses: Auction["status"][] = [
-    "upcoming",
-    "active",
-    "ended",
-    "active",
-  ];
+  const statuses: Auction["status"][] = ["upcoming", "active", "ended", "active"];
   const status = statuses[index % statuses.length];
   const bids =
     status === "active" || status === "ended"
@@ -87,21 +82,18 @@ const generateMockAuction = (index: number): Auction => {
 };
 
 // Generate array of mock auctions
-export const mockAuctions: Auction[] = Array.from({ length: 24 }, (_, i) =>
-  generateMockAuction(i)
-);
+export const mockAuctions: Auction[] = Array.from({ length: 24 }, (_, i) => generateMockAuction(i));
 
 // Auction statistics
 export const mockAuctionStats = {
   totalAuctions: mockAuctions.length,
-  activeAuctions: mockAuctions.filter((a) => a.status === "active").length,
+  activeAuctions: mockAuctions.filter(a => a.status === "active").length,
   totalVolume:
     mockAuctions
-      .filter((a) => a.status === "ended")
+      .filter(a => a.status === "ended")
       .reduce((sum, a) => sum + parseFloat(a.currentBid), 0)
       .toFixed(2) + " ETH",
   avgBidsPerAuction: Math.floor(
-    mockAuctions.reduce((sum, a) => sum + a.bids.length, 0) /
-      mockAuctions.length
+    mockAuctions.reduce((sum, a) => sum + a.bids.length, 0) / mockAuctions.length
   ),
 };

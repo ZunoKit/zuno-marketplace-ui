@@ -4,12 +4,7 @@ export type DropdownItem = {
   description?: string;
   icon?: string; // Icon name from lucide-react
   badge?: string;
-  badgeVariant?:
-    | "default"
-    | "secondary"
-    | "success"
-    | "warning"
-    | "destructive";
+  badgeVariant?: "default" | "secondary" | "success" | "warning" | "destructive";
 };
 
 export type NavItem = {

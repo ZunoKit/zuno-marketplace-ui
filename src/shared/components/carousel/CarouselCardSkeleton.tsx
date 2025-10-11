@@ -14,7 +14,7 @@ export function CarouselItemSkeleton() {
 
             {/* Stats grid skeleton */}
             <div className="grid grid-cols-3 gap-1 mb-auto">
-              {[0, 1, 2].map((index) => (
+              {[0, 1, 2].map(index => (
                 <div key={index}>
                   <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-12 mb-1 animate-pulse"></div>
                   <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-10 animate-pulse"></div>

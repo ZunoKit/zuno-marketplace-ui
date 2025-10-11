@@ -10,9 +10,7 @@ interface CollectionMediaShowcaseProps {
   onImageChange?: (imageUrl: string) => void;
 }
 
-export function CollectionMediaShowcase({
-  onImageChange,
-}: CollectionMediaShowcaseProps) {
+export function CollectionMediaShowcase({ onImageChange }: CollectionMediaShowcaseProps) {
   const [showCarousel, setShowCarousel] = useState(false);
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [collection, setCollection] = useState<Collection | null>(null);
@@ -31,15 +29,9 @@ export function CollectionMediaShowcase({
   if (!collection) return null;
   return (
     <>
-      <CollectionGallery
-        onOpenCarousel={handleOpenCarousel}
-        onImageChange={onImageChange}
-      />
+      <CollectionGallery onOpenCarousel={handleOpenCarousel} onImageChange={onImageChange} />
       {showCarousel && (
-        <CollectionImageCarousel
-          initialIndex={carouselIndex}
-          onClose={handleCloseCarousel}
-        />
+        <CollectionImageCarousel initialIndex={carouselIndex} onClose={handleCloseCarousel} />
       )}
     </>
   );

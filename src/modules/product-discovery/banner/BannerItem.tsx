@@ -21,12 +21,7 @@ export default function BannerItem(banner: Banner) {
             className="object-cover w-full h-full"
           />
         ) : (
-          <Image
-            src={banner.mainBackground}
-            alt={banner.name}
-            fill
-            className="object-cover"
-          />
+          <Image src={banner.mainBackground} alt={banner.name} fill className="object-cover" />
         )}
       </div>
 
@@ -35,13 +30,9 @@ export default function BannerItem(banner: Banner) {
       <div className="relative z-20 flex flex-col justify-end h-full p-8 md:p-12 gap-4">
         <div className="flex items-center justify-between">
           <div className="flex flex-col gap-3">
-            <h1 className="text-7xl font-bold text-white dark:text-white">
-              {banner.name}
-            </h1>
+            <h1 className="text-7xl font-bold text-white dark:text-white">{banner.name}</h1>
 
-            <span className="text-2xl text-white/80 dark:text-white/80">
-              By {banner.author}
-            </span>
+            <span className="text-2xl text-white/80 dark:text-white/80">By {banner.author}</span>
 
             <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 border border-white/10 dark:border-white/10 w-fit">
               <div className="flex items-center gap-8">
@@ -49,9 +40,7 @@ export default function BannerItem(banner: Banner) {
                   <p className="text-xs text-white/70 dark:text-gray-300 uppercase tracking-wider mb-2 font-medium">
                     Floor Price
                   </p>
-                  <p className="text-xl font-bold text-white dark:text-white">
-                    3.8%
-                  </p>
+                  <p className="text-xl font-bold text-white dark:text-white">3.8%</p>
                 </div>
 
                 <div className="w-px h-12 bg-white/20 dark:bg-white/20"></div>

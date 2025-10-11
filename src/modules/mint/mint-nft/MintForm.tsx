@@ -35,12 +35,11 @@ export default function MintForm() {
   const [signature, setSignature] = useState<string | undefined>();
   const [nonce, setNonce] = useState<string | undefined>();
   const validateSignature = (val: string) => /^0x[0-9a-fA-F]{130}$/.test(val);
-  const validateNonce = (val: string) =>
-    Number.isInteger(Number(val)) && Number(val) >= 0;
+  const validateNonce = (val: string) => Number.isInteger(Number(val)) && Number(val) >= 0;
 
   // Get selected edition data for ERC-1155
   const selectedEditionData = selectedEdition
-    ? mockEditions.find((e) => e.id === selectedEdition)
+    ? mockEditions.find(e => e.id === selectedEdition)
     : null;
 
   // Calculate max quantity for ERC-1155
@@ -62,8 +61,7 @@ export default function MintForm() {
         <div className="space-y-3">
           <div className="flex justify-between items-center">
             <Label className="text-sm text-white flex items-center gap-1">
-              Allowlist Mint Credentials{" "}
-              <span className="text-pink-500">*</span>
+              Allowlist Mint Credentials <span className="text-pink-500">*</span>
             </Label>
             <span className="text-sm text-gray-400">Required</span>
           </div>
@@ -72,7 +70,7 @@ export default function MintForm() {
               <Input
                 id="signature"
                 value={signature || ""}
-                onChange={(e) => {
+                onChange={e => {
                   const value = e.target.value;
                   setSignature(value);
                   if (value && !validateSignature(value)) {
@@ -86,24 +84,20 @@ export default function MintForm() {
                     !/^0x[0-9a-fA-F]{130}$/.test(signature) &&
                     "border-red-800 focus-visible:ring-red-800"
                 )}
-                aria-invalid={
-                  signature && !validateSignature(signature) ? "true" : "false"
-                }
+                aria-invalid={signature && !validateSignature(signature) ? "true" : "false"}
               />
               {signature && validateSignature(signature) && (
                 <CheckCircle2 className="absolute right-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-green-500" />
               )}
             </div>
-            <p className="text-sm text-gray-400">
-              65-byte hex signature provided by the allowlist
-            </p>
+            <p className="text-sm text-gray-400">65-byte hex signature provided by the allowlist</p>
           </div>
           <div className="space-y-2">
             <div className="relative">
               <Input
                 id="nonce"
                 value={nonce || ""}
-                onChange={(e) => {
+                onChange={e => {
                   const value = e.target.value;
                   setNonce(value);
                   if (value && !validateNonce(value)) {
@@ -125,9 +119,7 @@ export default function MintForm() {
                 <CheckCircle2 className="absolute right-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-green-500" />
               )}
             </div>
-            <p className="text-sm text-gray-400">
-              Nonce value provided by the allowlist
-            </p>
+            <p className="text-sm text-gray-400">Nonce value provided by the allowlist</p>
           </div>
         </div>
       )}
@@ -136,25 +128,19 @@ export default function MintForm() {
       <div className="flex items-center justify-between gap-20">
         <div className="space-y-1.5 mt-3">
           <div className="text-xl text-gray-500 dark:text-gray-400">Price</div>
-          <p className="text-4xl font-bold ">
-            {mintCostData?.getMintCost?.mintPrice} ETH
-          </p>
+          <p className="text-4xl font-bold ">{mintCostData?.getMintCost?.mintPrice} ETH</p>
           <p className="text-sm text-gray-500 dark:text-gray-400">
             Gas Fee: {mintCostData?.getMintCost?.estimatedGas} ETH
           </p>
         </div>
-        <MintAmount
-          amount={amount}
-          setAmount={setAmount}
-          maxQuantity={maxQuantity}
-        />
+        <MintAmount amount={amount} setAmount={setAmount} maxQuantity={maxQuantity} />
       </div>
 
       <div className="flex items-start space-x-3 pt-2">
         <Checkbox
           id="terms"
           checked={agreedToTerms}
-          onCheckedChange={(checked) => setAgreedToTerms(checked as boolean)}
+          onCheckedChange={checked => setAgreedToTerms(checked as boolean)}
           className="data-[state=checked]:bg-pink-500 data-[state=checked]:border-pink-500 border-gray-300 dark:data-[state=checked]:bg-pink-600 dark:data-[state=checked]:border-pink-600 dark:border-gray-800/50"
           aria-label="Agree to terms of service"
         />

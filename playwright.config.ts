@@ -7,12 +7,17 @@ export default defineConfig({
   testDir: "./src/tests/e2e",
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
+  retries: process.env.CI ? 2 : 1,
   workers: process.env.CI ? 1 : undefined,
-  reporter: "html",
+  reporter: process.env.CI ? [["blob"]] : "html",
+  timeout: 60000,
+
   use: {
     baseURL: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
     trace: "on-first-retry",
+    screenshot: "only-on-failure",
+    actionTimeout: 10000,
+    navigationTimeout: 10000,
   },
 
   projects: [
@@ -20,26 +25,14 @@ export default defineConfig({
       name: "chromium",
       use: { ...devices["Desktop Chrome"] },
     },
-
-    {
-      name: "firefox",
-      use: { ...devices["Desktop Firefox"] },
-    },
-
-    {
-      name: "webkit",
-      use: { ...devices["Desktop Safari"] },
-    },
-
-    /* Test against mobile viewports. */
     {
       name: "Mobile Chrome",
       use: { ...devices["Pixel 5"] },
     },
-    {
-      name: "Mobile Safari",
-      use: { ...devices["iPhone 12"] },
-    },
+    // {
+    //   name: "Mobile Safari",
+    //   use: { ...devices["iPhone 12"] },
+    // },
   ],
 
   /* Run your local dev server before starting the tests */

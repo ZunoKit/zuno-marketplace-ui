@@ -29,8 +29,7 @@ export function UserCollections({ profile }: UserCollectionsProps) {
         <div className="mb-6">
           <h2 className="text-2xl font-bold mb-2">Collections</h2>
           <p className="text-muted-foreground">
-            {userCollections.length} collections by{" "}
-            {profile.displayName || profile.username}
+            {userCollections.length} collections by {profile.displayName || profile.username}
           </p>
         </div>
 
@@ -40,7 +39,7 @@ export function UserCollections({ profile }: UserCollectionsProps) {
           </div>
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {userCollections.map((collection) => (
+            {userCollections.map(collection => (
               <Link
                 key={collection.address}
                 href={`/collections/${collection.name.toLowerCase().replace(/\s+/g, "-")}`}
@@ -59,9 +58,7 @@ export function UserCollections({ profile }: UserCollectionsProps) {
                     )}
                     <Badge
                       className="absolute top-2 right-2"
-                      variant={
-                        collection.role === "Creator" ? "default" : "secondary"
-                      }
+                      variant={collection.role === "Creator" ? "default" : "secondary"}
                     >
                       {collection.role}
                     </Badge>
@@ -69,9 +66,7 @@ export function UserCollections({ profile }: UserCollectionsProps) {
 
                   <CardContent className="p-4">
                     <div className="flex items-center gap-2 mb-2">
-                      <h3 className="font-semibold truncate">
-                        {collection.name}
-                      </h3>
+                      <h3 className="font-semibold truncate">{collection.name}</h3>
                       {collection.verified && (
                         <Badge variant="outline" className="text-xs">
                           ✓
@@ -103,9 +98,7 @@ export function UserCollections({ profile }: UserCollectionsProps) {
                           <TrendingUp className="h-3 w-3" />
                           Floor
                         </p>
-                        <p className="font-medium">
-                          {collection.floorPrice} ETH
-                        </p>
+                        <p className="font-medium">{collection.floorPrice} ETH</p>
                       </div>
                     </div>
 

@@ -284,9 +284,7 @@ test.describe("Mobile Experience", () => {
     await page.goto("/");
 
     // Verify mobile menu
-    await expect(
-      page.locator('[data-testid="mobile-menu-button"]')
-    ).toBeVisible();
+    await expect(page.locator('[data-testid="mobile-menu-button"]')).toBeVisible();
 
     // Open menu
     await page.click('[data-testid="mobile-menu-button"]');

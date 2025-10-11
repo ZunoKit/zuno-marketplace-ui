@@ -101,11 +101,7 @@ const signature = await blockchainService.signMessage("Hello World");
 const txHash = await blockchainService.mintNFT("0xContractAddress", metadata);
 
 // Transfer NFT
-const txHash = await blockchainService.transferNFT(
-  "0xContractAddress",
-  "tokenId",
-  "0xRecipient"
-);
+const txHash = await blockchainService.transferNFT("0xContractAddress", "tokenId", "0xRecipient");
 ```
 
 ## Data Types
@@ -268,7 +264,7 @@ For real-time updates:
 const ws = new WebSocket("wss://api.example.com/ws");
 
 // Listen for events
-ws.addEventListener("message", (event) => {
+ws.addEventListener("message", event => {
   const data = JSON.parse(event.data);
 
   switch (data.type) {

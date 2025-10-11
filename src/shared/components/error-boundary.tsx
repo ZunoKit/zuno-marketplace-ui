@@ -50,14 +50,11 @@ export class ErrorBoundary extends Component<Props, State> {
             <div className="text-6xl">⚠️</div>
             <h2 className="text-2xl font-bold">Something went wrong</h2>
             <p className="text-muted-foreground">
-              We apologize for the inconvenience. An error occurred while
-              rendering this component.
+              We apologize for the inconvenience. An error occurred while rendering this component.
             </p>
             {process.env.NODE_ENV === "development" && (
               <details className="mt-4 rounded-lg border bg-muted p-4 text-left text-sm">
-                <summary className="cursor-pointer font-semibold">
-                  Error Details
-                </summary>
+                <summary className="cursor-pointer font-semibold">Error Details</summary>
                 <pre className="mt-2 overflow-auto text-xs">
                   {this.state.error.message}
                   {"\n\n"}
@@ -67,10 +64,7 @@ export class ErrorBoundary extends Component<Props, State> {
             )}
             <div className="flex justify-center gap-2">
               <Button onClick={this.reset}>Try Again</Button>
-              <Button
-                variant="outline"
-                onClick={() => window.location.reload()}
-              >
+              <Button variant="outline" onClick={() => window.location.reload()}>
                 Reload Page
               </Button>
             </div>
@@ -86,13 +80,7 @@ export class ErrorBoundary extends Component<Props, State> {
 /**
  * Default Error Fallback Component
  */
-export function ErrorFallback({
-  error,
-  reset,
-}: {
-  error: Error;
-  reset: () => void;
-}) {
+export function ErrorFallback({ error, reset }: { error: Error; reset: () => void }) {
   return (
     <div className="flex min-h-[400px] flex-col items-center justify-center p-8 text-center">
       <div className="max-w-md space-y-4">

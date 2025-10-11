@@ -64,12 +64,7 @@ export function WalletCard({ wallet, onConnect }: WalletCardProps) {
       <CardContent className="p-6">
         <div className="flex items-start gap-4">
           <div className="relative h-16 w-16 flex-shrink-0">
-            <Image
-              src={wallet.icon}
-              alt={wallet.name}
-              fill
-              className="object-contain"
-            />
+            <Image src={wallet.icon} alt={wallet.name} fill className="object-contain" />
           </div>
 
           <div className="flex-1">
@@ -81,16 +76,12 @@ export function WalletCard({ wallet, onConnect }: WalletCardProps) {
                 </Badge>
               )}
               {wallet.isInstalled && (
-                <Badge className="text-xs bg-green-500/10 text-green-500">
-                  Installed
-                </Badge>
+                <Badge className="text-xs bg-green-500/10 text-green-500">Installed</Badge>
               )}
             </div>
 
             {wallet.description && (
-              <p className="text-sm text-muted-foreground mb-3">
-                {wallet.description}
-              </p>
+              <p className="text-sm text-muted-foreground mb-3">{wallet.description}</p>
             )}
 
             {/* Features */}
@@ -99,9 +90,7 @@ export function WalletCard({ wallet, onConnect }: WalletCardProps) {
                 {wallet.features.slice(0, 3).map((feature, index) => (
                   <div key={index} className="flex items-center gap-2">
                     <Shield className="h-3 w-3 text-muted-foreground" />
-                    <span className="text-xs text-muted-foreground">
-                      {feature.name}
-                    </span>
+                    <span className="text-xs text-muted-foreground">{feature.name}</span>
                   </div>
                 ))}
               </div>
@@ -110,7 +99,7 @@ export function WalletCard({ wallet, onConnect }: WalletCardProps) {
             {/* Supported Chains */}
             <div className="flex items-center gap-2 flex-wrap">
               <span className="text-xs text-muted-foreground">Supports:</span>
-              {wallet.supportedChains.slice(0, 3).map((chain) => (
+              {wallet.supportedChains.slice(0, 3).map(chain => (
                 <Badge key={chain.id} variant="outline" className="text-xs">
                   {chain.name}
                 </Badge>
@@ -134,14 +123,8 @@ export function WalletCard({ wallet, onConnect }: WalletCardProps) {
           <>
             {platformLinks.length > 0 ? (
               <div className="flex gap-2 flex-1">
-                {platformLinks.map((link) => (
-                  <Button
-                    key={link.name}
-                    variant="outline"
-                    size="sm"
-                    asChild
-                    className="flex-1"
-                  >
+                {platformLinks.map(link => (
+                  <Button key={link.name} variant="outline" size="sm" asChild className="flex-1">
                     <a
                       href={link.url}
                       target="_blank"

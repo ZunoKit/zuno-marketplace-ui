@@ -46,9 +46,5 @@ export const TESTNET_CONTRACTS: Record<number, ContractAddresses> = {
 };
 
 export const getContractAddresses = (chainId: number): ContractAddresses => {
-  return (
-    MAINNET_CONTRACTS[chainId] ||
-    TESTNET_CONTRACTS[chainId] ||
-    TESTNET_CONTRACTS[11155111]
-  );
+  return MAINNET_CONTRACTS[chainId] || TESTNET_CONTRACTS[chainId] || TESTNET_CONTRACTS[11155111];
 };

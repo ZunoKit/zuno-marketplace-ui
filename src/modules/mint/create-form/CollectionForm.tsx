@@ -8,10 +8,7 @@ import { ArtSection } from "@/modules/mint/create-form/ArtSection";
 import { MintDetails } from "@/modules/mint/create-form/MintDetails";
 import { CollectionProcess } from "@/modules/mint/create-form/CollectionProcess";
 import { useForm } from "react-hook-form";
-import {
-  MintTerminalCreateForm,
-  MintTerminalCreateFormSchema,
-} from "@/shared/types/mint";
+import { MintTerminalCreateForm, MintTerminalCreateFormSchema } from "@/shared/types/mint";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function CollectionForm() {
@@ -84,17 +81,12 @@ export default function CollectionForm() {
               {...form.register("agreeTos")}
               className="rounded border-gray-300 dark:border-gray-600"
             />
-            <label
-              htmlFor="agreeTos"
-              className="text-sm text-gray-900 dark:text-white"
-            >
+            <label htmlFor="agreeTos" className="text-sm text-gray-900 dark:text-white">
               I agree to the Terms of Service
             </label>
           </div>
           {form.formState.errors.agreeTos && (
-            <p className="text-red-500 text-sm">
-              {form.formState.errors.agreeTos.message}
-            </p>
+            <p className="text-red-500 text-sm">{form.formState.errors.agreeTos.message}</p>
           )}
 
           <Button

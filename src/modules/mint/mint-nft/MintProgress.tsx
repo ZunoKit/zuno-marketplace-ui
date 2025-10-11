@@ -8,37 +8,29 @@ import { useMintState } from "@/modules/mint/mint-nft/hooks/useMintState";
 // const MAX_RECONNECT_ATTEMPTS = 5; // Max retry attempts (future use)
 
 export default function MintProgress() {
-  const { collection, isERC1155, selectedEdition, mockEditions } =
-    useMintState();
+  const { collection, isERC1155, selectedEdition, mockEditions } = useMintState();
 
   // For ERC-1155, show selected edition progress; for ERC-721, show collection progress
   const selectedEditionData = selectedEdition
-    ? mockEditions.find((e) => e.id === selectedEdition)
+    ? mockEditions.find(e => e.id === selectedEdition)
     : null;
 
   const maxSupply =
-    isERC1155 && selectedEditionData
-      ? selectedEditionData.maxSupply
-      : collection?.maxSupply;
+    isERC1155 && selectedEditionData ? selectedEditionData.maxSupply : collection?.maxSupply;
 
   const totalMinted =
     isERC1155 && selectedEditionData
       ? selectedEditionData.maxSupply - selectedEditionData.remaining
       : collection?.totalMinted;
 
-  const percentage = Math.min(
-    (Number(totalMinted) / Number(maxSupply)) * 100,
-    100
-  );
+  const percentage = Math.min((Number(totalMinted) / Number(maxSupply)) * 100, 100);
 
   // Loading state
   if (!collection) {
     return (
       <div className="w-full" aria-live="polite">
         <div className="flex justify-between mb-2">
-          <span className="text-sm font-semibold text-gray-900 dark:text-white">
-            Minted
-          </span>
+          <span className="text-sm font-semibold text-gray-900 dark:text-white">Minted</span>
           <span className="text-sm font-semibold text-gray-900 dark:text-white">
             <Loader2 className="inline h-4 w-4 animate-spin" />
           </span>
@@ -86,9 +78,7 @@ export default function MintProgress() {
           aria-valuenow={percentage}
           aria-valuemin={0}
           aria-valuemax={100}
-          aria-label={`Mint progress: ${totalMinted} of ${maxSupply} (${percentage.toFixed(
-            2
-          )}%)`}
+          aria-label={`Mint progress: ${totalMinted} of ${maxSupply} (${percentage.toFixed(2)}%)`}
         />
       </div>
     </div>

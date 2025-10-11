@@ -27,11 +27,7 @@ export default function NFTGrid({
   selectedNFTs,
 }: NFTGridProps) {
   if (!nfts || nfts.length === 0) {
-    return (
-      <div className="p-3 text-center text-muted-foreground">
-        No NFTs available.
-      </div>
-    );
+    return <div className="p-3 text-center text-muted-foreground">No NFTs available.</div>;
   }
 
   const commonProps = {
@@ -53,7 +49,7 @@ export default function NFTGrid({
             : "grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7"
       )}
     >
-      {nfts.map((nft) =>
+      {nfts.map(nft =>
         type === "buyer" ? (
           // Will use NFTCardBuyer when implemented
           <NFTCardSeller

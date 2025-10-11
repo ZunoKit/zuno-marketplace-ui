@@ -61,10 +61,7 @@ const activityTypes: ProfileActivity["type"][] = [
   "mint",
 ];
 
-export const generateMockActivities = (
-  userId: string,
-  count: number = 20
-): ProfileActivity[] => {
+export const generateMockActivities = (userId: string, count: number = 20): ProfileActivity[] => {
   const activities: ProfileActivity[] = [];
 
   for (let i = 0; i < count; i++) {
@@ -85,34 +82,21 @@ export const generateMockActivities = (
         type === "purchase" || type === "transfer"
           ? `0xFrom${i.toString().padStart(4, "0")}`
           : userId,
-      to:
-        type === "sale" || type === "transfer"
-          ? `0xTo${i.toString().padStart(4, "0")}`
-          : userId,
+      to: type === "sale" || type === "transfer" ? `0xTo${i.toString().padStart(4, "0")}` : userId,
       price:
-        type === "purchase" ||
-        type === "sale" ||
-        type === "listing" ||
-        type === "bid"
+        type === "purchase" || type === "sale" || type === "listing" || type === "bid"
           ? (Math.random() * 0.5 + 0.01).toFixed(3)
           : undefined,
       currency:
-        type === "purchase" ||
-        type === "sale" ||
-        type === "listing" ||
-        type === "bid"
+        type === "purchase" || type === "sale" || type === "listing" || type === "bid"
           ? "ETH"
           : undefined,
-      timestamp: new Date(
-        Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000
-      ),
+      timestamp: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000),
       txHash: `0x${Math.random().toString(16).substring(2)}`,
     });
   }
 
-  return activities.sort(
-    (a, b) => b.timestamp.getTime() - a.timestamp.getTime()
-  );
+  return activities.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime());
 };
 
 // Current user mock data

@@ -37,8 +37,7 @@ export function UserNFTs({ profile }: UserNFTsProps) {
     creator: "0x0987654321098765432109876543210987654321",
     status: index % 3 === 0 ? NftStatus.Listed : NftStatus.NotListed,
     mintPrice: (0.01 + Math.random() * 0.09).toFixed(3),
-    listPrice:
-      index % 3 === 0 ? (0.02 + Math.random() * 0.08).toFixed(3) : undefined,
+    listPrice: index % 3 === 0 ? (0.02 + Math.random() * 0.08).toFixed(3) : undefined,
     attributes: [
       {
         trait_type: "Background",
@@ -49,17 +48,12 @@ export function UserNFTs({ profile }: UserNFTsProps) {
         value: ["Common", "Uncommon", "Rare", "Epic"][index % 4],
       },
     ],
-    createdAt: new Date(
-      Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000
-    ).toISOString(),
-    updatedAt: new Date(
-      Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000
-    ).toISOString(),
+    createdAt: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000).toISOString(),
   });
 
-  const userNFTs = Array.from(
-    { length: Math.min(profile.stats.nftsOwned, 20) },
-    (_, i) => generateMockNft(i + 1)
+  const userNFTs = Array.from({ length: Math.min(profile.stats.nftsOwned, 20) }, (_, i) =>
+    generateMockNft(i + 1)
   );
 
   // Get unique collections
@@ -69,7 +63,7 @@ export function UserNFTs({ profile }: UserNFTsProps) {
   let filteredNFTs = [...userNFTs];
 
   if (searchQuery) {
-    filteredNFTs = filteredNFTs.filter((nft) =>
+    filteredNFTs = filteredNFTs.filter(nft =>
       nft.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
   }
@@ -77,38 +71,27 @@ export function UserNFTs({ profile }: UserNFTsProps) {
   if (filterCollection !== "all") {
     // Filter by mock collection
     filteredNFTs = filteredNFTs.filter(
-      (nft) =>
-        `Collection ${(parseInt(nft.tokenId) % 3) + 1}` === filterCollection
+      nft => `Collection ${(parseInt(nft.tokenId) % 3) + 1}` === filterCollection
     );
   }
 
   // Sort NFTs
   switch (sortBy) {
     case "price_high":
-      filteredNFTs.sort(
-        (a, b) =>
-          parseFloat(b.mintPrice || "0") - parseFloat(a.mintPrice || "0")
-      );
+      filteredNFTs.sort((a, b) => parseFloat(b.mintPrice || "0") - parseFloat(a.mintPrice || "0"));
       break;
     case "price_low":
-      filteredNFTs.sort(
-        (a, b) =>
-          parseFloat(a.mintPrice || "0") - parseFloat(b.mintPrice || "0")
-      );
+      filteredNFTs.sort((a, b) => parseFloat(a.mintPrice || "0") - parseFloat(b.mintPrice || "0"));
       break;
     case "oldest":
       filteredNFTs.sort(
-        (a, b) =>
-          new Date(a.createdAt || 0).getTime() -
-          new Date(b.createdAt || 0).getTime()
+        (a, b) => new Date(a.createdAt || 0).getTime() - new Date(b.createdAt || 0).getTime()
       );
       break;
     case "recent":
     default:
       filteredNFTs.sort(
-        (a, b) =>
-          new Date(b.createdAt || 0).getTime() -
-          new Date(a.createdAt || 0).getTime()
+        (a, b) => new Date(b.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime()
       );
       break;
   }
@@ -132,7 +115,7 @@ export function UserNFTs({ profile }: UserNFTsProps) {
             <Input
               placeholder="Search NFTs..."
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={e => setSearchQuery(e.target.value)}
               className="pl-10"
             />
           </div>
@@ -143,7 +126,7 @@ export function UserNFTs({ profile }: UserNFTsProps) {
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all">All Collections</SelectItem>
-              {collections.map((collection) => (
+              {collections.map(collection => (
                 <SelectItem key={collection} value={collection}>
                   {collection}
                 </SelectItem>

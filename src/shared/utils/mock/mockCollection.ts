@@ -9,26 +9,19 @@ const rand = (n = 8) =>
   Math.random()
     .toString(16)
     .slice(2, 2 + n);
-const randInt = (min: number, max: number) =>
-  Math.floor(Math.random() * (max - min + 1)) + min;
+const randInt = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 const BASE58 = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
 
 /** Generate a pseudo EVM address (0x + 40 hex) */
 function randomEvmAddress(): `0x${string}` {
-  const hex = Array.from(
-    { length: 40 },
-    () => "0123456789abcdef"[randInt(0, 15)]
-  ).join("");
+  const hex = Array.from({ length: 40 }, () => "0123456789abcdef"[randInt(0, 15)]).join("");
   return ("0x" + hex) as `0x${string}`;
 }
 
 /** Generate a pseudo Solana base58 address (length ~ 44) */
 function randomSolanaAddress(len = 44): string {
-  return Array.from(
-    { length: len },
-    () => BASE58[randInt(0, BASE58.length - 1)]
-  ).join("");
+  return Array.from({ length: len }, () => BASE58[randInt(0, BASE58.length - 1)]).join("");
 }
 
 /** Options to shape the mock */
@@ -116,14 +109,8 @@ export function makeMockCollection(
 
   // ~50% chance to be multi-chain (add an extra binding from a different kind)
   const maybeExtra: ChainBinding[] = (() => {
-    const kinds: MockCollectionKind[] = [
-      "polygon",
-      "base",
-      "arbitrum",
-      "optimism",
-      "solana",
-    ];
-    const extraKind = kinds.find((k) => k !== kind && Math.random() < 0.25);
+    const kinds: MockCollectionKind[] = ["polygon", "base", "arbitrum", "optimism", "solana"];
+    const extraKind = kinds.find(k => k !== kind && Math.random() < 0.25);
     return extraKind ? [{ ...kindToBinding(extraKind), isPrimary: false }] : [];
   })();
 
@@ -154,15 +141,7 @@ export function makeMockCollection(
         ? randInt(maxSupply * 0.5, maxSupply)
         : 0;
 
-  const prices = [
-    "0.05 ETH",
-    "0.1 ETH",
-    "0.2 ETH",
-    "0.5 ETH",
-    "1 ETH",
-    "2 SOL",
-    "5 SOL",
-  ];
+  const prices = ["0.05 ETH", "0.1 ETH", "0.2 ETH", "0.5 ETH", "1 ETH", "2 SOL", "5 SOL"];
   const mintPrice = prices[randInt(0, prices.length - 1)];
 
   const base: Collection = {
@@ -208,30 +187,20 @@ export function makeMockCollection(
 }
 
 /** Convenience variants */
-export const mockCollectionETH = (
-  name = "ETH Legends",
-  overrides: Partial<Collection> = {}
-) => makeMockCollection(name, "ethereum", overrides);
+export const mockCollectionETH = (name = "ETH Legends", overrides: Partial<Collection> = {}) =>
+  makeMockCollection(name, "ethereum", overrides);
 
-export const mockCollectionPOL = (
-  name = "POL Pixels",
-  overrides: Partial<Collection> = {}
-) => makeMockCollection(name, "polygon", overrides);
+export const mockCollectionPOL = (name = "POL Pixels", overrides: Partial<Collection> = {}) =>
+  makeMockCollection(name, "polygon", overrides);
 
-export const mockCollectionBASE = (
-  name = "Base Buddies",
-  overrides: Partial<Collection> = {}
-) => makeMockCollection(name, "base", overrides);
+export const mockCollectionBASE = (name = "Base Buddies", overrides: Partial<Collection> = {}) =>
+  makeMockCollection(name, "base", overrides);
 
-export const mockCollectionARB = (
-  name = "Arbi Adventurers",
-  overrides: Partial<Collection> = {}
-) => makeMockCollection(name, "arbitrum", overrides);
+export const mockCollectionARB = (name = "Arbi Adventurers", overrides: Partial<Collection> = {}) =>
+  makeMockCollection(name, "arbitrum", overrides);
 
-export const mockCollectionSOL = (
-  name = "SOL Spirits",
-  overrides: Partial<Collection> = {}
-) => makeMockCollection(name, "solana", overrides);
+export const mockCollectionSOL = (name = "SOL Spirits", overrides: Partial<Collection> = {}) =>
+  makeMockCollection(name, "solana", overrides);
 
 /** Generate a list quickly */
 export function makeMockCollections(

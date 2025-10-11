@@ -46,8 +46,7 @@ export function OrganizationJsonLd() {
 
 // WebSite Schema with SearchAction
 export function WebSiteJsonLd() {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_APP_URL || "https://nftmarketplace.com";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://nftmarketplace.com";
 
   const data = {
     "@context": "https://schema.org",
@@ -87,8 +86,7 @@ export function NFTJsonLd({
   collection: string;
   tokenId: string;
 }) {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_APP_URL || "https://nftmarketplace.com";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://nftmarketplace.com";
 
   const data = {
     "@context": "https://schema.org",
@@ -119,13 +117,8 @@ export function NFTJsonLd({
 }
 
 // BreadcrumbList Schema
-export function BreadcrumbJsonLd({
-  items,
-}: {
-  items: Array<{ name: string; url: string }>;
-}) {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_APP_URL || "https://nftmarketplace.com";
+export function BreadcrumbJsonLd({ items }: { items: Array<{ name: string; url: string }> }) {
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://nftmarketplace.com";
 
   const data = {
     "@context": "https://schema.org",
@@ -142,15 +135,11 @@ export function BreadcrumbJsonLd({
 }
 
 // FAQ Schema
-export function FAQJsonLd({
-  faqs,
-}: {
-  faqs: Array<{ question: string; answer: string }>;
-}) {
+export function FAQJsonLd({ faqs }: { faqs: Array<{ question: string; answer: string }> }) {
   const data = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
+    mainEntity: faqs.map(faq => ({
       "@type": "Question",
       name: faq.question,
       acceptedAnswer: {

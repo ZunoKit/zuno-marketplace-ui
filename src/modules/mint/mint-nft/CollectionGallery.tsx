@@ -54,9 +54,7 @@ export default function CollectionGallery({
           size="icon"
           className="bg-gray-300 dark:bg-[#3b393b] dark:border-gray-800/50 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800/30 rounded-md h-10 w-10 cursor-pointer"
           onClick={() => onOpenCarousel(currentIndex)}
-          aria-label={`Open carousel at image ${currentIndex + 1} of ${
-            collection.name
-          }`}
+          aria-label={`Open carousel at image ${currentIndex + 1} of ${collection.name}`}
         >
           <Expand className="h-6 w-6" />
         </Button>
@@ -89,15 +87,11 @@ export default function CollectionGallery({
                 }`}
                 onClick={() => setCurrentIndex(index)}
                 role="button"
-                aria-label={`Select thumbnail ${index + 1} of ${
-                  collection.name
-                }`}
+                aria-label={`Select thumbnail ${index + 1} of ${collection.name}`}
               >
                 <Image
                   src={img || defaultImage}
-                  alt={`Thumbnail ${index + 1} of ${
-                    collection.name || "NFT collection"
-                  }`}
+                  alt={`Thumbnail ${index + 1} of ${collection.name || "NFT collection"}`}
                   fill
                   sizes="200px"
                   className="object-cover"
@@ -111,7 +105,7 @@ export default function CollectionGallery({
             <Button
               variant="outline"
               className="mt-3 w-full"
-              onClick={() => setThumbnailLimit((prev) => prev + 6)}
+              onClick={() => setThumbnailLimit(prev => prev + 6)}
               aria-label="Load more thumbnails"
             >
               Load More

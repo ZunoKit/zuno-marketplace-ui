@@ -17,9 +17,7 @@ const MintStages = () => {
 
   return (
     <div className="space-y-4">
-      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
-        Mint Stages
-      </h4>
+      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">Mint Stages</h4>
       <div
         className={cn(
           "rounded-lg py-4 px-5 transition-all duration-200 border-2 border-gray-400 dark:border-gray-500",
@@ -39,34 +37,20 @@ const MintStages = () => {
               <span className="px-2 py-1 text-sm rounded-full bg-pink-500 dark:bg-pink-600 text-white">
                 LIVE
               </span>
-              <CountdownTimer
-                endTime={endDate}
-                onEnd={() => {}}
-                isLive={true}
-              />
+              <CountdownTimer endTime={endDate} onEnd={() => {}} isLive={true} />
             </div>
           )}
           {status === "ended" && (
-            <span className="text-gray-500 dark:text-gray-400 text-sm">
-              ENDED
-            </span>
+            <span className="text-gray-500 dark:text-gray-400 text-sm">ENDED</span>
           )}
           {status === "upcoming" && startDate && (
             <div className="flex items-center gap-2">
-              <span className="text-gray-500 dark:text-gray-400 text-sm">
-                STARTS IN
-              </span>
-              <CountdownTimer
-                endTime={startDate}
-                onEnd={() => {}}
-                isLive={false}
-              />
+              <span className="text-gray-500 dark:text-gray-400 text-sm">STARTS IN</span>
+              <CountdownTimer endTime={startDate} onEnd={() => {}} isLive={false} />
             </div>
           )}
         </div>
-        <div className="text-gray-700 dark:text-gray-300 text-sm">
-          Price: {mintPrice} ETH
-        </div>
+        <div className="text-gray-700 dark:text-gray-300 text-sm">Price: {mintPrice} ETH</div>
       </div>
     </div>
   );

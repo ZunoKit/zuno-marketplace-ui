@@ -11,10 +11,7 @@ interface ProfileProps {
   isCurrentUser?: boolean;
 }
 
-export function Profile({
-  profile = mockCurrentUser,
-  isCurrentUser = false,
-}: ProfileProps) {
+export function Profile({ profile = mockCurrentUser, isCurrentUser = false }: ProfileProps) {
   const [activeTab, setActiveTab] = useState<ProfileTab>("collected");
   const [isFollowing, setIsFollowing] = useState(false);
 
@@ -39,11 +36,7 @@ export function Profile({
       />
 
       <div className="container mx-auto px-4">
-        <ProfileTabs
-          profile={profile}
-          activeTab={activeTab}
-          onTabChange={setActiveTab}
-        />
+        <ProfileTabs profile={profile} activeTab={activeTab} onTabChange={setActiveTab} />
       </div>
     </div>
   );

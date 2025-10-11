@@ -25,8 +25,7 @@ const mockCollections: Collection[] = [
   {
     id: "1",
     name: "Cosmic Creatures",
-    description:
-      "A collection of unique cosmic creatures from across the universe",
+    description: "A collection of unique cosmic creatures from across the universe",
     contractAddress: "0xcosmiccreaturespadded00000000000000000",
     chainId: "1",
     symbol: "COSMIC",
@@ -84,18 +83,17 @@ export async function fetchCollection(
   contractAddress: string
 ): Promise<Collection> {
   // Simulate async API call with delay
-  await new Promise((resolve) => setTimeout(resolve, 100));
+  await new Promise(resolve => setTimeout(resolve, 100));
 
   // Find collection by contract address (mock)
   let collection = mockCollections.find(
-    (c) => c.contractAddress.toLowerCase() === contractAddress.toLowerCase()
+    c => c.contractAddress.toLowerCase() === contractAddress.toLowerCase()
   );
 
   // If not found by exact match, use the contract address to deterministically select a collection
   if (!collection) {
     // Use first few chars of address to select a collection
-    const index =
-      parseInt(contractAddress.slice(2, 4), 16) % mockCollections.length;
+    const index = parseInt(contractAddress.slice(2, 4), 16) % mockCollections.length;
     collection = {
       ...mockCollections[index],
       contractAddress: contractAddress,

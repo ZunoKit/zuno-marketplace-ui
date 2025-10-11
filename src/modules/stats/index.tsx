@@ -1,17 +1,7 @@
 "use client";
 
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/shared/components/ui/card";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/shared/components/ui/tabs";
+import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/ui/tabs";
 import {
   Table,
   TableBody,
@@ -21,14 +11,7 @@ import {
   TableRow,
 } from "@/shared/components/ui/table";
 import { Badge } from "@/shared/components/ui/badge";
-import {
-  TrendingUp,
-  TrendingDown,
-  Users,
-  Package,
-  DollarSign,
-  Activity,
-} from "lucide-react";
+import { TrendingUp, TrendingDown, Users, Package, DollarSign, Activity } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { mockCollections } from "@/shared/utils/mock/marketplace";
@@ -81,9 +64,7 @@ export function StatsPage() {
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">
-              {marketStats.totalVolume} ETH
-            </div>
+            <div className="text-2xl font-bold">{marketStats.totalVolume} ETH</div>
             <p className="text-xs text-muted-foreground">
               <TrendingUp className="h-3 w-3 inline mr-1 text-green-500" />
               +12.5% from last month
@@ -163,11 +144,9 @@ export function StatsPage() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {topCollections.map((collection) => (
+                  {topCollections.map(collection => (
                     <TableRow key={collection.address}>
-                      <TableCell className="font-medium">
-                        {collection.rank}
-                      </TableCell>
+                      <TableCell className="font-medium">{collection.rank}</TableCell>
                       <TableCell>
                         <Link
                           href={`/collections/${collection.name.toLowerCase().replace(/\s+/g, "-")}`}
@@ -193,9 +172,7 @@ export function StatsPage() {
                       <TableCell>
                         <span
                           className={
-                            parseFloat(collection.change24h) > 0
-                              ? "text-green-500"
-                              : "text-red-500"
+                            parseFloat(collection.change24h) > 0 ? "text-green-500" : "text-red-500"
                           }
                         >
                           {parseFloat(collection.change24h) > 0 ? "+" : ""}
@@ -206,21 +183,15 @@ export function StatsPage() {
                       <TableCell>
                         <span
                           className={
-                            parseFloat(collection.change7d) > 0
-                              ? "text-green-500"
-                              : "text-red-500"
+                            parseFloat(collection.change7d) > 0 ? "text-green-500" : "text-red-500"
                           }
                         >
                           {parseFloat(collection.change7d) > 0 ? "+" : ""}
                           {collection.change7d}%
                         </span>
                       </TableCell>
-                      <TableCell>
-                        {collection.itemCount.toLocaleString()}
-                      </TableCell>
-                      <TableCell>
-                        {collection.uniqueHolders?.toLocaleString()}
-                      </TableCell>
+                      <TableCell>{collection.itemCount.toLocaleString()}</TableCell>
+                      <TableCell>{collection.uniqueHolders?.toLocaleString()}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -246,7 +217,7 @@ export function StatsPage() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {trendingNFTs.map((nft) => (
+                  {trendingNFTs.map(nft => (
                     <TableRow key={nft.id}>
                       <TableCell>
                         <div className="flex items-center gap-2">
@@ -265,11 +236,7 @@ export function StatsPage() {
                       <TableCell>{nft.lastSale} ETH</TableCell>
                       <TableCell>
                         <span
-                          className={
-                            parseFloat(nft.change) > 0
-                              ? "text-green-500"
-                              : "text-red-500"
-                          }
+                          className={parseFloat(nft.change) > 0 ? "text-green-500" : "text-red-500"}
                         >
                           {parseFloat(nft.change) > 0 ? "+" : ""}
                           {nft.change}%

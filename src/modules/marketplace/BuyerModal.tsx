@@ -12,12 +12,7 @@ import { Button } from "@/shared/components/ui/button";
 import { Input } from "@/shared/components/ui/input";
 import { Label } from "@/shared/components/ui/label";
 import { Badge } from "@/shared/components/ui/badge";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/shared/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/ui/tabs";
 import { ShoppingCart, Tag } from "lucide-react";
 import { Nft, NftStatus } from "@/modules/marketplace/types";
 
@@ -47,23 +42,14 @@ export function BuyerModal({ nft, open, onOpenChange }: BuyerModalProps) {
       <DialogContent className="sm:max-w-[600px]">
         <DialogHeader>
           <DialogTitle>Purchase NFT</DialogTitle>
-          <DialogDescription>
-            Review details and complete your purchase
-          </DialogDescription>
+          <DialogDescription>Review details and complete your purchase</DialogDescription>
         </DialogHeader>
 
         <div className="grid gap-4">
           {/* NFT Preview */}
           <div className="flex gap-4">
             <div className="relative h-24 w-24 rounded-lg overflow-hidden">
-              {nft.image && (
-                <Image
-                  src={nft.image}
-                  alt={nft.name}
-                  fill
-                  className="object-cover"
-                />
-              )}
+              {nft.image && <Image src={nft.image} alt={nft.name} fill className="object-cover" />}
             </div>
             <div className="flex-1">
               <h3 className="font-semibold text-lg">{nft.name}</h3>
@@ -79,10 +65,7 @@ export function BuyerModal({ nft, open, onOpenChange }: BuyerModalProps) {
 
           <Tabs defaultValue="buy" className="w-full">
             <TabsList className="grid w-full grid-cols-3">
-              <TabsTrigger
-                value="buy"
-                disabled={nft.status !== NftStatus.Listed}
-              >
+              <TabsTrigger value="buy" disabled={nft.status !== NftStatus.Listed}>
                 Buy Now
               </TabsTrigger>
               <TabsTrigger value="offer">Make Offer</TabsTrigger>
@@ -102,20 +85,12 @@ export function BuyerModal({ nft, open, onOpenChange }: BuyerModalProps) {
                       <div className="flex justify-between">
                         <span>Platform Fee (2.5%):</span>
                         <span className="font-medium">
-                          {(parseFloat(nft.listPrice || "0") * 0.025).toFixed(
-                            4
-                          )}{" "}
-                          ETH
+                          {(parseFloat(nft.listPrice || "0") * 0.025).toFixed(4)} ETH
                         </span>
                       </div>
                       <div className="flex justify-between font-semibold text-base pt-2 border-t">
                         <span>Total:</span>
-                        <span>
-                          {(parseFloat(nft.listPrice || "0") * 1.025).toFixed(
-                            4
-                          )}{" "}
-                          ETH
-                        </span>
+                        <span>{(parseFloat(nft.listPrice || "0") * 1.025).toFixed(4)} ETH</span>
                       </div>
                     </div>
                   </div>
@@ -140,12 +115,10 @@ export function BuyerModal({ nft, open, onOpenChange }: BuyerModalProps) {
                   type="number"
                   step="0.001"
                   value={offerAmount}
-                  onChange={(e) => setOfferAmount(e.target.value)}
+                  onChange={e => setOfferAmount(e.target.value)}
                   placeholder="0.05"
                 />
-                <p className="text-xs text-muted-foreground">
-                  Floor price: {nft.mintPrice} ETH
-                </p>
+                <p className="text-xs text-muted-foreground">Floor price: {nft.mintPrice} ETH</p>
               </div>
 
               <div className="rounded-lg bg-muted p-4">
@@ -153,9 +126,7 @@ export function BuyerModal({ nft, open, onOpenChange }: BuyerModalProps) {
                 <div className="space-y-1 text-sm">
                   <div className="flex justify-between">
                     <span>Your Offer:</span>
-                    <span className="font-medium">
-                      {offerAmount || "0"} ETH
-                    </span>
+                    <span className="font-medium">{offerAmount || "0"} ETH</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Expiry:</span>
@@ -195,13 +166,8 @@ export function BuyerModal({ nft, open, onOpenChange }: BuyerModalProps) {
                   </span>
                 </div>
                 {nft.attributes?.map((attr, index) => (
-                  <div
-                    key={index}
-                    className="flex justify-between py-2 border-b"
-                  >
-                    <span className="text-muted-foreground">
-                      {attr.trait_type}
-                    </span>
+                  <div key={index} className="flex justify-between py-2 border-b">
+                    <span className="text-muted-foreground">{attr.trait_type}</span>
                     <span className="font-medium">{attr.value}</span>
                   </div>
                 ))}

@@ -2,19 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { Clock, Gavel, Eye, AlertCircle } from "lucide-react";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from "@/shared/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader } from "@/shared/components/ui/card";
 import { Badge } from "@/shared/components/ui/badge";
 import { Button } from "@/shared/components/ui/button";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/shared/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/shared/components/ui/avatar";
 import { Progress } from "@/shared/components/ui/progress";
 import Image from "next/image";
 import Link from "next/link";
@@ -175,11 +166,7 @@ function TimeRemaining({ endTime }: { endTime: Date }) {
   return (
     <Badge
       variant={
-        urgency === "urgent"
-          ? "destructive"
-          : urgency === "warning"
-            ? "secondary"
-            : "outline"
+        urgency === "urgent" ? "destructive" : urgency === "warning" ? "secondary" : "outline"
       }
       className="flex items-center gap-1"
     >
@@ -199,9 +186,7 @@ export default function LiveAuctions() {
               <Gavel className="h-8 w-8" />
               Live Auctions
             </h2>
-            <p className="text-muted-foreground">
-              Bid on exclusive NFTs in real-time auctions
-            </p>
+            <p className="text-muted-foreground">Bid on exclusive NFTs in real-time auctions</p>
           </div>
           <Button variant="outline" asChild>
             <Link href="/auctions">View All Auctions</Link>
@@ -209,27 +194,19 @@ export default function LiveAuctions() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {mockAuctions.map((auction) => (
+          {mockAuctions.map(auction => (
             <Card
               key={auction.id}
               className="group hover:shadow-xl transition-all duration-300 overflow-hidden"
             >
               <CardHeader className="p-0">
                 <div className="relative aspect-square">
-                  <Image
-                    src={auction.image}
-                    alt={auction.name}
-                    fill
-                    className="object-cover"
-                  />
+                  <Image src={auction.image} alt={auction.name} fill className="object-cover" />
                   <div className="absolute top-2 left-2">
                     <TimeRemaining endTime={auction.endTime} />
                   </div>
                   <div className="absolute top-2 right-2 flex gap-2">
-                    <Badge
-                      variant="secondary"
-                      className="bg-black/70 text-white"
-                    >
+                    <Badge variant="secondary" className="bg-black/70 text-white">
                       <Eye className="h-3 w-3 mr-1" />
                       {auction.viewers}
                     </Badge>
@@ -250,9 +227,7 @@ export default function LiveAuctions() {
 
               <CardContent className="pt-4">
                 <div className="mb-3">
-                  <p className="text-xs text-muted-foreground">
-                    {auction.collection}
-                  </p>
+                  <p className="text-xs text-muted-foreground">{auction.collection}</p>
                   <h3 className="font-semibold truncate">{auction.name}</h3>
                 </div>
 
@@ -262,9 +237,7 @@ export default function LiveAuctions() {
                     <AvatarImage src={auction.seller.avatar} />
                     <AvatarFallback>{auction.seller.name[0]}</AvatarFallback>
                   </Avatar>
-                  <span className="text-xs text-muted-foreground">
-                    by @{auction.seller.name}
-                  </span>
+                  <span className="text-xs text-muted-foreground">by @{auction.seller.name}</span>
                   {auction.seller.verified && (
                     <Badge variant="secondary" className="text-xs px-1">
                       Verified
@@ -276,27 +249,19 @@ export default function LiveAuctions() {
                 <div className="space-y-3">
                   <div className="flex justify-between items-start">
                     <div>
-                      <p className="text-xs text-muted-foreground">
-                        Current Bid
-                      </p>
+                      <p className="text-xs text-muted-foreground">Current Bid</p>
                       <p className="font-bold text-lg">
                         {auction.currentBid} {auction.currency}
                       </p>
                     </div>
                     <div className="text-right">
-                      <p className="text-xs text-muted-foreground">
-                        {auction.totalBids} bids
-                      </p>
+                      <p className="text-xs text-muted-foreground">{auction.totalBids} bids</p>
                       <div className="flex items-center gap-1">
                         <Avatar className="h-5 w-5">
                           <AvatarImage src={auction.topBidder.avatar} />
-                          <AvatarFallback>
-                            {auction.topBidder.name[0]}
-                          </AvatarFallback>
+                          <AvatarFallback>{auction.topBidder.name[0]}</AvatarFallback>
                         </Avatar>
-                        <span className="text-xs">
-                          @{auction.topBidder.name}
-                        </span>
+                        <span className="text-xs">@{auction.topBidder.name}</span>
                       </div>
                     </div>
                   </div>
@@ -305,16 +270,8 @@ export default function LiveAuctions() {
                   {auction.reservePrice && (
                     <div className="space-y-1">
                       <div className="flex items-center justify-between text-xs">
-                        <span className="text-muted-foreground">
-                          Reserve Price
-                        </span>
-                        <span
-                          className={
-                            auction.reserveMet
-                              ? "text-green-500"
-                              : "text-yellow-500"
-                          }
-                        >
+                        <span className="text-muted-foreground">Reserve Price</span>
+                        <span className={auction.reserveMet ? "text-green-500" : "text-yellow-500"}>
                           {auction.reserveMet
                             ? "Met"
                             : `${auction.reservePrice} ${auction.currency}`}
@@ -322,9 +279,7 @@ export default function LiveAuctions() {
                       </div>
                       <Progress
                         value={
-                          (parseFloat(auction.currentBid) /
-                            parseFloat(auction.reservePrice)) *
-                          100
+                          (parseFloat(auction.currentBid) / parseFloat(auction.reservePrice)) * 100
                         }
                         className="h-1"
                       />
@@ -336,9 +291,7 @@ export default function LiveAuctions() {
                     <AlertCircle className="h-3 w-3" />
                     <span>
                       {(
-                        (parseFloat(auction.currentBid) /
-                          parseFloat(auction.startingPrice) -
-                          1) *
+                        (parseFloat(auction.currentBid) / parseFloat(auction.startingPrice) - 1) *
                         100
                       ).toFixed(0)}
                       % above starting price

@@ -149,13 +149,11 @@ export default function NFTCategories() {
       <div className="container mx-auto px-4">
         <div className="mb-8">
           <h2 className="text-3xl font-bold mb-2">🎨 Browse by Category</h2>
-          <p className="text-muted-foreground">
-            Explore NFTs across different categories
-          </p>
+          <p className="text-muted-foreground">Explore NFTs across different categories</p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-          {categories.map((category) => (
+          {categories.map(category => (
             <Link key={category.id} href={`/explore?category=${category.id}`}>
               <Card className="group hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden">
                 <div className={`h-2 bg-gradient-to-r ${category.gradient}`} />
@@ -169,9 +167,7 @@ export default function NFTCategories() {
                   <div className="space-y-1">
                     <div className="flex items-center justify-between">
                       <h3 className="font-semibold text-sm">{category.name}</h3>
-                      {category.trending && (
-                        <Sparkles className="h-3 w-3 text-yellow-500" />
-                      )}
+                      {category.trending && <Sparkles className="h-3 w-3 text-yellow-500" />}
                     </div>
 
                     <p className="text-xs text-muted-foreground line-clamp-1">
@@ -181,15 +177,11 @@ export default function NFTCategories() {
                     <div className="pt-2 space-y-1">
                       <div className="flex justify-between text-xs">
                         <span className="text-muted-foreground">Items</span>
-                        <span className="font-medium">
-                          {category.itemCount.toLocaleString()}
-                        </span>
+                        <span className="font-medium">{category.itemCount.toLocaleString()}</span>
                       </div>
                       <div className="flex justify-between text-xs">
                         <span className="text-muted-foreground">Floor</span>
-                        <span className="font-medium">
-                          {category.floorPrice} ETH
-                        </span>
+                        <span className="font-medium">{category.floorPrice} ETH</span>
                       </div>
                     </div>
                   </div>

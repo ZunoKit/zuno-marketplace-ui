@@ -7,11 +7,7 @@ type BannerPaginationProps = {
   api: CarouselApi;
 };
 
-export default function BannerPagination({
-  count,
-  current,
-  api,
-}: BannerPaginationProps) {
+export default function BannerPagination({ count, current, api }: BannerPaginationProps) {
   return (
     <div className="flex justify-between md:justify-center items-center gap-2 mt-4 w-full">
       {Array.from({ length: count }).map((_, index) => (

@@ -53,9 +53,4 @@ export interface ProfileCollection {
   totalValue?: string;
 }
 
-export type ProfileTab =
-  | "collected"
-  | "created"
-  | "favorites"
-  | "activity"
-  | "offers";
+export type ProfileTab = "collected" | "created" | "favorites" | "activity" | "offers";

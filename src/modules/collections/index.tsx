@@ -45,7 +45,7 @@ export function CollectionsList() {
 
     // Filter by search
     if (searchQuery) {
-      filtered = filtered.filter((collection) =>
+      filtered = filtered.filter(collection =>
         collection.name.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
@@ -54,15 +54,11 @@ export function CollectionsList() {
     switch (sortBy) {
       case "volume":
         filtered.sort(
-          (a, b) =>
-            parseFloat(b.totalVolume || "0") - parseFloat(a.totalVolume || "0")
+          (a, b) => parseFloat(b.totalVolume || "0") - parseFloat(a.totalVolume || "0")
         );
         break;
       case "floor":
-        filtered.sort(
-          (a, b) =>
-            parseFloat(b.floorPrice || "0") - parseFloat(a.floorPrice || "0")
-        );
+        filtered.sort((a, b) => parseFloat(b.floorPrice || "0") - parseFloat(a.floorPrice || "0"));
         break;
       case "items":
         filtered.sort((a, b) => b.itemCount - a.itemCount);
@@ -86,9 +82,7 @@ export function CollectionsList() {
     <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-bold mb-2">Explore Collections</h1>
-        <p className="text-muted-foreground">
-          Browse through our curated NFT collections
-        </p>
+        <p className="text-muted-foreground">Browse through our curated NFT collections</p>
       </div>
 
       {/* Filters */}
@@ -98,7 +92,7 @@ export function CollectionsList() {
           <Input
             placeholder="Search collections..."
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={e => setSearchQuery(e.target.value)}
             className="pl-10"
           />
         </div>
@@ -119,10 +113,7 @@ export function CollectionsList() {
       {/* Collections Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {filteredAndSortedCollections.map((collection, index) => (
-          <Link
-            key={collection.address}
-            href={`/collections/${getCollectionSlug(collection)}`}
-          >
+          <Link key={collection.address} href={`/collections/${getCollectionSlug(collection)}`}>
             <Card className="overflow-hidden cursor-pointer hover:shadow-lg transition-all duration-200 h-full">
               <div className="relative h-32">
                 {collection.banner ? (
@@ -169,14 +160,10 @@ export function CollectionsList() {
                 <div className="grid grid-cols-2 gap-3 mt-4 text-sm">
                   <div>
                     <p className="text-muted-foreground text-xs mb-1">Floor</p>
-                    <p className="font-medium">
-                      {collection.floorPrice || "—"} ETH
-                    </p>
+                    <p className="font-medium">{collection.floorPrice || "—"} ETH</p>
                   </div>
                   <div>
-                    <p className="text-muted-foreground text-xs mb-1">
-                      24h Vol
-                    </p>
+                    <p className="text-muted-foreground text-xs mb-1">24h Vol</p>
                     <p className="font-medium flex items-center gap-1">
                       {collection.volume24h || "—"} ETH
                     </p>
@@ -186,18 +173,14 @@ export function CollectionsList() {
                       <Package className="h-3 w-3" />
                       Items
                     </p>
-                    <p className="font-medium">
-                      {collection.itemCount.toLocaleString()}
-                    </p>
+                    <p className="font-medium">{collection.itemCount.toLocaleString()}</p>
                   </div>
                   <div>
                     <p className="text-muted-foreground text-xs mb-1 flex items-center gap-1">
                       <Users className="h-3 w-3" />
                       Owners
                     </p>
-                    <p className="font-medium">
-                      {collection.ownerCount.toLocaleString()}
-                    </p>
+                    <p className="font-medium">{collection.ownerCount.toLocaleString()}</p>
                   </div>
                 </div>
               </CardContent>

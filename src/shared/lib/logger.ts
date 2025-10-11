@@ -24,11 +24,7 @@ class Logger {
     return this.levels[level] >= this.levels[this.minLevel];
   }
 
-  private formatMessage(
-    level: LogLevel,
-    message: string,
-    context?: LogContext
-  ): string {
+  private formatMessage(level: LogLevel, message: string, context?: LogContext): string {
     const timestamp = new Date().toISOString();
     const contextStr = context ? `\n${JSON.stringify(context, null, 2)}` : "";
     return `[${timestamp}] [${level.toUpperCase()}] ${message}${contextStr}`;
@@ -77,23 +73,14 @@ class Logger {
   /**
    * Log API request
    */
-  logRequest(
-    method: string,
-    endpoint: string,
-    params?: Record<string, unknown>
-  ): void {
+  logRequest(method: string, endpoint: string, params?: Record<string, unknown>): void {
     this.debug(`API Request: ${method} ${endpoint}`, params);
   }
 
   /**
    * Log API response
    */
-  logResponse(
-    method: string,
-    endpoint: string,
-    status: number,
-    duration: number
-  ): void {
+  logResponse(method: string, endpoint: string, status: number, duration: number): void {
     this.debug(`API Response: ${method} ${endpoint}`, {
       status,
       duration: `${duration}ms`,

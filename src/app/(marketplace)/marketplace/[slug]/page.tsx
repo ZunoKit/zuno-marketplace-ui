@@ -1,9 +1,6 @@
 import ShopNFTs from "@/modules/marketplace";
 import { fetchCollection } from "@/shared/utils/mock/collection";
-import {
-  validateChain,
-  validateContractAddress,
-} from "@/shared/utils/validate";
+import { validateChain, validateContractAddress } from "@/shared/utils/validate";
 
 interface MarketplacePageProps {
   params: Promise<{
@@ -20,10 +17,7 @@ async function getCollectionData(slug: string) {
 
     const chain = validateChain(chainName);
     const validatedAddress = validateContractAddress(contractAddress);
-    const collection = await fetchCollection(
-      String(chain?.id),
-      validatedAddress
-    );
+    const collection = await fetchCollection(String(chain?.id), validatedAddress);
 
     return {
       chain,
@@ -36,8 +30,7 @@ async function getCollectionData(slug: string) {
       chain: null,
       validatedAddress: null,
       collection: null,
-      error:
-        error instanceof Error ? error.message : "An unknown error occurred",
+      error: error instanceof Error ? error.message : "An unknown error occurred",
     };
   }
 }
@@ -72,17 +65,8 @@ export default async function Page({ params }: MarketplacePageProps) {
   const { validatedAddress, collection, error } = await getCollectionData(slug);
 
   if (error || !collection) {
-    return (
-      <div className="text-center p-4">
-        Error: {error || "Collection not found"}
-      </div>
-    );
+    return <div className="text-center p-4">Error: {error || "Collection not found"}</div>;
   }
 
-  return (
-    <ShopNFTs
-      contractAddress={validatedAddress}
-      initialCollection={collection}
-    />
-  );
+  return <ShopNFTs contractAddress={validatedAddress} initialCollection={collection} />;
 }

@@ -1,9 +1,4 @@
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/shared/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/shared/components/ui/dialog";
 
 import { CheckCircle2, Loader2 } from "lucide-react";
 export type ProcessStatus = "pending" | "processing" | "completed";
@@ -53,7 +48,7 @@ export function ProcessDialog({
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent
         className="sm:max-w-[425px] bg-white dark:bg-[#0e0a1a] border-gray-200 dark:border-[#3a3450] text-gray-900 dark:text-white [&>button]:hidden"
-        onInteractOutside={(e) => e.preventDefault()}
+        onInteractOutside={e => e.preventDefault()}
       >
         <DialogHeader>
           <DialogTitle className="text-gray-900 dark:text-white text-xl font-medium">
@@ -61,11 +56,8 @@ export function ProcessDialog({
           </DialogTitle>
         </DialogHeader>
         <div className="space-y-6 py-4">
-          {steps.map((step) => (
-            <div
-              key={step.id}
-              className="bg-gray-50 dark:bg-[#1a1527] rounded-lg p-4"
-            >
+          {steps.map(step => (
+            <div key={step.id} className="bg-gray-50 dark:bg-[#1a1527] rounded-lg p-4">
               <div className="flex items-start gap-3">
                 <div className="mt-1">{getStatusIcon(step.status)}</div>
                 <div className="flex-1">
@@ -78,9 +70,7 @@ export function ProcessDialog({
                     </p>
                   )}
                   {step.details && (
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      {step.details}
-                    </p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">{step.details}</p>
                   )}
                 </div>
               </div>

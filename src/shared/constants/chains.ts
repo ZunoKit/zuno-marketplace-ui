@@ -84,10 +84,7 @@ export const SUPPORTED_CHAINS: ChainInfo[] = [
       },
     ],
     rpcHints: {
-      public: [
-        "https://bsc-dataseed.binance.org",
-        "https://bsc.publicnode.com",
-      ],
+      public: ["https://bsc-dataseed.binance.org", "https://bsc.publicnode.com"],
     },
     icon: "https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png",
     slug: "bsc",
@@ -166,10 +163,7 @@ export const SUPPORTED_CHAINS: ChainInfo[] = [
       },
     ],
     rpcHints: {
-      public: [
-        "https://rpc.sepolia.org",
-        "https://ethereum-sepolia.publicnode.com",
-      ],
+      public: ["https://rpc.sepolia.org", "https://ethereum-sepolia.publicnode.com"],
     },
     icon: "https://assets.coingecko.com/coins/images/279/large/ethereum.png",
     slug: "sepolia",
@@ -180,21 +174,21 @@ export const SUPPORTED_CHAINS: ChainInfo[] = [
  * Get chain by EVM chain ID
  */
 export function getChainByEvmId(chainId: number): ChainInfo | undefined {
-  return SUPPORTED_CHAINS.find((chain) => chain.evm?.chainId === chainId);
+  return SUPPORTED_CHAINS.find(chain => chain.evm?.chainId === chainId);
 }
 
 /**
  * Get chain by CAIP-2 ID
  */
 export function getChainById(caip2Id: string): ChainInfo | undefined {
-  return SUPPORTED_CHAINS.find((chain) => chain.id === caip2Id);
+  return SUPPORTED_CHAINS.find(chain => chain.id === caip2Id);
 }
 
 /**
  * Get chain by slug
  */
 export function getChainBySlug(slug: string): ChainInfo | undefined {
-  return SUPPORTED_CHAINS.find((chain) => chain.slug === slug);
+  return SUPPORTED_CHAINS.find(chain => chain.slug === slug);
 }
 
 /**
@@ -205,6 +199,6 @@ export const DEFAULT_CHAIN = SUPPORTED_CHAINS[0]; // Ethereum
 /**
  * Supported EVM chain IDs
  */
-export const SUPPORTED_EVM_CHAIN_IDS = SUPPORTED_CHAINS.filter(
-  (chain) => chain.evm
-).map((chain) => chain.evm!.chainId);
+export const SUPPORTED_EVM_CHAIN_IDS = SUPPORTED_CHAINS.filter(chain => chain.evm).map(
+  chain => chain.evm!.chainId
+);

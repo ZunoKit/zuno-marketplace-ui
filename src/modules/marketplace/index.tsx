@@ -1,20 +1,8 @@
 "use client";
 
-import {
-  useState,
-  useMemo,
-  useCallback,
-  Component,
-  ReactNode,
-  useEffect,
-} from "react";
+import { useState, useMemo, useCallback, Component, ReactNode, useEffect } from "react";
 import { Button } from "@/shared/components/ui/button";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/shared/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/ui/tabs";
 import { cn } from "@/shared/utils/tailwind-utils";
 import ControlBar from "@/modules/marketplace/ControlBar";
 import FooterBar from "@/modules/marketplace/FooterBar";
@@ -45,10 +33,7 @@ import { debounce } from "lodash";
 import { ChartBar, Activity, TrendingUp } from "lucide-react";
 
 // Error Boundary để bắt lỗi trong NFTListView
-class ErrorBoundary extends Component<
-  { children: ReactNode },
-  { hasError: boolean }
-> {
+class ErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
   state = { hasError: false };
 
   static getDerivedStateFromError(error: Error) {
@@ -78,10 +63,7 @@ interface ShopNFTsProps {
   initialCollection: Collection;
 }
 
-export default function ShopNFTs({
-  contractAddress,
-  initialCollection,
-}: ShopNFTsProps) {
+export default function ShopNFTs({ contractAddress, initialCollection }: ShopNFTsProps) {
   const [collection] = useState(initialCollection);
   const [selectedNFTs, setSelectedNFTs] = useState<string[]>([]);
   // Default view based on screen size - list view for table display
@@ -120,9 +102,7 @@ export default function ShopNFTs({
       Array.isArray(myItemsNFTs)
         ? myItemsNFTs.filter(
             (nft): nft is Nft =>
-              nft != null &&
-              typeof nft === "object" &&
-              typeof nft.id === "string"
+              nft != null && typeof nft === "object" && typeof nft.id === "string"
           )
         : [],
     [myItemsNFTs]
@@ -130,10 +110,8 @@ export default function ShopNFTs({
 
   const searchValue = useMemo(
     () =>
-      typeof columnFilters.find((f: ColumnFilter) => f.id === "item")?.value ===
-      "string"
-        ? (columnFilters.find((f: ColumnFilter) => f.id === "item")
-            ?.value as string)
+      typeof columnFilters.find((f: ColumnFilter) => f.id === "item")?.value === "string"
+        ? (columnFilters.find((f: ColumnFilter) => f.id === "item")?.value as string)
         : "",
     [columnFilters]
   );
@@ -155,19 +133,16 @@ export default function ShopNFTs({
   const filterAndSortNFTs = useCallback(
     (nfts: Nft[]) => {
       return nfts
-        .filter((nft) => {
-          if (statusFilter === "listed" && nft.status !== NftStatus.Listed)
-            return false;
-          if (statusFilter === "not-listed" && nft.status === NftStatus.Listed)
-            return false;
+        .filter(nft => {
+          if (statusFilter === "listed" && nft.status !== NftStatus.Listed) return false;
+          if (statusFilter === "not-listed" && nft.status === NftStatus.Listed) return false;
 
           const price = nft.mintPrice ? Number(nft.mintPrice) : 0;
           if (isNaN(price)) return false;
           if (price < priceRange[0] || price > priceRange[1]) return false;
 
           if (!searchValue) return true;
-          const name =
-            typeof nft.name === "string" ? nft.name.toLowerCase() : "";
+          const name = typeof nft.name === "string" ? nft.name.toLowerCase() : "";
           return name.includes(searchValue.toLowerCase());
         })
         .sort((a, b) => {
@@ -178,16 +153,8 @@ export default function ShopNFTs({
               return (Number(b.mintPrice) || 0) - (Number(a.mintPrice) || 0);
             case "recent":
             default:
-              if (
-                a.status === NftStatus.Listed &&
-                b.status !== NftStatus.Listed
-              )
-                return -1;
-              if (
-                a.status !== NftStatus.Listed &&
-                b.status === NftStatus.Listed
-              )
-                return 1;
+              if (a.status === NftStatus.Listed && b.status !== NftStatus.Listed) return -1;
+              if (a.status !== NftStatus.Listed && b.status === NftStatus.Listed) return 1;
               return 0;
           }
         });
@@ -198,21 +165,14 @@ export default function ShopNFTs({
   useEffect(() => {
     const filtered = filterAndSortNFTs(safeNFTs);
     setFilteredAndSortedNFTs(filtered);
-  }, [
-    safeNFTs,
-    statusFilter,
-    sortBy,
-    priceRange,
-    searchValue,
-    filterAndSortNFTs,
-  ]);
+  }, [safeNFTs, statusFilter, sortBy, priceRange, searchValue, filterAndSortNFTs]);
 
   // Memoize onSelectedNFTsChange để ổn định tham chiếu
   const onSelectedNFTsChange = useCallback(
     (ids: Set<string>) => {
       setSelectedNFTs(Array.from(ids));
       // Cập nhật filteredAndSortedNFTs với tất cả NFT, đánh dấu selected
-      const visibleNFTs = safeNFTs.map((nft) => ({
+      const visibleNFTs = safeNFTs.map(nft => ({
         ...nft,
         selected: ids.has(nft.id),
       }));
@@ -350,9 +310,7 @@ export default function ShopNFTs({
             <div className="flex items-center justify-center p-12">
               <div className="text-center">
                 <h3 className="text-lg font-medium">Coming Soon</h3>
-                <p className="text-muted-foreground">
-                  Items functionality will be available soon
-                </p>
+                <p className="text-muted-foreground">Items functionality will be available soon</p>
               </div>
             </div>
           </TabsContent>
@@ -414,9 +372,7 @@ export default function ShopNFTs({
                       ) : filteredAndSortedNFTs.length === 0 ? (
                         <div className="flex items-center justify-center h-64">
                           <div className="text-center">
-                            <h3 className="text-lg font-medium">
-                              No Items Found
-                            </h3>
+                            <h3 className="text-lg font-medium">No Items Found</h3>
                             <p className="text-muted-foreground">
                               Adjust your filters to see more items.
                             </p>
@@ -503,11 +459,7 @@ export default function ShopNFTs({
         />
       )} */}
       {showSellerModal && selectedNFT && (
-        <SellerModal
-          nft={selectedNFT}
-          open={showSellerModal}
-          onOpenChange={setShowSellerModal}
-        />
+        <SellerModal nft={selectedNFT} open={showSellerModal} onOpenChange={setShowSellerModal} />
       )}
     </div>
   );
