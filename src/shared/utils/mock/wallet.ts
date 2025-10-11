@@ -46,8 +46,7 @@ export const mockWallets: Wallet[] = [
     id: "metamask",
     name: "MetaMask",
     icon: "https://upload.wikimedia.org/wikipedia/commons/3/36/MetaMask_Fox.svg",
-    description:
-      "The most popular Web3 wallet with millions of users worldwide",
+    description: "The most popular Web3 wallet with millions of users worldwide",
     supportedChains: mockChains,
     features: [
       {
@@ -64,8 +63,7 @@ export const mockWallets: Wallet[] = [
       },
     ],
     chromeExtensionUrl: "https://chrome.google.com/webstore/detail/metamask/",
-    firefoxExtensionUrl:
-      "https://addons.mozilla.org/firefox/addon/ether-metamask/",
+    firefoxExtensionUrl: "https://addons.mozilla.org/firefox/addon/ether-metamask/",
     mobileAppUrl: {
       ios: "https://apps.apple.com/app/metamask/",
       android: "https://play.google.com/store/apps/details?id=io.metamask",
@@ -116,8 +114,7 @@ export const mockWallets: Wallet[] = [
         description: "Secure cloud backup options",
       },
     ],
-    chromeExtensionUrl:
-      "https://chrome.google.com/webstore/detail/coinbase-wallet/",
+    chromeExtensionUrl: "https://chrome.google.com/webstore/detail/coinbase-wallet/",
     mobileAppUrl: {
       ios: "https://apps.apple.com/app/coinbase-wallet/",
       android: "https://play.google.com/store/apps/details?id=org.toshi",
@@ -146,8 +143,7 @@ export const mockWallets: Wallet[] = [
     ],
     mobileAppUrl: {
       ios: "https://apps.apple.com/app/trust-wallet/",
-      android:
-        "https://play.google.com/store/apps/details?id=com.wallet.crypto.trustapp",
+      android: "https://play.google.com/store/apps/details?id=com.wallet.crypto.trustapp",
     },
     isPopular: false,
   },
@@ -179,6 +175,6 @@ export const mockWallets: Wallet[] = [
 // Mock wallet stats
 export const mockWalletStats = {
   totalWallets: mockWallets.length,
-  popularWallets: mockWallets.filter((w) => w.isPopular).length,
+  popularWallets: mockWallets.filter(w => w.isPopular).length,
   supportedChains: mockChains.length,
 };

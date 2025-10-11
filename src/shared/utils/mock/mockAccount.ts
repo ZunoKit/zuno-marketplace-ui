@@ -19,9 +19,7 @@ export function makeMockAccount(
       pfpUrl: "https://avatars.githubusercontent.com/u/9919?s=200&v=4", // placeholder
       bannerUrl: undefined,
       profileUrl:
-        platform === "opensea"
-          ? "https://opensea.io/eth_whale"
-          : "https://zuno.io/u/sol_degen",
+        platform === "opensea" ? "https://opensea.io/eth_whale" : "https://zuno.io/u/sol_degen",
       ensName: platform === "opensea" ? "whale.eth" : undefined,
     },
     socials: {
@@ -71,9 +69,7 @@ export function makeMockAccount(
       },
       watchlist: {
         collections:
-          platform === "opensea"
-            ? ["azuki", "thememeland-captains"]
-            : ["degods", "madlads"],
+          platform === "opensea" ? ["azuki", "thememeland-captains"] : ["degods", "madlads"],
         items: [],
       },
       chainSpecific:
@@ -105,10 +101,7 @@ export function makeMockAccount(
               {
                 name: "SOL Showcase",
                 description: "Top SOL picks",
-                itemRefs: [
-                  "solana:mainnet/So1111...",
-                  "solana:mainnet/Me1111...",
-                ],
+                itemRefs: ["solana:mainnet/So1111...", "solana:mainnet/Me1111..."],
               },
             ],
           },

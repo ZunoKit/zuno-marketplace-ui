@@ -5,10 +5,7 @@ interface StructuredDataProps {
   slug: string;
 }
 
-export default function StructuredData({
-  collection,
-  slug,
-}: StructuredDataProps) {
+export default function StructuredData({ collection, slug }: StructuredDataProps) {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
@@ -46,9 +43,7 @@ export default function StructuredData({
       price: collection.mintPrice,
       priceCurrency: "ETH",
       availability:
-        collection.status === "live"
-          ? "https://schema.org/InStock"
-          : "https://schema.org/PreOrder",
+        collection.status === "live" ? "https://schema.org/InStock" : "https://schema.org/PreOrder",
       validFrom: collection.mintStartDate,
       validThrough: collection.mintEndDate,
     },

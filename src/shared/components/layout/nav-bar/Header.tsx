@@ -21,9 +21,7 @@ export default function Header() {
   const allNavItems = getNavItems(true);
 
   // Filter out Stats menu on mobile since it's in footer
-  const navItems = isMobile
-    ? allNavItems.filter((item) => item.id !== "stats")
-    : allNavItems;
+  const navItems = isMobile ? allNavItems.filter(item => item.id !== "stats") : allNavItems;
   return (
     <header
       className={cn(
@@ -34,10 +32,7 @@ export default function Header() {
       )}
     >
       <div className="flex items-center justify-between px-2 sm:px-4 mx-auto">
-        <Link
-          href="/"
-          className="flex items-center mr-2 xl:mr-5 gap-2 md:gap-4"
-        >
+        <Link href="/" className="flex items-center mr-2 xl:mr-5 gap-2 md:gap-4">
           <Image src="/images/logo.png" alt="Zuno" width={32} height={32} />
           <div className="hidden md:block text-xl font-semibold tracking-wide text-gray-900 dark:text-white">
             ZUNO
@@ -46,7 +41,7 @@ export default function Header() {
 
         {!isMobile && (
           <nav className="hidden md:flex items-center space-x-1">
-            {navItems.map((item) => (
+            {navItems.map(item => (
               <NavDropdown
                 key={item.id}
                 href={item.href}

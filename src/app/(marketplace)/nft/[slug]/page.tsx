@@ -1,9 +1,6 @@
 import { NFTDetailView } from "@/modules/nft-detail";
 import { generateNFTDetail } from "@/shared/utils/mock/nft-detail";
-import {
-  generateNFTJsonLd,
-  generateBreadcrumbJsonLd,
-} from "@/shared/utils/structured-data";
+import { generateNFTJsonLd, generateBreadcrumbJsonLd } from "@/shared/utils/structured-data";
 import { Metadata } from "next";
 
 interface NFTDetailPageProps {
@@ -12,9 +9,7 @@ interface NFTDetailPageProps {
   }>;
 }
 
-export async function generateMetadata({
-  params,
-}: NFTDetailPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: NFTDetailPageProps): Promise<Metadata> {
   const { slug } = await params;
   // In real app, fetch NFT data based on slug
   const nft = generateNFTDetail("ethereum", "0x123...", slug);
@@ -34,8 +29,7 @@ export async function generateMetadata({
     ],
     openGraph: {
       title: nft.name,
-      description:
-        nft.metadata.description || `Unique NFT from ${nft.collection.name}`,
+      description: nft.metadata.description || `Unique NFT from ${nft.collection.name}`,
       images: [nft.image],
       type: "website",
     },

@@ -16,20 +16,10 @@ import {
   Filter,
   RefreshCw,
 } from "lucide-react";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/shared/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui/card";
 import { Button } from "@/shared/components/ui/button";
 import { Badge } from "@/shared/components/ui/badge";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/shared/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/ui/tabs";
 import {
   Select,
   SelectContent,
@@ -37,24 +27,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/shared/components/ui/select";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/shared/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/shared/components/ui/avatar";
 import { Checkbox } from "@/shared/components/ui/checkbox";
 import Image from "next/image";
 import Link from "next/link";
 import { formatDistanceToNow } from "date-fns";
 
-type ActivityType =
-  | "sale"
-  | "listing"
-  | "bid"
-  | "transfer"
-  | "mint"
-  | "offer"
-  | "cancel";
+type ActivityType = "sale" | "listing" | "bid" | "transfer" | "mint" | "offer" | "cancel";
 
 interface ActivityItem {
   id: string;
@@ -84,15 +63,7 @@ interface ActivityItem {
 
 // Generate mock activity data
 const generateMockActivity = (count: number): ActivityItem[] => {
-  const types: ActivityType[] = [
-    "sale",
-    "listing",
-    "bid",
-    "transfer",
-    "mint",
-    "offer",
-    "cancel",
-  ];
+  const types: ActivityType[] = ["sale", "listing", "bid", "transfer", "mint", "offer", "cancel"];
   const blockchains = ["Ethereum", "Polygon", "Solana", "BNB Chain"];
 
   return Array.from({ length: count }, (_, i) => ({
@@ -190,9 +161,7 @@ const getActivityDescription = (item: ActivityItem) => {
 
 export default function MarketplaceActivity() {
   const [activities, setActivities] = useState<ActivityItem[]>([]);
-  const [filteredActivities, setFilteredActivities] = useState<ActivityItem[]>(
-    []
-  );
+  const [filteredActivities, setFilteredActivities] = useState<ActivityItem[]>([]);
   const [selectedTypes, setSelectedTypes] = useState<ActivityType[]>([]);
   const [selectedBlockchain, setSelectedBlockchain] = useState<string>("all");
   const [timeFilter, setTimeFilter] = useState<string>("all");
@@ -211,7 +180,7 @@ export default function MarketplaceActivity() {
         // Simulate new activity
         const newActivity = generateMockActivity(1);
         newActivity[0].timestamp = new Date();
-        setActivities((prev) => [newActivity[0], ...prev.slice(0, 99)]);
+        setActivities(prev => [newActivity[0], ...prev.slice(0, 99)]);
       }, 5000);
 
       return () => clearInterval(interval);
@@ -223,32 +192,26 @@ export default function MarketplaceActivity() {
 
     // Filter by type
     if (selectedTypes.length > 0) {
-      filtered = filtered.filter((item) => selectedTypes.includes(item.type));
+      filtered = filtered.filter(item => selectedTypes.includes(item.type));
     }
 
     // Filter by blockchain
     if (selectedBlockchain !== "all") {
-      filtered = filtered.filter(
-        (item) => item.blockchain === selectedBlockchain
-      );
+      filtered = filtered.filter(item => item.blockchain === selectedBlockchain);
     }
 
     // Filter by time
     const now = Date.now();
     switch (timeFilter) {
       case "1h":
-        filtered = filtered.filter(
-          (item) => now - item.timestamp.getTime() < 60 * 60 * 1000
-        );
+        filtered = filtered.filter(item => now - item.timestamp.getTime() < 60 * 60 * 1000);
         break;
       case "24h":
-        filtered = filtered.filter(
-          (item) => now - item.timestamp.getTime() < 24 * 60 * 60 * 1000
-        );
+        filtered = filtered.filter(item => now - item.timestamp.getTime() < 24 * 60 * 60 * 1000);
         break;
       case "7d":
         filtered = filtered.filter(
-          (item) => now - item.timestamp.getTime() < 7 * 24 * 60 * 60 * 1000
+          item => now - item.timestamp.getTime() < 7 * 24 * 60 * 60 * 1000
         );
         break;
     }
@@ -258,9 +221,7 @@ export default function MarketplaceActivity() {
 
   const ActivityRow = ({ item }: { item: ActivityItem }) => (
     <div className="flex items-center gap-4 p-4 hover:bg-muted/50 transition-colors rounded-lg">
-      <div
-        className={`p-2 rounded-full ${getActivityColor(item.type)} text-white`}
-      >
+      <div className={`p-2 rounded-full ${getActivityColor(item.type)} text-white`}>
         {getActivityIcon(item.type)}
       </div>
 
@@ -282,9 +243,7 @@ export default function MarketplaceActivity() {
             </span>
           </Link>
 
-          <span className="text-muted-foreground">
-            {getActivityDescription(item)}
-          </span>
+          <span className="text-muted-foreground">{getActivityDescription(item)}</span>
 
           {item.to && (
             <Link href={`/profile/${item.to.address}`}>
@@ -334,12 +293,10 @@ export default function MarketplaceActivity() {
 
   const stats = {
     totalVolume: activities.reduce((acc, item) => acc + (item.price || 0), 0),
-    totalSales: activities.filter((item) => item.type === "sale").length,
+    totalSales: activities.filter(item => item.type === "sale").length,
     avgPrice:
-      activities
-        .filter((item) => item.price)
-        .reduce((acc, item) => acc + (item.price || 0), 0) /
-        activities.filter((item) => item.price).length || 0,
+      activities.filter(item => item.price).reduce((acc, item) => acc + (item.price || 0), 0) /
+        activities.filter(item => item.price).length || 0,
     totalTransactions: activities.length,
   };
 
@@ -360,9 +317,7 @@ export default function MarketplaceActivity() {
             <TrendingUp className="h-4 w-4 text-green-500" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">
-              {stats.totalVolume.toFixed(2)} ETH
-            </div>
+            <div className="text-2xl font-bold">{stats.totalVolume.toFixed(2)} ETH</div>
             <p className="text-xs text-muted-foreground">Last 7 days</p>
           </CardContent>
         </Card>
@@ -384,9 +339,7 @@ export default function MarketplaceActivity() {
             <Activity className="h-4 w-4 text-purple-500" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">
-              {stats.avgPrice.toFixed(3)} ETH
-            </div>
+            <div className="text-2xl font-bold">{stats.avgPrice.toFixed(3)} ETH</div>
             <p className="text-xs text-muted-foreground">Per transaction</p>
           </CardContent>
         </Card>
@@ -408,9 +361,7 @@ export default function MarketplaceActivity() {
         <CardContent className="pt-6">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1">
-              <label className="text-sm font-medium mb-2 block">
-                Event Type
-              </label>
+              <label className="text-sm font-medium mb-2 block">Event Type</label>
               <div className="flex flex-wrap gap-2">
                 {(
                   [
@@ -422,20 +373,15 @@ export default function MarketplaceActivity() {
                     "offer",
                     "cancel",
                   ] as ActivityType[]
-                ).map((type) => (
-                  <label
-                    key={type}
-                    className="flex items-center gap-2 cursor-pointer"
-                  >
+                ).map(type => (
+                  <label key={type} className="flex items-center gap-2 cursor-pointer">
                     <Checkbox
                       checked={selectedTypes.includes(type)}
-                      onCheckedChange={(checked) => {
+                      onCheckedChange={checked => {
                         if (checked) {
                           setSelectedTypes([...selectedTypes, type]);
                         } else {
-                          setSelectedTypes(
-                            selectedTypes.filter((t) => t !== type)
-                          );
+                          setSelectedTypes(selectedTypes.filter(t => t !== type));
                         }
                       }}
                     />
@@ -446,10 +392,7 @@ export default function MarketplaceActivity() {
             </div>
 
             <div className="flex gap-2">
-              <Select
-                value={selectedBlockchain}
-                onValueChange={setSelectedBlockchain}
-              >
+              <Select value={selectedBlockchain} onValueChange={setSelectedBlockchain}>
                 <SelectTrigger className="w-[150px]">
                   <SelectValue placeholder="Blockchain" />
                 </SelectTrigger>
@@ -479,9 +422,7 @@ export default function MarketplaceActivity() {
                 size="icon"
                 onClick={() => setIsAutoRefresh(!isAutoRefresh)}
               >
-                <RefreshCw
-                  className={`h-4 w-4 ${isAutoRefresh ? "animate-spin" : ""}`}
-                />
+                <RefreshCw className={`h-4 w-4 ${isAutoRefresh ? "animate-spin" : ""}`} />
               </Button>
             </div>
           </div>
@@ -499,14 +440,10 @@ export default function MarketplaceActivity() {
         <CardContent className="p-0">
           <div className="divide-y">
             {filteredActivities.length > 0 ? (
-              filteredActivities.map((item) => (
-                <ActivityRow key={item.id} item={item} />
-              ))
+              filteredActivities.map(item => <ActivityRow key={item.id} item={item} />)
             ) : (
               <div className="text-center py-8">
-                <p className="text-muted-foreground">
-                  No activity matching your filters
-                </p>
+                <p className="text-muted-foreground">No activity matching your filters</p>
                 <Button
                   variant="outline"
                   className="mt-4"

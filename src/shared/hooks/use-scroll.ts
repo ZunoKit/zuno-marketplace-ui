@@ -60,9 +60,7 @@ export function useScrollPosition() {
  * @returns "up" | "down" | null
  */
 export function useScrollDirection() {
-  const [scrollDirection, setScrollDirection] = useState<"up" | "down" | null>(
-    null
-  );
+  const [scrollDirection, setScrollDirection] = useState<"up" | "down" | null>(null);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {

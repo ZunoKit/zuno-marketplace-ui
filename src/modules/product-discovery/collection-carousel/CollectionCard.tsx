@@ -65,7 +65,7 @@ export function CollectionCard({
               className={`object-cover transition-transform duration-500 ${
                 isHovered ? "scale-110" : "scale-100"
               }`}
-              onError={(e) => {
+              onError={e => {
                 e.currentTarget.src = fallbackSrc;
               }}
             />
@@ -125,10 +125,7 @@ export function CollectionCard({
 
             <div className="flex items-center gap-1.5 mt-2 pt-1.5 border-t border-gray-100 dark:border-white/5">
               <span className={`w-2 h-2 rounded-full ${statusColor}`}></span>
-              <span
-                className="text-xs text-gray-900 dark:text-white truncate"
-                title={statusText}
-              >
+              <span className="text-xs text-gray-900 dark:text-white truncate" title={statusText}>
                 {statusText}
               </span>
             </div>

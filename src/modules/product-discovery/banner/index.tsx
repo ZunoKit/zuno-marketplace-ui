@@ -1,14 +1,7 @@
 "use client";
 
-import {
-  Carousel,
-  CarouselApi,
-  CarouselNext,
-} from "@/shared/components/ui/carousel";
-import {
-  CarouselContent,
-  CarouselPrevious,
-} from "@/shared/components/ui/carousel";
+import { Carousel, CarouselApi, CarouselNext } from "@/shared/components/ui/carousel";
+import { CarouselContent, CarouselPrevious } from "@/shared/components/ui/carousel";
 import { CarouselItem } from "@/shared/components/ui/carousel";
 import { mockBanner } from "@/shared/utils/mock/mockBanner";
 import { useEffect, useState } from "react";

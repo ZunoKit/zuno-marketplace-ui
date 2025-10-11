@@ -73,7 +73,7 @@ export default function NFTListView({
             </tr>
           </thead>
           <tbody>
-            {nfts.map((nft) => (
+            {nfts.map(nft => (
               <tr
                 key={nft.id}
                 className="border-b cursor-pointer hover:bg-muted/50"
@@ -87,7 +87,7 @@ export default function NFTListView({
                   )}
                 >
                   <div className="flex items-center gap-2 md:gap-3">
-                    <div onClick={(e) => e.stopPropagation()}>
+                    <div onClick={e => e.stopPropagation()}>
                       <Checkbox
                         checked={selectedNFTs.includes(nft.id)}
                         onCheckedChange={() => onSelect(nft.id)}
@@ -96,18 +96,11 @@ export default function NFTListView({
                     </div>
                     <div className="relative h-10 w-10 md:h-12 md:w-12 rounded overflow-hidden flex-shrink-0">
                       {nft.image && (
-                        <Image
-                          src={nft.image}
-                          alt={nft.name}
-                          fill
-                          className="object-cover"
-                        />
+                        <Image src={nft.image} alt={nft.name} fill className="object-cover" />
                       )}
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="font-medium truncate text-sm md:text-base">
-                        {nft.name}
-                      </p>
+                      <p className="font-medium truncate text-sm md:text-base">{nft.name}</p>
                       {nft.description && (
                         <p className="text-xs md:text-sm text-muted-foreground truncate hidden md:block">
                           {nft.description}
@@ -116,14 +109,10 @@ export default function NFTListView({
                     </div>
                   </div>
                 </td>
-                <td className="p-2 md:p-3 whitespace-nowrap text-xs md:text-sm">
-                  #{nft.tokenId}
-                </td>
+                <td className="p-2 md:p-3 whitespace-nowrap text-xs md:text-sm">#{nft.tokenId}</td>
                 <td className="p-2 md:p-3">
                   <Badge
-                    variant={
-                      nft.status === NftStatus.Listed ? "default" : "secondary"
-                    }
+                    variant={nft.status === NftStatus.Listed ? "default" : "secondary"}
                     className="text-[10px] md:text-xs whitespace-nowrap"
                   >
                     {nft.status === NftStatus.Listed ? "Listed" : "Not Listed"}
@@ -131,18 +120,14 @@ export default function NFTListView({
                 </td>
                 <td className="p-2 md:p-3 whitespace-nowrap text-xs md:text-sm">
                   {nft.listPrice || nft.mintPrice ? (
-                    <span className="font-medium">
-                      {nft.listPrice || nft.mintPrice} ETH
-                    </span>
+                    <span className="font-medium">{nft.listPrice || nft.mintPrice} ETH</span>
                   ) : (
                     <span className="text-muted-foreground">-</span>
                   )}
                 </td>
                 <td className="p-2 md:p-3">
                   <span className="text-xs font-mono truncate block max-w-[120px]">
-                    {nft.owner
-                      ? `${nft.owner.slice(0, 6)}...${nft.owner.slice(-4)}`
-                      : "-"}
+                    {nft.owner ? `${nft.owner.slice(0, 6)}...${nft.owner.slice(-4)}` : "-"}
                   </span>
                 </td>
                 <td className="p-2 md:p-3 text-right">
@@ -150,7 +135,7 @@ export default function NFTListView({
                     variant="ghost"
                     size="sm"
                     className="text-xs"
-                    onClick={(e) => {
+                    onClick={e => {
                       e.stopPropagation();
                       onCardClick(nft);
                     }}

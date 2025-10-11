@@ -1,0 +1,11 @@
+{
+  "editor.rulers": [80, 100],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "typescript.suggest.autoImports": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.wordWrap": "bounded",
+  "editor.wordWrapColumn": 100
+}

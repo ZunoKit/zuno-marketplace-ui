@@ -40,8 +40,7 @@ export function getCollectionStatus({
   const endDate = publicMint?.endDate ? new Date(publicMint.endDate) : null;
 
   // Validate ngày
-  const isValidStartDate =
-    startDate && !isNaN(startDate.getTime()) ? startDate : null;
+  const isValidStartDate = startDate && !isNaN(startDate.getTime()) ? startDate : null;
   const isValidEndDate = endDate && !isNaN(endDate.getTime()) ? endDate : null;
 
   // Trạng thái
@@ -95,11 +94,7 @@ export function getCollectionStatus({
   }
 
   // Màu trạng thái
-  const statusColor = isUpcoming
-    ? "bg-yellow-500"
-    : isLive
-      ? "bg-green-500"
-      : "bg-red-500";
+  const statusColor = isUpcoming ? "bg-yellow-500" : isLive ? "bg-green-500" : "bg-red-500";
 
   return {
     isUpcoming,

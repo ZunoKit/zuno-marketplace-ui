@@ -2,13 +2,7 @@
 
 import type { ReactNode } from "react";
 import { Button } from "@/shared/components/ui/button";
-import {
-  Loader2,
-  AlertTriangle,
-  Wallet,
-  Sparkles,
-  Package,
-} from "lucide-react";
+import { Loader2, AlertTriangle, Wallet, Sparkles, Package } from "lucide-react";
 import { cn } from "@/shared/utils/tailwind-utils";
 import { useMintState } from "@/modules/mint/mint-nft/hooks/useMintState";
 
@@ -45,7 +39,7 @@ export default function MintButton() {
   } = useMintState();
 
   const selectedEditionData = selectedEdition
-    ? mockEditions.find((e) => e.id === selectedEdition)
+    ? mockEditions.find(e => e.id === selectedEdition)
     : null;
 
   const getButtonConfig = (): ButtonConfig[] => {

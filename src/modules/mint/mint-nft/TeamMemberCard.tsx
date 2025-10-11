@@ -13,13 +13,7 @@ interface TeamMemberProps {
   linkedinUrl?: string;
 }
 
-export const TeamMemberCard = ({
-  name,
-  title,
-  image,
-  bio,
-  linkedinUrl,
-}: TeamMemberProps) => {
+export const TeamMemberCard = ({ name, title, image, bio, linkedinUrl }: TeamMemberProps) => {
   const [showTooltip, setShowTooltip] = useState(false);
 
   return (
@@ -32,19 +26,13 @@ export const TeamMemberCard = ({
         <div className="flex flex-col items-center">
           {/* Image container - full width */}
           <div className="w-full aspect-square overflow-hidden">
-            <Image
-              src={image}
-              alt={name}
-              className="w-full h-full object-cover"
-            />
+            <Image src={image} alt={name} className="w-full h-full object-cover" />
           </div>
 
           {/* Text content with padding */}
           <div className="w-full p-3 text-center">
             <h3 className="text-sm font-medium text-white">{name}</h3>
-            <p className="text-[10px] text-pink-500 mt-0.5 leading-tight">
-              {title}
-            </p>
+            <p className="text-[10px] text-pink-500 mt-0.5 leading-tight">{title}</p>
 
             {linkedinUrl && (
               <a

@@ -3,10 +3,7 @@ import "./globals.css";
 import ClientWrapper from "./_WrapperUI";
 import { Toaster } from "@/shared/components/ui/sonner";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import {
-  OrganizationJsonLd,
-  WebSiteJsonLd,
-} from "@/shared/components/seo/JsonLd";
+import { OrganizationJsonLd, WebSiteJsonLd } from "@/shared/components/seo/JsonLd";
 
 import { Space_Grotesk } from "next/font/google";
 
@@ -78,8 +75,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Zuno Marketplace - Buy, Sell & Create Digital Collectibles",
-    description:
-      "Discover, collect, and sell extraordinary NFTs on the premier Web3 marketplace.",
+    description: "Discover, collect, and sell extraordinary NFTs on the premier Web3 marketplace.",
     images: ["/twitter-image.png"],
     creator: "@zunomarketplace",
     site: "@zunomarketplace",
@@ -115,11 +111,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${spaceGrotesk.variable}`}
-      suppressHydrationWarning
-    >
+    <html lang="en" className={`${spaceGrotesk.variable}`} suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

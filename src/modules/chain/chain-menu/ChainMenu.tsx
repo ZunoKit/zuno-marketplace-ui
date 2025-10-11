@@ -22,9 +22,7 @@ export default function ChainMenu() {
       const slugFromPath = pathSegments[2];
       // Kiểm tra xem slug có hợp lệ không
       const supportedChains = mockChains();
-      const isValidChain = supportedChains.some(
-        (chain) => chain.slug === slugFromPath
-      );
+      const isValidChain = supportedChains.some(chain => chain.slug === slugFromPath);
 
       if (isValidChain) {
         setSelectedChain(slugFromPath);
@@ -63,16 +61,14 @@ export default function ChainMenu() {
             <span
               className={cn(
                 "ml-2 text-sm font-medium transition-opacity duration-150",
-                selectedChain === "all"
-                  ? "opacity-100"
-                  : "opacity-0 w-0 overflow-hidden"
+                selectedChain === "all" ? "opacity-100" : "opacity-0 w-0 overflow-hidden"
               )}
             >
               All Chains
             </span>
           </Link>
 
-          {mockChains().map((chain) => (
+          {mockChains().map(chain => (
             <Link
               key={chain.id}
               href={`/discover/${chain.slug}`}
@@ -94,12 +90,7 @@ export default function ChainMenu() {
                       : "transparent",
                 }}
               >
-                <Image
-                  src={chain.icon}
-                  alt={`${chain.name} icon`}
-                  width={24}
-                  height={24}
-                />
+                <Image src={chain.icon} alt={`${chain.name} icon`} width={24} height={24} />
               </div>
               <span
                 className={cn(

@@ -36,12 +36,7 @@ export type ChainFamily =
   | "OTHER";
 
 /** ===== Marketplace Names ===== */
-export type MarketplaceName =
-  | "opensea"
-  | "zuno"
-  | "blur"
-  | "looksrare"
-  | string;
+export type MarketplaceName = "opensea" | "zuno" | "blur" | "looksrare" | string;
 
 /** ===== Metadata Standards ===== */
 export type MetadataStandard = "opensea" | "zuno" | "custom";

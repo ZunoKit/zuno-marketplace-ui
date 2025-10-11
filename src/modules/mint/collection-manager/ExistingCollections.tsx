@@ -1,12 +1,7 @@
 "use client";
 
 import { Button } from "@/shared/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/shared/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui/card";
 import { ChevronDown, Sprout } from "lucide-react";
 import {
   DropdownMenu,
@@ -33,9 +28,7 @@ export default function ExistingCollections() {
   return (
     <Card className="bg-white dark:bg-[#111119] border-gray-200 dark:border-zinc-800 text-gray-900 dark:text-white">
       <CardHeader className="pb-2">
-        <CardTitle className="text-xl font-medium">
-          Existing Collections
-        </CardTitle>
+        <CardTitle className="text-xl font-medium">Existing Collections</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="flex items-center justify-between mb-4">
@@ -61,7 +54,7 @@ export default function ExistingCollections() {
           >
             <ScrollArea className="h-30">
               {collections.length > 0 ? (
-                collections.map((collection) => (
+                collections.map(collection => (
                   <DropdownMenuItem
                     key={collection.id}
                     className="hover:bg-gray-100 dark:hover:bg-zinc-700 py-3 px-4 cursor-pointer"
@@ -71,16 +64,12 @@ export default function ExistingCollections() {
                       className="flex items-center gap-2 w-full"
                     >
                       <Image
-                        src={
-                          collection.imageUrl
-                            ? `${collection.imageUrl}`
-                            : "/placeholder.svg"
-                        }
+                        src={collection.imageUrl ? `${collection.imageUrl}` : "/placeholder.svg"}
                         alt={collection.name}
                         width={24}
                         height={24}
                         className="w-6 h-6 rounded-xs"
-                        onError={(e) => {
+                        onError={e => {
                           e.currentTarget.src = "/placeholder.svg"; // Fallback image
                         }}
                       />

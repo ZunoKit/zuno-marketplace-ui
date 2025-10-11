@@ -26,9 +26,7 @@ export default function MintNFT({}: MintNFTProps) {
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
-              filter: `blur(50px) brightness(${
-                theme === "dark" ? "0.3" : "0.5"
-              })`,
+              filter: `blur(50px) brightness(${theme === "dark" ? "0.3" : "0.5"})`,
               opacity: theme === "dark" ? "0.7" : "0.5",
             }}
           />

@@ -18,12 +18,10 @@ export async function generateMetadata({ params }: AuctionDetailPageProps) {
   };
 }
 
-export default async function AuctionDetailPage({
-  params,
-}: AuctionDetailPageProps) {
+export default async function AuctionDetailPage({ params }: AuctionDetailPageProps) {
   const { slug } = await params;
   // In real app, fetch auction data based on slug
-  const auction = mockAuctions.find((a) => a.id === slug) || mockAuctions[0];
+  const auction = mockAuctions.find(a => a.id === slug) || mockAuctions[0];
 
   return <AuctionDetail auction={auction} />;
 }

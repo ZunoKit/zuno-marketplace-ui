@@ -18,11 +18,7 @@ export default function ChainTabsSkeleton() {
           // Desktop skeleton
           <div className="flex space-x-1 overflow-x-auto">
             {/* "All Chains" tab skeleton */}
-            <div
-              className={cn(
-                "flex items-center h-10 px-3 rounded-lg bg-muted animate-pulse"
-              )}
-            >
+            <div className={cn("flex items-center h-10 px-3 rounded-lg bg-muted animate-pulse")}>
               <div className="w-5 h-5 rounded-full bg-muted-foreground/30"></div>
               <div className="ml-2 w-20 h-4 bg-muted-foreground/30 rounded"></div>
             </div>
@@ -31,9 +27,7 @@ export default function ChainTabsSkeleton() {
             {Array.from({ length: 5 }).map((_, index) => (
               <div
                 key={index}
-                className={cn(
-                  "flex items-center h-10 px-3 rounded-lg bg-muted animate-pulse"
-                )}
+                className={cn("flex items-center h-10 px-3 rounded-lg bg-muted animate-pulse")}
               >
                 <div className="w-5 h-5 rounded-full bg-muted-foreground/30"></div>
                 <div className="ml-2 w-16 h-4 bg-muted-foreground/30 rounded"></div>

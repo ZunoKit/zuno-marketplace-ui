@@ -5,11 +5,7 @@ import { format } from "date-fns";
 import { cn } from "@/shared/utils/tailwind-utils";
 import { Button } from "@/shared/components/ui/button";
 import { Calendar } from "@/shared/components/ui/calendar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/shared/components/ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "@/shared/components/ui/popover";
 
 interface DateTimePicker24hProps {
   value?: Date;
@@ -46,12 +42,7 @@ export function DateTimePicker24h({
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-auto p-0">
-          <Calendar
-            mode="single"
-            selected={value}
-            onSelect={handleDateSelect}
-            initialFocus
-          />
+          <Calendar mode="single" selected={value} onSelect={handleDateSelect} initialFocus />
         </PopoverContent>
       </Popover>
     </div>

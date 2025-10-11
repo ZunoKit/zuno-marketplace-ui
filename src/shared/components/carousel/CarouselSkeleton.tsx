@@ -15,7 +15,7 @@ export function CollectionCarouselSkeleton() {
     <div className="relative -mx-4 px-4">
       <Carousel className="w-full">
         <CarouselContent className="-ml-2">
-          {skeletonItems.map((item) => (
+          {skeletonItems.map(item => (
             <CarouselItem key={item} className="pl-2 md:basis-1/3 lg:basis-1/5">
               <CarouselItemSkeleton />
             </CarouselItem>

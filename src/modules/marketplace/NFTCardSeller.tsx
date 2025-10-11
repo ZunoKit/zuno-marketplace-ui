@@ -37,12 +37,7 @@ export default function NFTCardSeller({
         isSelected && "border-pink-800 dark:border-pink-600"
       )}
     >
-      <div
-        className={cn(
-          "hidden group-hover:block absolute inset-0",
-          isSelected && "block"
-        )}
-      >
+      <div className={cn("hidden group-hover:block absolute inset-0", isSelected && "block")}>
         <div
           className={cn(
             "hidden group-hover:block absolute z-10 bg-muted/30 text-muted-foreground hover:bg-muted/50 rounded-xl p-2",
@@ -61,7 +56,7 @@ export default function NFTCardSeller({
           )}
         >
           <button
-            onClick={(e) => {
+            onClick={e => {
               e.stopPropagation();
               onSelect();
             }}
@@ -72,19 +67,11 @@ export default function NFTCardSeller({
                 : "bg-muted/30 text-muted-foreground hover:bg-muted/50"
             )}
           >
-            {isSelected ? (
-              <Check className="w-4 h-4" />
-            ) : (
-              <Plus className="w-4 h-4" />
-            )}
+            {isSelected ? <Check className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
           </button>
         </div>
 
-        <div
-          className={cn(
-            "hidden group-hover:block absolute bottom-0 left-0 right-0"
-          )}
-        >
+        <div className={cn("hidden group-hover:block absolute bottom-0 left-0 right-0")}>
           <Button
             variant="ghost"
             size="icon"
@@ -120,9 +107,7 @@ export default function NFTCardSeller({
 
         <div className={cn("mt-1.5", compact ? "text-xs" : "text-sm")}>
           <div className="flex items-center justify-between">
-            <div className="font-medium text-foreground truncate">
-              {nft.name}
-            </div>
+            <div className="font-medium text-foreground truncate">{nft.name}</div>
             {!compact && (
               <div className="flex items-center gap-0.5">
                 <Button variant="ghost" size="icon" className="h-5 w-5">

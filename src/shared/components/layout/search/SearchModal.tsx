@@ -1,11 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-} from "@/shared/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/shared/components/ui/dialog";
 import { Input } from "@/shared/components/ui/input";
 import { ScrollArea } from "@/shared/components/ui/scroll-area";
 import { cn } from "@/shared/utils/tailwind-utils";
@@ -125,9 +121,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
         style={{ maxWidth: "45vw", width: "45vw", height: "55vh" }}
       >
         {/* Hidden title for accessibility */}
-        <DialogTitle className="sr-only">
-          Search NFTs and Collections
-        </DialogTitle>
+        <DialogTitle className="sr-only">Search NFTs and Collections</DialogTitle>
 
         {/* Search Header */}
         <div className="border-b border-gray-200/50 dark:border-gray-800 p-5 bg-white dark:bg-gray-900">
@@ -136,7 +130,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
             <Input
               autoFocus
               value={searchTerm}
-              onChange={(e) => handleSearch(e.target.value)}
+              onChange={e => handleSearch(e.target.value)}
               placeholder="Search NFTs, collections, creators and wallets..."
               className="pl-12 pr-12 h-12 text-base border border-gray-200 dark:border-gray-700 focus:border-purple-500 dark:focus:border-purple-400 focus-visible:ring-0 bg-gray-50 dark:bg-gray-800/50 rounded-lg"
             />
@@ -154,7 +148,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
           {/* Left Sidebar - Categories */}
           <div className="w-48 border-r border-gray-200/50 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-900/50 p-3">
             <div className="space-y-1">
-              {categories.map((category) => {
+              {categories.map(category => {
                 const Icon = category.icon;
                 return (
                   <button
@@ -186,7 +180,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                     Trending Searches
                   </div>
                   <div className="grid grid-cols-3 xl:grid-cols-4 gap-3">
-                    {trendingSearches.map((item) => (
+                    {trendingSearches.map(item => (
                       <button
                         key={item.id}
                         onClick={() => handleSearch(item.term)}
@@ -223,7 +217,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                     </button>
                   </div>
                   <div className="space-y-1">
-                    {recentSearches.map((item) => (
+                    {recentSearches.map(item => (
                       <button
                         key={item.id}
                         onClick={() => handleSearch(item.term)}
@@ -282,15 +276,11 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                             <div className="mt-2 space-y-1">
                               <div className="flex justify-between text-sm">
                                 <span className="text-gray-500">Floor</span>
-                                <span className="font-medium">
-                                  {collection.floor}
-                                </span>
+                                <span className="font-medium">{collection.floor}</span>
                               </div>
                               <div className="flex justify-between text-sm">
                                 <span className="text-gray-500">Vol</span>
-                                <span className="font-medium">
-                                  {collection.volume}
-                                </span>
+                                <span className="font-medium">{collection.volume}</span>
                               </div>
                               <div className="flex justify-between text-sm">
                                 <span className="text-gray-500">24h</span>
@@ -330,7 +320,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                     </div>
                     {/* Placeholder for search results */}
                     <div className="space-y-2">
-                      {[1, 2, 3].map((i) => (
+                      {[1, 2, 3].map(i => (
                         <div
                           key={i}
                           className="p-4 rounded-lg border dark:border-white/10 hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer"

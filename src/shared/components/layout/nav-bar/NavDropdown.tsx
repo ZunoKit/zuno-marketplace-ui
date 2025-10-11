@@ -85,17 +85,12 @@ const ListItem = React.forwardRef<
             )}
             <div className="flex-1">
               <div className="flex items-center justify-between">
-                <div className="text-sm font-medium leading-none">
-                  {item.label}
-                </div>
+                <div className="text-sm font-medium leading-none">{item.label}</div>
                 {item.badge && (
                   <Badge
                     variant={
-                      (item.badgeVariant as
-                        | "default"
-                        | "secondary"
-                        | "destructive"
-                        | "outline") || "default"
+                      (item.badgeVariant as "default" | "secondary" | "destructive" | "outline") ||
+                      "default"
                     }
                     className="ml-2 text-xs py-0 px-1.5 h-5"
                   >
@@ -155,12 +150,10 @@ export default function NavDropdown({
             <ul
               className={cn(
                 "grid gap-1 p-3",
-                dropdownItems.length <= 4
-                  ? "w-[400px] grid-cols-1"
-                  : "w-[600px] md:grid-cols-2"
+                dropdownItems.length <= 4 ? "w-[400px] grid-cols-1" : "w-[600px] md:grid-cols-2"
               )}
             >
-              {dropdownItems.map((item) => (
+              {dropdownItems.map(item => (
                 <ListItem key={item.href} item={item} href={item.href} />
               ))}
             </ul>

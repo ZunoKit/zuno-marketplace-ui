@@ -19,7 +19,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -45,11 +45,17 @@ jobs:
       - name: Run ESLint
         run: pnpm lint
 
+      - name: Run ESLint fix
+        run: pnpm lint:fix
+
       - name: Run TypeScript type check
         run: pnpm check-types
 
       - name: Run Prettier check
         run: pnpm check-format
+
+      - name: Run Prettier format
+        run: pnpm format
 
   unit-tests:
     name: Unit Tests
@@ -63,7 +69,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -139,7 +145,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4

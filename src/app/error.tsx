@@ -38,9 +38,7 @@ export default function Error({
           </Button>
         </div>
         {error.digest && (
-          <p className="text-xs text-muted-foreground pt-4">
-            Error ID: {error.digest}
-          </p>
+          <p className="text-xs text-muted-foreground pt-4">Error ID: {error.digest}</p>
         )}
       </div>
     </div>

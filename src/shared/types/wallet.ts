@@ -44,9 +44,4 @@ export interface WalletConnection {
   lastConnected?: Date;
 }
 
-export type WalletCategory =
-  | "popular"
-  | "mobile"
-  | "browser"
-  | "hardware"
-  | "all";
+export type WalletCategory = "popular" | "mobile" | "browser" | "hardware" | "all";

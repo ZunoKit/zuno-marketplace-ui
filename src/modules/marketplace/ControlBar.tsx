@@ -8,21 +8,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/shared/components/ui/select";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-} from "@/shared/components/ui/sheet";
-import {
-  Grid3X3,
-  LayoutGrid,
-  List,
-  Filter,
-  Search,
-  X,
-  ArrowUpDown,
-} from "lucide-react";
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/shared/components/ui/sheet";
+import { Grid3X3, LayoutGrid, List, Filter, Search, X, ArrowUpDown } from "lucide-react";
 
 interface ControlBarProps {
   view: "grid" | "list" | "compact";
@@ -60,25 +47,17 @@ export default function ControlBar({
             placeholder="Search..."
             className="flex-1"
             value={searchValue}
-            onChange={(e) => onSearch(e.target.value)}
+            onChange={e => onSearch(e.target.value)}
             autoFocus
           />
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setSearchOpen(false)}
-          >
+          <Button variant="ghost" size="icon" onClick={() => setSearchOpen(false)}>
             <X className="h-4 w-4" />
           </Button>
         </div>
       ) : (
         <div className="grid grid-cols-4 divide-x">
           {/* Search */}
-          <Button
-            variant="ghost"
-            className="rounded-none h-12"
-            onClick={() => setSearchOpen(true)}
-          >
+          <Button variant="ghost" className="rounded-none h-12" onClick={() => setSearchOpen(true)}>
             <Search className="h-4 w-4" />
           </Button>
 
@@ -142,7 +121,7 @@ export default function ControlBar({
             placeholder="Search items..."
             className="pl-8 w-[200px] md:w-[300px]"
             value={searchValue}
-            onChange={(e) => onSearch(e.target.value)}
+            onChange={e => onSearch(e.target.value)}
           />
         </div>
       </div>

@@ -10,9 +10,7 @@ interface ProfileByAddressPageProps {
 export async function generateMetadata({ params }: ProfileByAddressPageProps) {
   const { address } = await params;
   // In real app, fetch profile by wallet address
-  const profile = mockUserProfiles.find(
-    (p) => p.address.toLowerCase() === address.toLowerCase()
-  ) || {
+  const profile = mockUserProfiles.find(p => p.address.toLowerCase() === address.toLowerCase()) || {
     ...mockUserProfiles[0],
     address,
     username: undefined,
@@ -25,16 +23,12 @@ export async function generateMetadata({ params }: ProfileByAddressPageProps) {
   };
 }
 
-export default async function ProfileByAddressPage({
-  params,
-}: ProfileByAddressPageProps) {
+export default async function ProfileByAddressPage({ params }: ProfileByAddressPageProps) {
   const { address } = await params;
 
   // In real app, fetch profile by wallet address
   // If no profile exists, create a basic one with just the address
-  let profile = mockUserProfiles.find(
-    (p) => p.address.toLowerCase() === address.toLowerCase()
-  );
+  let profile = mockUserProfiles.find(p => p.address.toLowerCase() === address.toLowerCase());
 
   if (!profile) {
     // Create basic profile for unknown address

@@ -20,12 +20,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/shared/components/ui/select";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/shared/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/ui/tabs";
 import { Upload, Info, AlertCircle, Plus, Trash2 } from "lucide-react";
 
 export function CreateCollectionForm() {
@@ -46,12 +41,12 @@ export function CreateCollectionForm() {
     enablePresale: false,
   });
 
-  const [attributes, setAttributes] = useState<
-    Array<{ trait: string; values: string }>
-  >([{ trait: "", values: "" }]);
+  const [attributes, setAttributes] = useState<Array<{ trait: string; values: string }>>([
+    { trait: "", values: "" },
+  ]);
 
   const handleInputChange = (field: string, value: string | boolean) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
+    setFormData(prev => ({ ...prev, [field]: value }));
   };
 
   const handleAddAttribute = () => {
@@ -62,11 +57,7 @@ export function CreateCollectionForm() {
     setAttributes(attributes.filter((_, i) => i !== index));
   };
 
-  const handleAttributeChange = (
-    index: number,
-    field: "trait" | "values",
-    value: string
-  ) => {
+  const handleAttributeChange = (index: number, field: "trait" | "values", value: string) => {
     const updated = [...attributes];
     updated[index][field] = value;
     setAttributes(updated);
@@ -97,9 +88,7 @@ export function CreateCollectionForm() {
           <Card>
             <CardHeader>
               <CardTitle>Collection Details</CardTitle>
-              <CardDescription>
-                Basic information about your collection
-              </CardDescription>
+              <CardDescription>Basic information about your collection</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid md:grid-cols-2 gap-4">
@@ -109,7 +98,7 @@ export function CreateCollectionForm() {
                     id="name"
                     placeholder="My Awesome Collection"
                     value={formData.name}
-                    onChange={(e) => handleInputChange("name", e.target.value)}
+                    onChange={e => handleInputChange("name", e.target.value)}
                   />
                 </div>
 
@@ -119,13 +108,9 @@ export function CreateCollectionForm() {
                     id="symbol"
                     placeholder="MAC"
                     value={formData.symbol}
-                    onChange={(e) =>
-                      handleInputChange("symbol", e.target.value)
-                    }
+                    onChange={e => handleInputChange("symbol", e.target.value)}
                   />
-                  <p className="text-xs text-muted-foreground">
-                    3-4 uppercase letters
-                  </p>
+                  <p className="text-xs text-muted-foreground">3-4 uppercase letters</p>
                 </div>
               </div>
 
@@ -136,9 +121,7 @@ export function CreateCollectionForm() {
                   placeholder="Tell us about your collection..."
                   rows={4}
                   value={formData.description}
-                  onChange={(e) =>
-                    handleInputChange("description", e.target.value)
-                  }
+                  onChange={e => handleInputChange("description", e.target.value)}
                 />
               </div>
 
@@ -146,9 +129,7 @@ export function CreateCollectionForm() {
                 <Label htmlFor="category">Category</Label>
                 <Select
                   value={formData.category}
-                  onValueChange={(value) =>
-                    handleInputChange("category", value)
-                  }
+                  onValueChange={value => handleInputChange("category", value)}
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select a category" />
@@ -169,9 +150,7 @@ export function CreateCollectionForm() {
           <Card>
             <CardHeader>
               <CardTitle>Social Links</CardTitle>
-              <CardDescription>
-                Connect your community channels (optional)
-              </CardDescription>
+              <CardDescription>Connect your community channels (optional)</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
@@ -181,7 +160,7 @@ export function CreateCollectionForm() {
                   type="url"
                   placeholder="https://example.com"
                   value={formData.website}
-                  onChange={(e) => handleInputChange("website", e.target.value)}
+                  onChange={e => handleInputChange("website", e.target.value)}
                 />
               </div>
 
@@ -192,9 +171,7 @@ export function CreateCollectionForm() {
                     id="twitter"
                     placeholder="@username"
                     value={formData.twitter}
-                    onChange={(e) =>
-                      handleInputChange("twitter", e.target.value)
-                    }
+                    onChange={e => handleInputChange("twitter", e.target.value)}
                   />
                 </div>
 
@@ -204,9 +181,7 @@ export function CreateCollectionForm() {
                     id="discord"
                     placeholder="discord.gg/invite"
                     value={formData.discord}
-                    onChange={(e) =>
-                      handleInputChange("discord", e.target.value)
-                    }
+                    onChange={e => handleInputChange("discord", e.target.value)}
                   />
                 </div>
               </div>
@@ -218,9 +193,7 @@ export function CreateCollectionForm() {
           <Card>
             <CardHeader>
               <CardTitle>Collection Images</CardTitle>
-              <CardDescription>
-                Upload images for your collection
-              </CardDescription>
+              <CardDescription>Upload images for your collection</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
@@ -231,9 +204,7 @@ export function CreateCollectionForm() {
                     <p className="text-sm text-muted-foreground">
                       Click to upload or drag and drop
                     </p>
-                    <p className="text-xs text-muted-foreground mt-1">
-                      Recommended: 350x350px
-                    </p>
+                    <p className="text-xs text-muted-foreground mt-1">Recommended: 350x350px</p>
                   </div>
                 </div>
 
@@ -244,9 +215,7 @@ export function CreateCollectionForm() {
                     <p className="text-sm text-muted-foreground">
                       Click to upload or drag and drop
                     </p>
-                    <p className="text-xs text-muted-foreground mt-1">
-                      Recommended: 1400x400px
-                    </p>
+                    <p className="text-xs text-muted-foreground mt-1">Recommended: 1400x400px</p>
                   </div>
                 </div>
               </div>
@@ -256,9 +225,7 @@ export function CreateCollectionForm() {
           <Card>
             <CardHeader>
               <CardTitle>Attributes</CardTitle>
-              <CardDescription>
-                Define traits for your NFTs (optional)
-              </CardDescription>
+              <CardDescription>Define traits for your NFTs (optional)</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               {attributes.map((attr, index) => (
@@ -266,16 +233,12 @@ export function CreateCollectionForm() {
                   <Input
                     placeholder="Trait type (e.g., Background)"
                     value={attr.trait}
-                    onChange={(e) =>
-                      handleAttributeChange(index, "trait", e.target.value)
-                    }
+                    onChange={e => handleAttributeChange(index, "trait", e.target.value)}
                   />
                   <Input
                     placeholder="Values (comma separated)"
                     value={attr.values}
-                    onChange={(e) =>
-                      handleAttributeChange(index, "values", e.target.value)
-                    }
+                    onChange={e => handleAttributeChange(index, "values", e.target.value)}
                   />
                   <Button
                     variant="outline"
@@ -287,11 +250,7 @@ export function CreateCollectionForm() {
                 </div>
               ))}
 
-              <Button
-                variant="outline"
-                onClick={handleAddAttribute}
-                className="w-full"
-              >
+              <Button variant="outline" onClick={handleAddAttribute} className="w-full">
                 <Plus className="h-4 w-4 mr-2" />
                 Add Attribute
               </Button>
@@ -313,13 +272,9 @@ export function CreateCollectionForm() {
                     type="number"
                     placeholder="10000"
                     value={formData.maxSupply}
-                    onChange={(e) =>
-                      handleInputChange("maxSupply", e.target.value)
-                    }
+                    onChange={e => handleInputChange("maxSupply", e.target.value)}
                   />
-                  <p className="text-xs text-muted-foreground">
-                    Leave empty for unlimited supply
-                  </p>
+                  <p className="text-xs text-muted-foreground">Leave empty for unlimited supply</p>
                 </div>
 
                 <div className="space-y-2">
@@ -330,9 +285,7 @@ export function CreateCollectionForm() {
                     step="0.001"
                     placeholder="0.08"
                     value={formData.mintPrice}
-                    onChange={(e) =>
-                      handleInputChange("mintPrice", e.target.value)
-                    }
+                    onChange={e => handleInputChange("mintPrice", e.target.value)}
                   />
                 </div>
               </div>
@@ -349,9 +302,7 @@ export function CreateCollectionForm() {
                   <Label htmlFor="royaltyPercentage">Royalty Percentage</Label>
                   <Select
                     value={formData.royaltyPercentage}
-                    onValueChange={(value) =>
-                      handleInputChange("royaltyPercentage", value)
-                    }
+                    onValueChange={value => handleInputChange("royaltyPercentage", value)}
                   >
                     <SelectTrigger>
                       <SelectValue />
@@ -372,9 +323,7 @@ export function CreateCollectionForm() {
                     id="royaltyAddress"
                     placeholder="0x..."
                     value={formData.royaltyAddress}
-                    onChange={(e) =>
-                      handleInputChange("royaltyAddress", e.target.value)
-                    }
+                    onChange={e => handleInputChange("royaltyAddress", e.target.value)}
                   />
                 </div>
               </div>
@@ -395,9 +344,7 @@ export function CreateCollectionForm() {
                 </div>
                 <Switch
                   checked={formData.enableWhitelist}
-                  onCheckedChange={(checked) =>
-                    handleInputChange("enableWhitelist", checked)
-                  }
+                  onCheckedChange={checked => handleInputChange("enableWhitelist", checked)}
                 />
               </div>
 
@@ -410,9 +357,7 @@ export function CreateCollectionForm() {
                 </div>
                 <Switch
                   checked={formData.enablePresale}
-                  onCheckedChange={(checked) =>
-                    handleInputChange("enablePresale", checked)
-                  }
+                  onCheckedChange={checked => handleInputChange("enablePresale", checked)}
                 />
               </div>
             </CardContent>
@@ -423,9 +368,7 @@ export function CreateCollectionForm() {
           <Card>
             <CardHeader>
               <CardTitle>Review Your Collection</CardTitle>
-              <CardDescription>
-                Make sure everything looks good before deploying
-              </CardDescription>
+              <CardDescription>Make sure everything looks good before deploying</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="rounded-lg bg-muted/50 p-4 space-y-3">
@@ -439,29 +382,23 @@ export function CreateCollectionForm() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Max Supply</span>
-                  <span className="font-medium">
-                    {formData.maxSupply || "Unlimited"}
-                  </span>
+                  <span className="font-medium">{formData.maxSupply || "Unlimited"}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Mint Price</span>
-                  <span className="font-medium">
-                    {formData.mintPrice || "0"} ETH
-                  </span>
+                  <span className="font-medium">{formData.mintPrice || "0"} ETH</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Royalties</span>
-                  <span className="font-medium">
-                    {formData.royaltyPercentage}%
-                  </span>
+                  <span className="font-medium">{formData.royaltyPercentage}%</span>
                 </div>
               </div>
 
               <div className="flex items-center gap-2 p-4 bg-yellow-500/10 rounded-lg">
                 <AlertCircle className="h-5 w-5 text-yellow-600" />
                 <p className="text-sm">
-                  Deploying a smart contract requires gas fees. Make sure you
-                  have enough ETH in your wallet.
+                  Deploying a smart contract requires gas fees. Make sure you have enough ETH in
+                  your wallet.
                 </p>
               </div>
             </CardContent>

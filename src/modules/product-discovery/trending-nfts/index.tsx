@@ -4,11 +4,7 @@ import { TrendingUp, Clock, Heart } from "lucide-react";
 import { Card, CardContent, CardFooter } from "@/shared/components/ui/card";
 import { Badge } from "@/shared/components/ui/badge";
 import { Button } from "@/shared/components/ui/button";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/shared/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/shared/components/ui/avatar";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -127,9 +123,7 @@ export default function TrendingNFTs() {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h2 className="text-3xl font-bold mb-2">🔥 Trending NFTs</h2>
-            <p className="text-muted-foreground">
-              Discover the hottest NFTs gaining momentum
-            </p>
+            <p className="text-muted-foreground">Discover the hottest NFTs gaining momentum</p>
           </div>
           <Button variant="outline" asChild>
             <Link href="/explore?sort=trending">View All</Link>
@@ -137,7 +131,7 @@ export default function TrendingNFTs() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
-          {mockTrendingNFTs.map((nft) => (
+          {mockTrendingNFTs.map(nft => (
             <Card
               key={nft.id}
               className="group hover:shadow-xl transition-all duration-300 overflow-hidden"
@@ -174,21 +168,15 @@ export default function TrendingNFTs() {
               </div>
 
               <CardContent className="pt-4">
-                <p className="text-xs text-muted-foreground mb-1">
-                  {nft.collection}
-                </p>
-                <h3 className="font-semibold text-sm mb-2 truncate">
-                  {nft.name}
-                </h3>
+                <p className="text-xs text-muted-foreground mb-1">{nft.collection}</p>
+                <h3 className="font-semibold text-sm mb-2 truncate">{nft.name}</h3>
 
                 <div className="flex items-center gap-2 mb-3">
                   <Avatar className="h-6 w-6">
                     <AvatarImage src={nft.owner.avatar} />
                     <AvatarFallback>{nft.owner.name[0]}</AvatarFallback>
                   </Avatar>
-                  <span className="text-xs text-muted-foreground truncate">
-                    @{nft.owner.name}
-                  </span>
+                  <span className="text-xs text-muted-foreground truncate">@{nft.owner.name}</span>
                 </div>
 
                 <div className="flex items-center justify-between">

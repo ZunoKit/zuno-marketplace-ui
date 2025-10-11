@@ -13,28 +13,9 @@ import { Input } from "@/shared/components/ui/input";
 import { Textarea } from "@/shared/components/ui/textarea";
 import { Label } from "@/shared/components/ui/label";
 import { Switch } from "@/shared/components/ui/switch";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/shared/components/ui/tabs";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/shared/components/ui/avatar";
-import {
-  User,
-  Mail,
-  Globe,
-  Twitter,
-  Bell,
-  Shield,
-  Upload,
-  Save,
-  AlertCircle,
-} from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/ui/tabs";
+import { Avatar, AvatarFallback, AvatarImage } from "@/shared/components/ui/avatar";
+import { User, Mail, Globe, Twitter, Bell, Shield, Upload, Save, AlertCircle } from "lucide-react";
 import { mockCurrentUser } from "@/shared/utils/mock/profile";
 
 export function ProfileSettings() {
@@ -65,7 +46,7 @@ export function ProfileSettings() {
   });
 
   const handleProfileChange = (field: string, value: string) => {
-    setProfile((prev) => ({ ...prev, [field]: value }));
+    setProfile(prev => ({ ...prev, [field]: value }));
   };
 
   const handleSaveProfile = () => {
@@ -84,9 +65,7 @@ export function ProfileSettings() {
     <div className="container mx-auto px-4 py-8 max-w-4xl">
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-2">Profile Settings</h1>
-        <p className="text-muted-foreground">
-          Manage your profile information and preferences
-        </p>
+        <p className="text-muted-foreground">Manage your profile information and preferences</p>
       </div>
 
       <Tabs defaultValue="profile" className="space-y-6">
@@ -100,9 +79,7 @@ export function ProfileSettings() {
           <Card>
             <CardHeader>
               <CardTitle>Profile Picture</CardTitle>
-              <CardDescription>
-                Update your avatar and banner images
-              </CardDescription>
+              <CardDescription>Update your avatar and banner images</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="flex flex-col sm:flex-row gap-6">
@@ -111,9 +88,7 @@ export function ProfileSettings() {
                   <div className="flex items-center gap-4">
                     <Avatar className="h-20 w-20">
                       <AvatarImage src={mockCurrentUser.avatar} />
-                      <AvatarFallback>
-                        {mockCurrentUser.displayName?.[0] || "?"}
-                      </AvatarFallback>
+                      <AvatarFallback>{mockCurrentUser.displayName?.[0] || "?"}</AvatarFallback>
                     </Avatar>
                     <Button variant="outline">
                       <Upload className="h-4 w-4 mr-2" />
@@ -129,9 +104,7 @@ export function ProfileSettings() {
                     <p className="text-sm text-muted-foreground">
                       Click to upload or drag and drop
                     </p>
-                    <p className="text-xs text-muted-foreground mt-1">
-                      Recommended: 1400x400px
-                    </p>
+                    <p className="text-xs text-muted-foreground mt-1">Recommended: 1400x400px</p>
                   </div>
                 </div>
               </div>
@@ -152,9 +125,7 @@ export function ProfileSettings() {
                   <Input
                     id="username"
                     value={profile.username}
-                    onChange={(e) =>
-                      handleProfileChange("username", e.target.value)
-                    }
+                    onChange={e => handleProfileChange("username", e.target.value)}
                     placeholder="username"
                   />
                 </div>
@@ -164,9 +135,7 @@ export function ProfileSettings() {
                   <Input
                     id="displayName"
                     value={profile.displayName}
-                    onChange={(e) =>
-                      handleProfileChange("displayName", e.target.value)
-                    }
+                    onChange={e => handleProfileChange("displayName", e.target.value)}
                     placeholder="Your Name"
                   />
                 </div>
@@ -178,7 +147,7 @@ export function ProfileSettings() {
                   id="bio"
                   rows={4}
                   value={profile.bio}
-                  onChange={(e) => handleProfileChange("bio", e.target.value)}
+                  onChange={e => handleProfileChange("bio", e.target.value)}
                   placeholder="Tell us about yourself..."
                 />
               </div>
@@ -192,7 +161,7 @@ export function ProfileSettings() {
                   id="email"
                   type="email"
                   value={profile.email}
-                  onChange={(e) => handleProfileChange("email", e.target.value)}
+                  onChange={e => handleProfileChange("email", e.target.value)}
                   placeholder="your@email.com"
                 />
               </div>
@@ -213,9 +182,7 @@ export function ProfileSettings() {
                   id="website"
                   type="url"
                   value={profile.website}
-                  onChange={(e) =>
-                    handleProfileChange("website", e.target.value)
-                  }
+                  onChange={e => handleProfileChange("website", e.target.value)}
                   placeholder="https://yourwebsite.com"
                 />
               </div>
@@ -229,9 +196,7 @@ export function ProfileSettings() {
                   <Input
                     id="twitter"
                     value={profile.twitter}
-                    onChange={(e) =>
-                      handleProfileChange("twitter", e.target.value)
-                    }
+                    onChange={e => handleProfileChange("twitter", e.target.value)}
                     placeholder="@username"
                   />
                 </div>
@@ -241,9 +206,7 @@ export function ProfileSettings() {
                   <Input
                     id="discord"
                     value={profile.discord}
-                    onChange={(e) =>
-                      handleProfileChange("discord", e.target.value)
-                    }
+                    onChange={e => handleProfileChange("discord", e.target.value)}
                     placeholder="username#1234"
                   />
                 </div>
@@ -264,9 +227,7 @@ export function ProfileSettings() {
                 <Bell className="h-5 w-5 inline mr-2" />
                 Email Notifications
               </CardTitle>
-              <CardDescription>
-                Choose what notifications you want to receive
-              </CardDescription>
+              <CardDescription>Choose what notifications you want to receive</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               {Object.entries({
@@ -284,8 +245,8 @@ export function ProfileSettings() {
                   <Switch
                     id={key}
                     checked={notifications[key as keyof typeof notifications]}
-                    onCheckedChange={(checked) =>
-                      setNotifications((prev) => ({ ...prev, [key]: checked }))
+                    onCheckedChange={checked =>
+                      setNotifications(prev => ({ ...prev, [key]: checked }))
                     }
                   />
                 </div>
@@ -306,9 +267,7 @@ export function ProfileSettings() {
                 <Shield className="h-5 w-5 inline mr-2" />
                 Privacy Settings
               </CardTitle>
-              <CardDescription>
-                Control what others can see on your profile
-              </CardDescription>
+              <CardDescription>Control what others can see on your profile</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               {Object.entries({
@@ -324,9 +283,7 @@ export function ProfileSettings() {
                   <Switch
                     id={key}
                     checked={privacy[key as keyof typeof privacy]}
-                    onCheckedChange={(checked) =>
-                      setPrivacy((prev) => ({ ...prev, [key]: checked }))
-                    }
+                    onCheckedChange={checked => setPrivacy(prev => ({ ...prev, [key]: checked }))}
                   />
                 </div>
               ))}
@@ -340,8 +297,8 @@ export function ProfileSettings() {
                 <div className="space-y-1">
                   <p className="font-medium">Wallet Address</p>
                   <p className="text-sm text-muted-foreground">
-                    Your wallet address is always public and cannot be hidden.
-                    This is required for blockchain transparency.
+                    Your wallet address is always public and cannot be hidden. This is required for
+                    blockchain transparency.
                   </p>
                 </div>
               </div>

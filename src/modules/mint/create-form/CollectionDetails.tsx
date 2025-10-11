@@ -1,10 +1,5 @@
 "use client";
-import {
-  FormField,
-  FormItem,
-  FormControl,
-  FormMessage,
-} from "@/shared/components/ui/form";
+import { FormField, FormItem, FormControl, FormMessage } from "@/shared/components/ui/form";
 import { Input } from "@/shared/components/ui/input";
 import { Label } from "@/shared/components/ui/label";
 import {
@@ -39,7 +34,7 @@ export function CollectionDetails() {
               render={({ field }) => (
                 <FormItem>
                   <Select
-                    onValueChange={(value) => {
+                    onValueChange={value => {
                       field.onChange(value);
                       setValue("chain", value);
                     }}
@@ -49,9 +44,7 @@ export function CollectionDetails() {
                       <SelectTrigger className="w-full bg-gray-50 dark:bg-[#1a1525] border-gray-200 dark:border-[#3a3450] text-gray-900 dark:text-white mt-2 focus-visible:ring-0 focus-visible:ring-offset-0">
                         <SelectValue>
                           {(() => {
-                            const selectedChain = mockChains().find(
-                              (c) => c.name === field.value
-                            );
+                            const selectedChain = mockChains().find(c => c.name === field.value);
 
                             return selectedChain ? (
                               <div className="flex items-center gap-2">
@@ -79,19 +72,14 @@ export function CollectionDetails() {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent className="bg-white dark:bg-[#1a1525] border-gray-200 dark:border-[#3a3450] text-gray-900 dark:text-white">
-                      {mockChains().map((chain) => (
+                      {mockChains().map(chain => (
                         <SelectItem
                           key={chain.id}
                           value={chain.name}
                           className="text-gray-900 dark:text-white focus:bg-gray-100 dark:focus:bg-[#2a2535] focus:text-gray-900 dark:focus:text-white"
                         >
                           <div className="flex items-center gap-2">
-                            <Image
-                              src={chain.icon}
-                              alt={chain.name}
-                              width={24}
-                              height={24}
-                            />
+                            <Image src={chain.icon} alt={chain.name} width={24} height={24} />
                             {chain.name}
                           </div>
                         </SelectItem>
@@ -155,12 +143,10 @@ export function CollectionDetails() {
 
         {/* Collection Image */}
         <div>
-          <Label className="text-gray-900 dark:text-white">
-            Collection Image
-          </Label>
+          <Label className="text-gray-900 dark:text-white">Collection Image</Label>
           <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-            Image that will be shown as the main image for the collection.
-            Recommended: 800x800px jpg
+            Image that will be shown as the main image for the collection. Recommended: 800x800px
+            jpg
           </p>
           {formState.isSubmitting ? (
             <Skeleton className="h-40 w-full mt-1" />
@@ -176,7 +162,7 @@ export function CollectionDetails() {
                         id="collection-image"
                         className="hidden"
                         accept="image/jpeg,image/png"
-                        onChange={(e) => {
+                        onChange={e => {
                           const file = e.target.files?.[0];
                           onChange(file || null);
                         }}
@@ -200,7 +186,7 @@ export function CollectionDetails() {
                             <button
                               type="button"
                               className="absolute -top-2 -right-2 bg-red-500 rounded-full p-1"
-                              onClick={(e) => {
+                              onClick={e => {
                                 e.preventDefault();
                                 onChange(null);
                                 const input = document.getElementById(
@@ -232,11 +218,9 @@ export function CollectionDetails() {
                             variant="outline"
                             size="sm"
                             className="mt-4 bg-white dark:bg-[#1a1525] border-gray-200 dark:border-[#3a3450] text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-[#2a2535]"
-                            onClick={(e) => {
+                            onClick={e => {
                               e.preventDefault();
-                              document
-                                .getElementById("collection-image")
-                                ?.click();
+                              document.getElementById("collection-image")?.click();
                             }}
                           >
                             Choose Image...

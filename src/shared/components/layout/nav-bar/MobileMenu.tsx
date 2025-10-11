@@ -1,11 +1,6 @@
 import { Button } from "@/shared/components/ui/button";
 import { MenuIcon } from "lucide-react";
-import {
-  Sheet,
-  SheetContent,
-  SheetTitle,
-  SheetTrigger,
-} from "@/shared/components/ui/sheet";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/shared/components/ui/sheet";
 import Link from "next/link";
 
 type NavItem = {
@@ -39,11 +34,11 @@ export default function MobileMenu({ navItems }: MobileMenuProps) {
         <SheetTitle className="visually-hidden">Menu</SheetTitle>
         <nav className="flex flex-col space-y-4">
           {navItems
-            .filter((item) => {
+            .filter(item => {
               // Hide Stats menu on mobile as it's in footer
               return item.id !== "stats";
             })
-            .map((item) => (
+            .map(item => (
               <div key={item.id} className="flex flex-col">
                 {/* Parent link */}
                 <Link
@@ -55,7 +50,7 @@ export default function MobileMenu({ navItems }: MobileMenuProps) {
                 {/* Dropdown items with indentation */}
                 {item.hasDropdown && (
                   <div className="pl-4 mt-2 space-y-2">
-                    {item.dropdownItems?.map((dropItem) => (
+                    {item.dropdownItems?.map(dropItem => (
                       <Link
                         key={dropItem.href}
                         href={dropItem.href}

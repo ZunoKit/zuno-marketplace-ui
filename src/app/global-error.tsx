@@ -33,18 +33,12 @@ export default function GlobalError({
         >
           <div style={{ maxWidth: "500px" }}>
             <h1 style={{ fontSize: "4rem", margin: "0" }}>💥</h1>
-            <h2 style={{ fontSize: "2rem", margin: "1rem 0" }}>
-              Application Error
-            </h2>
-            <p
-              style={{ fontSize: "1rem", color: "#666", marginBottom: "2rem" }}
-            >
-              A critical error has occurred. Please refresh the page or contact
-              support if the problem persists.
+            <h2 style={{ fontSize: "2rem", margin: "1rem 0" }}>Application Error</h2>
+            <p style={{ fontSize: "1rem", color: "#666", marginBottom: "2rem" }}>
+              A critical error has occurred. Please refresh the page or contact support if the
+              problem persists.
             </p>
-            <div
-              style={{ display: "flex", gap: "1rem", justifyContent: "center" }}
-            >
+            <div style={{ display: "flex", gap: "1rem", justifyContent: "center" }}>
               <button
                 onClick={reset}
                 style={{

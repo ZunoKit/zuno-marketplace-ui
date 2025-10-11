@@ -21,12 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/shared/components/ui/select";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/shared/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/ui/tabs";
 import { Badge } from "@/shared/components/ui/badge";
 import { Card, CardContent, CardFooter } from "@/shared/components/ui/card";
 import { Slider } from "@/shared/components/ui/slider";
@@ -65,14 +60,7 @@ interface NFTItem {
 
 // Mock data generation
 const generateMockNFTs = (count: number): NFTItem[] => {
-  const categories = [
-    "Art",
-    "Gaming",
-    "Music",
-    "Photography",
-    "Sports",
-    "Collectibles",
-  ];
+  const categories = ["Art", "Gaming", "Music", "Photography", "Sports", "Collectibles"];
   const blockchains = ["Ethereum", "Polygon", "Solana", "BNB Chain"];
   const rarities = ["Common", "Uncommon", "Rare", "Epic", "Legendary"];
 
@@ -120,7 +108,7 @@ export default function ExploreMarketplace() {
     // Search filter
     if (searchQuery) {
       filtered = filtered.filter(
-        (nft) =>
+        nft =>
           nft.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
           nft.collection.toLowerCase().includes(searchQuery.toLowerCase())
       );
@@ -128,29 +116,23 @@ export default function ExploreMarketplace() {
 
     // Category filter
     if (selectedCategories.length > 0) {
-      filtered = filtered.filter((nft) =>
-        selectedCategories.includes(nft.category)
-      );
+      filtered = filtered.filter(nft => selectedCategories.includes(nft.category));
     }
 
     // Blockchain filter
     if (selectedBlockchains.length > 0) {
-      filtered = filtered.filter((nft) =>
-        selectedBlockchains.includes(nft.blockchain)
-      );
+      filtered = filtered.filter(nft => selectedBlockchains.includes(nft.blockchain));
     }
 
     // Price range filter
-    filtered = filtered.filter(
-      (nft) => nft.price >= priceRange[0] && nft.price <= priceRange[1]
-    );
+    filtered = filtered.filter(nft => nft.price >= priceRange[0] && nft.price <= priceRange[1]);
 
     // Auction/Buy Now filter
     if (showOnlyAuctions) {
-      filtered = filtered.filter((nft) => nft.isAuction);
+      filtered = filtered.filter(nft => nft.isAuction);
     }
     if (showOnlyBuyNow) {
-      filtered = filtered.filter((nft) => !nft.isAuction);
+      filtered = filtered.filter(nft => !nft.isAuction);
     }
 
     // Sorting
@@ -190,9 +172,7 @@ export default function ExploreMarketplace() {
             <Checkbox
               id="buy-now"
               checked={showOnlyBuyNow}
-              onCheckedChange={(checked) =>
-                setShowOnlyBuyNow(checked as boolean)
-              }
+              onCheckedChange={checked => setShowOnlyBuyNow(checked as boolean)}
             />
             <label htmlFor="buy-now" className="text-sm cursor-pointer">
               Buy Now
@@ -202,9 +182,7 @@ export default function ExploreMarketplace() {
             <Checkbox
               id="on-auction"
               checked={showOnlyAuctions}
-              onCheckedChange={(checked) =>
-                setShowOnlyAuctions(checked as boolean)
-              }
+              onCheckedChange={checked => setShowOnlyAuctions(checked as boolean)}
             />
             <label htmlFor="on-auction" className="text-sm cursor-pointer">
               On Auction
@@ -227,18 +205,14 @@ export default function ExploreMarketplace() {
             <Input
               type="number"
               value={priceRange[0]}
-              onChange={(e) =>
-                setPriceRange([Number(e.target.value), priceRange[1]])
-              }
+              onChange={e => setPriceRange([Number(e.target.value), priceRange[1]])}
               className="w-20 h-8"
             />
             <span>to</span>
             <Input
               type="number"
               value={priceRange[1]}
-              onChange={(e) =>
-                setPriceRange([priceRange[0], Number(e.target.value)])
-              }
+              onChange={e => setPriceRange([priceRange[0], Number(e.target.value)])}
               className="w-20 h-8"
             />
           </div>
@@ -248,25 +222,16 @@ export default function ExploreMarketplace() {
       <div>
         <h3 className="font-semibold mb-3">Categories</h3>
         <div className="space-y-2">
-          {[
-            "Art",
-            "Gaming",
-            "Music",
-            "Photography",
-            "Sports",
-            "Collectibles",
-          ].map((category) => (
+          {["Art", "Gaming", "Music", "Photography", "Sports", "Collectibles"].map(category => (
             <div key={category} className="flex items-center space-x-2">
               <Checkbox
                 id={category}
                 checked={selectedCategories.includes(category)}
-                onCheckedChange={(checked) => {
+                onCheckedChange={checked => {
                   if (checked) {
                     setSelectedCategories([...selectedCategories, category]);
                   } else {
-                    setSelectedCategories(
-                      selectedCategories.filter((c) => c !== category)
-                    );
+                    setSelectedCategories(selectedCategories.filter(c => c !== category));
                   }
                 }}
               />
@@ -281,18 +246,16 @@ export default function ExploreMarketplace() {
       <div>
         <h3 className="font-semibold mb-3">Blockchain</h3>
         <div className="space-y-2">
-          {["Ethereum", "Polygon", "Solana", "BNB Chain"].map((chain) => (
+          {["Ethereum", "Polygon", "Solana", "BNB Chain"].map(chain => (
             <div key={chain} className="flex items-center space-x-2">
               <Checkbox
                 id={chain}
                 checked={selectedBlockchains.includes(chain)}
-                onCheckedChange={(checked) => {
+                onCheckedChange={checked => {
                   if (checked) {
                     setSelectedBlockchains([...selectedBlockchains, chain]);
                   } else {
-                    setSelectedBlockchains(
-                      selectedBlockchains.filter((c) => c !== chain)
-                    );
+                    setSelectedBlockchains(selectedBlockchains.filter(c => c !== chain));
                   }
                 }}
               />
@@ -363,9 +326,7 @@ export default function ExploreMarketplace() {
               height={20}
               className="rounded-full"
             />
-            <span className="text-xs text-muted-foreground">
-              @{nft.owner.name}
-            </span>
+            <span className="text-xs text-muted-foreground">@{nft.owner.name}</span>
             {nft.owner.verified && (
               <Badge variant="secondary" className="text-xs px-1">
                 Verified
@@ -443,9 +404,7 @@ export default function ExploreMarketplace() {
             <Clock className="h-5 w-5 text-purple-500" />
             <div>
               <p className="text-sm text-muted-foreground">Active Auctions</p>
-              <p className="text-xl font-bold">
-                {allNFTs.filter((n) => n.isAuction).length}
-              </p>
+              <p className="text-xl font-bold">{allNFTs.filter(n => n.isAuction).length}</p>
             </div>
           </div>
         </Card>
@@ -458,7 +417,7 @@ export default function ExploreMarketplace() {
           <Input
             placeholder="Search NFTs, collections..."
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={e => setSearchQuery(e.target.value)}
             className="pl-10"
           />
         </div>
@@ -521,48 +480,36 @@ export default function ExploreMarketplace() {
         showOnlyAuctions ||
         showOnlyBuyNow) && (
         <div className="flex flex-wrap gap-2 mb-4">
-          {selectedCategories.map((category) => (
+          {selectedCategories.map(category => (
             <Badge key={category} variant="secondary" className="gap-1">
               {category}
               <X
                 className="h-3 w-3 cursor-pointer"
                 onClick={() =>
-                  setSelectedCategories(
-                    selectedCategories.filter((c) => c !== category)
-                  )
+                  setSelectedCategories(selectedCategories.filter(c => c !== category))
                 }
               />
             </Badge>
           ))}
-          {selectedBlockchains.map((chain) => (
+          {selectedBlockchains.map(chain => (
             <Badge key={chain} variant="secondary" className="gap-1">
               {chain}
               <X
                 className="h-3 w-3 cursor-pointer"
-                onClick={() =>
-                  setSelectedBlockchains(
-                    selectedBlockchains.filter((c) => c !== chain)
-                  )
-                }
+                onClick={() => setSelectedBlockchains(selectedBlockchains.filter(c => c !== chain))}
               />
             </Badge>
           ))}
           {showOnlyAuctions && (
             <Badge variant="secondary" className="gap-1">
               Auctions Only
-              <X
-                className="h-3 w-3 cursor-pointer"
-                onClick={() => setShowOnlyAuctions(false)}
-              />
+              <X className="h-3 w-3 cursor-pointer" onClick={() => setShowOnlyAuctions(false)} />
             </Badge>
           )}
           {showOnlyBuyNow && (
             <Badge variant="secondary" className="gap-1">
               Buy Now Only
-              <X
-                className="h-3 w-3 cursor-pointer"
-                onClick={() => setShowOnlyBuyNow(false)}
-              />
+              <X className="h-3 w-3 cursor-pointer" onClick={() => setShowOnlyBuyNow(false)} />
             </Badge>
           )}
         </div>
@@ -584,20 +531,18 @@ export default function ExploreMarketplace() {
         {/* NFT Grid/List */}
         <div className="flex-1">
           <div className="flex items-center justify-between mb-4">
-            <p className="text-sm text-muted-foreground">
-              {filteredNFTs.length} items
-            </p>
+            <p className="text-sm text-muted-foreground">{filteredNFTs.length} items</p>
           </div>
 
           {viewMode === "grid" ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {filteredNFTs.map((nft) => (
+              {filteredNFTs.map(nft => (
                 <NFTCard key={nft.id} nft={nft} />
               ))}
             </div>
           ) : (
             <div className="space-y-4">
-              {filteredNFTs.map((nft) => (
+              {filteredNFTs.map(nft => (
                 <Link key={nft.id} href={`/nft/${nft.id}`}>
                   <Card className="p-4 hover:shadow-lg transition-all cursor-pointer">
                     <div className="flex gap-4">
@@ -611,12 +556,8 @@ export default function ExploreMarketplace() {
                       <div className="flex-1">
                         <div className="flex justify-between items-start">
                           <div>
-                            <p className="text-sm text-muted-foreground">
-                              {nft.collection}
-                            </p>
-                            <h3 className="font-semibold text-lg">
-                              {nft.name}
-                            </h3>
+                            <p className="text-sm text-muted-foreground">{nft.collection}</p>
+                            <h3 className="font-semibold text-lg">{nft.name}</h3>
                             <div className="flex items-center gap-2 mt-1">
                               <Image
                                 src={nft.owner.avatar}
@@ -647,13 +588,9 @@ export default function ExploreMarketplace() {
                         <div className="flex gap-2 mt-3">
                           <Badge variant="outline">{nft.blockchain}</Badge>
                           <Badge variant="outline">{nft.category}</Badge>
-                          {nft.rarity && (
-                            <Badge variant="outline">{nft.rarity}</Badge>
-                          )}
+                          {nft.rarity && <Badge variant="outline">{nft.rarity}</Badge>}
                           {nft.isAuction && (
-                            <Badge className="bg-red-500 text-white">
-                              Auction
-                            </Badge>
+                            <Badge className="bg-red-500 text-white">Auction</Badge>
                           )}
                         </div>
                       </div>
@@ -669,9 +606,7 @@ export default function ExploreMarketplace() {
 
           {filteredNFTs.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-muted-foreground">
-                No NFTs found matching your criteria
-              </p>
+              <p className="text-muted-foreground">No NFTs found matching your criteria</p>
               <Button
                 variant="outline"
                 className="mt-4"

@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogTitle,
-} from "@/shared/components/ui/dialog";
+import { Dialog, DialogContent, DialogFooter, DialogTitle } from "@/shared/components/ui/dialog";
 import { Label } from "@/shared/components/ui/label";
 import { Input } from "@/shared/components/ui/input";
 import { Textarea } from "@/shared/components/ui/textarea";
@@ -52,14 +47,12 @@ export function AllowlistStage({ isOpen, onOpenChange }: AllowlistStageProps) {
       </DialogTitle>
       <DialogContent
         className="bg-white dark:bg-[#0e0a1a] border-gray-200 dark:border-[#3a3450] text-gray-900 dark:text-white max-w-md p-0"
-        onInteractOutside={(e) => {
+        onInteractOutside={e => {
           e.preventDefault();
         }}
       >
         <div className="p-6 pb-0 flex justify-between items-center">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-            Allowlist Stage
-          </h2>
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Allowlist Stage</h2>
         </div>
 
         <div className="p-6 space-y-4">
@@ -69,7 +62,7 @@ export function AllowlistStage({ isOpen, onOpenChange }: AllowlistStageProps) {
               <Input
                 placeholder="0.00"
                 value={presaleData.price || ""}
-                onChange={(e) => {
+                onChange={e => {
                   const newStages = [...(stages || [])];
                   if (newStages[0]) {
                     newStages[0] = {
@@ -92,9 +85,7 @@ export function AllowlistStage({ isOpen, onOpenChange }: AllowlistStageProps) {
           </div>
 
           <div>
-            <Label className="text-gray-900 dark:text-white">
-              Stage Duration
-            </Label>
+            <Label className="text-gray-900 dark:text-white">Stage Duration</Label>
             <div className="flex gap-2 mt-2">
               <div className="flex flex-1">
                 <Input
@@ -102,7 +93,7 @@ export function AllowlistStage({ isOpen, onOpenChange }: AllowlistStageProps) {
                   type="number"
                   min="0"
                   value={presaleData.duration?.days || ""}
-                  onChange={(e) => {
+                  onChange={e => {
                     const days = parseInt(e.target.value) || 0;
                     const newStages = [...(stages || [])];
                     if (newStages[0]) {
@@ -139,7 +130,7 @@ export function AllowlistStage({ isOpen, onOpenChange }: AllowlistStageProps) {
                   min="0"
                   max="23"
                   value={presaleData.duration?.hours || ""}
-                  onChange={(e) => {
+                  onChange={e => {
                     const hours = parseInt(e.target.value) || 0;
                     const newStages = [...(stages || [])];
                     if (newStages[0]) {
@@ -173,23 +164,17 @@ export function AllowlistStage({ isOpen, onOpenChange }: AllowlistStageProps) {
           </div>
 
           <div>
-            <Label className="text-gray-900 dark:text-white">
-              Wallets (one per line)
-            </Label>
+            <Label className="text-gray-900 dark:text-white">Wallets (one per line)</Label>
             <Textarea
               value={allowlistText}
-              onChange={(e) => {
+              onChange={e => {
                 const text = e.target.value;
                 setAllowlistText(text);
                 const newWallets = text
                   .split(/\r?\n/)
-                  .map((w) => w.trim())
+                  .map(w => w.trim())
                   .filter(Boolean)
-                  .map((w) =>
-                    w.length > MAX_WALLET_LENGTH
-                      ? w.slice(0, MAX_WALLET_LENGTH)
-                      : w
-                  );
+                  .map(w => (w.length > MAX_WALLET_LENGTH ? w.slice(0, MAX_WALLET_LENGTH) : w));
 
                 const newStages = [...(stages || [])];
                 if (newStages[0]) {

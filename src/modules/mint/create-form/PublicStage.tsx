@@ -1,12 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
-import {
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogTitle,
-} from "@/shared/components/ui/dialog";
+import { Dialog, DialogContent, DialogFooter, DialogTitle } from "@/shared/components/ui/dialog";
 import { Label } from "@/shared/components/ui/label";
 import { Input } from "@/shared/components/ui/input";
 import { Button } from "@/shared/components/ui/button";
@@ -46,9 +41,7 @@ export function PublicStage({ isOpen, onOpenChange }: PublicStageProps) {
       const presaleDuration = stages[0].presale.duration;
       const publicStart = new Date(mintStart);
       publicStart.setDate(publicStart.getDate() + (presaleDuration.days || 0));
-      publicStart.setHours(
-        publicStart.getHours() + (presaleDuration.hours || 0)
-      );
+      publicStart.setHours(publicStart.getHours() + (presaleDuration.hours || 0));
       return publicStart;
     }
 
@@ -62,9 +55,7 @@ export function PublicStage({ isOpen, onOpenChange }: PublicStageProps) {
     const calculatedStart = getPublicStartDate();
 
     if (calculatedStart) {
-      return new Date(
-        Math.max(calculatedStart.getTime(), now.getTime() + 5 * 60 * 1000)
-      );
+      return new Date(Math.max(calculatedStart.getTime(), now.getTime() + 5 * 60 * 1000));
     }
 
     return new Date(now.getTime() + 5 * 60 * 1000);
@@ -77,14 +68,12 @@ export function PublicStage({ isOpen, onOpenChange }: PublicStageProps) {
       </DialogTitle>
       <DialogContent
         className="bg-white dark:bg-[#0e0a1a] border-gray-200 dark:border-[#3a3450] text-gray-900 dark:text-white max-w-md p-0"
-        onInteractOutside={(e) => {
+        onInteractOutside={e => {
           e.preventDefault();
         }}
       >
         <div className="p-6 pb-0 flex justify-between items-center">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-            Public Stage
-          </h2>
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Public Stage</h2>
         </div>
 
         <div className="p-6 space-y-4">
@@ -94,7 +83,7 @@ export function PublicStage({ isOpen, onOpenChange }: PublicStageProps) {
               <Input
                 placeholder="0.00"
                 value={publicData.price || ""}
-                onChange={(e) => {
+                onChange={e => {
                   const newStages = [...(stages || [])];
                   if (newStages[0]) {
                     newStages[0] = {
@@ -125,9 +114,7 @@ export function PublicStage({ isOpen, onOpenChange }: PublicStageProps) {
           </div>
 
           <div>
-            <Label className="text-gray-900 dark:text-white">
-              Stage Duration
-            </Label>
+            <Label className="text-gray-900 dark:text-white">Stage Duration</Label>
             <div className="flex gap-2 mt-2">
               <div className="flex flex-1">
                 <Input
@@ -135,7 +122,7 @@ export function PublicStage({ isOpen, onOpenChange }: PublicStageProps) {
                   type="number"
                   min="0"
                   value={publicData.duration?.days || ""}
-                  onChange={(e) => {
+                  onChange={e => {
                     const days = parseInt(e.target.value) || 0;
                     const newStages = [...(stages || [])];
                     if (newStages[0]) {
@@ -170,7 +157,7 @@ export function PublicStage({ isOpen, onOpenChange }: PublicStageProps) {
                   min="0"
                   max="23"
                   value={publicData.duration?.hours || ""}
-                  onChange={(e) => {
+                  onChange={e => {
                     const hours = parseInt(e.target.value) || 0;
                     const newStages = [...(stages || [])];
                     if (newStages[0]) {

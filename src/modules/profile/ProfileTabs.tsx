@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/shared/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/ui/tabs";
 import NFTGrid from "@/modules/marketplace/NFTGrid";
 import { ActivityList } from "@/modules/profile/ActivityList";
 import { type UserProfile, type ProfileTab } from "@/shared/types/profile";
@@ -19,11 +14,7 @@ interface ProfileTabsProps {
   onTabChange?: (tab: ProfileTab) => void;
 }
 
-export function ProfileTabs({
-  profile,
-  activeTab = "collected",
-  onTabChange,
-}: ProfileTabsProps) {
+export function ProfileTabs({ profile, activeTab = "collected", onTabChange }: ProfileTabsProps) {
   const tabs = [
     {
       value: "collected",
@@ -60,8 +51,7 @@ export function ProfileTabs({
     creator: "0x0987654321098765432109876543210987654321",
     status: index % 3 === 0 ? NftStatus.Listed : NftStatus.NotListed,
     mintPrice: (0.01 + Math.random() * 0.09).toFixed(3),
-    listPrice:
-      index % 3 === 0 ? (0.02 + Math.random() * 0.08).toFixed(3) : undefined,
+    listPrice: index % 3 === 0 ? (0.02 + Math.random() * 0.08).toFixed(3) : undefined,
     attributes: [
       {
         trait_type: "Background",
@@ -72,42 +62,26 @@ export function ProfileTabs({
         value: ["Common", "Uncommon", "Rare", "Epic"][index % 4],
       },
     ],
-    createdAt: new Date(
-      Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000
-    ).toISOString(),
-    updatedAt: new Date(
-      Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000
-    ).toISOString(),
+    createdAt: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000).toISOString(),
   });
 
-  const collectedNFTs = Array.from({ length: 12 }, (_, i) =>
-    generateMockNft(i + 1)
-  );
-  const createdNFTs = Array.from({ length: 8 }, (_, i) =>
-    generateMockNft(i + 13)
-  );
-  const favoriteNFTs = Array.from({ length: 8 }, (_, i) =>
-    generateMockNft(i + 21)
-  );
+  const collectedNFTs = Array.from({ length: 12 }, (_, i) => generateMockNft(i + 1));
+  const createdNFTs = Array.from({ length: 8 }, (_, i) => generateMockNft(i + 13));
+  const favoriteNFTs = Array.from({ length: 8 }, (_, i) => generateMockNft(i + 21));
 
   return (
     <Tabs
       value={activeTab}
-      onValueChange={(value) => onTabChange?.(value as ProfileTab)}
+      onValueChange={value => onTabChange?.(value as ProfileTab)}
       className="mt-8"
     >
       <TabsList className="w-full justify-start overflow-x-auto">
-        {tabs.map((tab) => (
-          <TabsTrigger
-            key={tab.value}
-            value={tab.value}
-            className="flex items-center gap-2"
-          >
+        {tabs.map(tab => (
+          <TabsTrigger key={tab.value} value={tab.value} className="flex items-center gap-2">
             <tab.icon className="h-4 w-4" />
             <span>{tab.label}</span>
-            <span className="ml-1 text-xs text-muted-foreground">
-              ({tab.count})
-            </span>
+            <span className="ml-1 text-xs text-muted-foreground">({tab.count})</span>
           </TabsTrigger>
         ))}
       </TabsList>

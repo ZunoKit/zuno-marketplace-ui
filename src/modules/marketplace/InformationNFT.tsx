@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  Star,
-  ChevronDown,
-  Share2,
-  Globe,
-  ChevronUp,
-  Twitter,
-  MessageCircle,
-} from "lucide-react";
+import { Star, ChevronDown, Share2, Globe, ChevronUp, Twitter, MessageCircle } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/shared/components/ui/button";
 import { Badge } from "@/shared/components/ui/badge";
@@ -51,11 +43,7 @@ export default function InformationNFT({ collection }: InformationNFTProps) {
                 onClick={() => setShowInfo(!showInfo)}
               >
                 Info
-                {showInfo ? (
-                  <ChevronUp className="h-3 w-3" />
-                ) : (
-                  <ChevronDown className="h-3 w-3" />
-                )}
+                {showInfo ? <ChevronUp className="h-3 w-3" /> : <ChevronDown className="h-3 w-3" />}
               </Button>
               <Button
                 variant="outline"
@@ -91,8 +79,7 @@ export default function InformationNFT({ collection }: InformationNFTProps) {
         >
           <div className="p-4 md:p-6 max-w-4xl">
             <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-              {collection?.description ||
-                "No description available for this collection."}
+              {collection?.description || "No description available for this collection."}
             </p>
           </div>
         </div>

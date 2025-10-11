@@ -8,11 +8,7 @@ type MintAmountProps = {
   maxQuantity: number;
 };
 
-export default function MintAmount({
-  amount,
-  setAmount,
-  maxQuantity,
-}: MintAmountProps) {
+export default function MintAmount({ amount, setAmount, maxQuantity }: MintAmountProps) {
   return (
     <div className="flex items-center border border-gray-300 dark:border-gray-600 rounded-xs  overflow-hidden">
       <Button
@@ -29,9 +25,7 @@ export default function MintAmount({
         id="amount"
         type="number"
         value={amount}
-        onChange={(e) =>
-          setAmount(Math.max(1, Math.min(maxQuantity, Number(e.target.value))))
-        }
+        onChange={e => setAmount(Math.max(1, Math.min(maxQuantity, Number(e.target.value))))}
         min={1}
         max={maxQuantity}
         className="h-10 text-sm bg-transparent border-0 text-gray-900 dark:text-white text-center w-16 focus:ring-0 focus:border-0"

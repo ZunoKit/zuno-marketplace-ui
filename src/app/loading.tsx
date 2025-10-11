@@ -7,9 +7,7 @@ export default function Loading() {
           <h1 className="text-4xl font-bold tracking-tighter text-foreground sm:text-5xl animate-bounce">
             Loading...
           </h1>
-          <p className="text-muted-foreground">
-            Please wait while we fetch the data...
-          </p>
+          <p className="text-muted-foreground">Please wait while we fetch the data...</p>
         </div>
       </div>
     </div>

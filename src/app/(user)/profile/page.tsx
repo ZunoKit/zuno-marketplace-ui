@@ -2,8 +2,7 @@ import { Profile } from "@/modules/profile";
 
 export const metadata = {
   title: "My Profile | NFT Marketplace",
-  description:
-    "Manage your NFT collection, view activity, and customize your profile",
+  description: "Manage your NFT collection, view activity, and customize your profile",
 };
 
 export default function ProfilePage() {

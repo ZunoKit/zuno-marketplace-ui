@@ -34,17 +34,11 @@ export function UserFavorites({ profile }: UserFavoritesProps) {
         value: ["Common", "Uncommon", "Rare", "Epic"][index % 4],
       },
     ],
-    createdAt: new Date(
-      Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000
-    ).toISOString(),
-    updatedAt: new Date(
-      Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000
-    ).toISOString(),
+    createdAt: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000).toISOString(),
   });
 
-  const favoriteNFTs = Array.from({ length: 12 }, (_, i) =>
-    generateMockNft(i + 1)
-  );
+  const favoriteNFTs = Array.from({ length: 12 }, (_, i) => generateMockNft(i + 1));
 
   return (
     <div className="min-h-screen">
@@ -54,8 +48,7 @@ export function UserFavorites({ profile }: UserFavoritesProps) {
         <div className="mb-6">
           <h2 className="text-2xl font-bold mb-2">Favorite NFTs</h2>
           <p className="text-muted-foreground">
-            {favoriteNFTs.length} items favorited by{" "}
-            {profile.displayName || profile.username}
+            {favoriteNFTs.length} items favorited by {profile.displayName || profile.username}
           </p>
         </div>
 

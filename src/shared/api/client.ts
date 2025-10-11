@@ -49,9 +49,7 @@ class ApiClient {
       });
 
       if (!response.ok) {
-        throw new Error(
-          `HTTP Error: ${response.status} ${response.statusText}`
-        );
+        throw new Error(`HTTP Error: ${response.status} ${response.statusText}`);
       }
 
       return await response.json();
@@ -65,33 +63,21 @@ class ApiClient {
     return this.request<T>(endpoint, "GET", config);
   }
 
-  async post<T>(
-    endpoint: string,
-    data?: unknown,
-    config?: RequestConfig
-  ): Promise<T> {
+  async post<T>(endpoint: string, data?: unknown, config?: RequestConfig): Promise<T> {
     return this.request<T>(endpoint, "POST", {
       ...config,
       body: JSON.stringify(data),
     });
   }
 
-  async put<T>(
-    endpoint: string,
-    data?: unknown,
-    config?: RequestConfig
-  ): Promise<T> {
+  async put<T>(endpoint: string, data?: unknown, config?: RequestConfig): Promise<T> {
     return this.request<T>(endpoint, "PUT", {
       ...config,
       body: JSON.stringify(data),
     });
   }
 
-  async patch<T>(
-    endpoint: string,
-    data?: unknown,
-    config?: RequestConfig
-  ): Promise<T> {
+  async patch<T>(endpoint: string, data?: unknown, config?: RequestConfig): Promise<T> {
     return this.request<T>(endpoint, "PATCH", {
       ...config,
       body: JSON.stringify(data),

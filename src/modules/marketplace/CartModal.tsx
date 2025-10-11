@@ -64,20 +64,12 @@ export default function CartModal({
   const cartItems = (
     <ScrollArea className={isMobile ? "flex-1" : "max-h-[400px] pr-4"}>
       <div className="space-y-3">
-        {items.map((item) => (
-          <div
-            key={item.id}
-            className="flex items-center gap-3 p-3 rounded-lg border bg-card"
-          >
+        {items.map(item => (
+          <div key={item.id} className="flex items-center gap-3 p-3 rounded-lg border bg-card">
             {/* Image */}
             <div className="relative h-16 w-16 rounded overflow-hidden flex-shrink-0">
               {item.image && (
-                <Image
-                  src={item.image}
-                  alt={item.name}
-                  fill
-                  className="object-cover"
-                />
+                <Image src={item.image} alt={item.name} fill className="object-cover" />
               )}
             </div>
 
@@ -85,9 +77,7 @@ export default function CartModal({
             <div className="flex-1 min-w-0">
               <h4 className="font-medium truncate">{item.name}</h4>
               <p className="text-sm text-muted-foreground">#{item.tokenId}</p>
-              <p className="text-sm font-semibold">
-                {item.listPrice || item.mintPrice || "0"} ETH
-              </p>
+              <p className="text-sm font-semibold">{item.listPrice || item.mintPrice || "0"} ETH</p>
             </div>
 
             {/* Remove Button */}
@@ -193,9 +183,7 @@ export default function CartModal({
               {summary}
             </div>
 
-            <SheetFooter className="p-4 border-t gap-2">
-              {footerButtons}
-            </SheetFooter>
+            <SheetFooter className="p-4 border-t gap-2">{footerButtons}</SheetFooter>
           </div>
         </SheetContent>
       </Sheet>

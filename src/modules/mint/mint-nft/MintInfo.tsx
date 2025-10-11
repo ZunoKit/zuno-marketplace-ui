@@ -38,12 +38,11 @@ export default function MintInfo() {
   const [signature, setSignature] = useState<string | undefined>();
   const [nonce, setNonce] = useState<string | undefined>();
   const validateSignature = (val: string) => /^0x[0-9a-fA-F]{130}$/.test(val);
-  const validateNonce = (val: string) =>
-    Number.isInteger(Number(val)) && Number(val) >= 0;
+  const validateNonce = (val: string) => Number.isInteger(Number(val)) && Number(val) >= 0;
 
   // Get selected edition data for ERC-1155
   const selectedEditionData = selectedEdition
-    ? mockEditions.find((e) => e.id === selectedEdition)
+    ? mockEditions.find(e => e.id === selectedEdition)
     : null;
 
   // Calculate max quantity for ERC-1155
@@ -84,8 +83,7 @@ export default function MintInfo() {
         <div className="space-y-3">
           <div className="flex justify-between items-center">
             <Label className="text-sm text-white flex items-center gap-1">
-              Allowlist Mint Credentials{" "}
-              <span className="text-pink-500">*</span>
+              Allowlist Mint Credentials <span className="text-pink-500">*</span>
             </Label>
             <span className="text-sm text-gray-400">Required</span>
           </div>
@@ -94,7 +92,7 @@ export default function MintInfo() {
               <Input
                 id="signature"
                 value={signature || ""}
-                onChange={(e) => {
+                onChange={e => {
                   const value = e.target.value;
                   setSignature(value);
                   if (value && !validateSignature(value)) {
@@ -108,24 +106,20 @@ export default function MintInfo() {
                     !/^0x[0-9a-fA-F]{130}$/.test(signature) &&
                     "border-red-800 focus-visible:ring-red-800"
                 )}
-                aria-invalid={
-                  signature && !validateSignature(signature) ? "true" : "false"
-                }
+                aria-invalid={signature && !validateSignature(signature) ? "true" : "false"}
               />
               {signature && validateSignature(signature) && (
                 <CheckCircle2 className="absolute right-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-green-500" />
               )}
             </div>
-            <p className="text-sm text-gray-400">
-              65-byte hex signature provided by the allowlist
-            </p>
+            <p className="text-sm text-gray-400">65-byte hex signature provided by the allowlist</p>
           </div>
           <div className="space-y-2">
             <div className="relative">
               <Input
                 id="nonce"
                 value={nonce || ""}
-                onChange={(e) => {
+                onChange={e => {
                   const value = e.target.value;
                   setNonce(value);
                   if (value && !validateNonce(value)) {
@@ -147,9 +141,7 @@ export default function MintInfo() {
                 <CheckCircle2 className="absolute right-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-green-500" />
               )}
             </div>
-            <p className="text-sm text-gray-400">
-              Nonce value provided by the allowlist
-            </p>
+            <p className="text-sm text-gray-400">Nonce value provided by the allowlist</p>
           </div>
         </div>
       )}
@@ -179,11 +171,7 @@ export default function MintInfo() {
               id="amount"
               type="number"
               value={amount}
-              onChange={(e) =>
-                setAmount(
-                  Math.max(1, Math.min(maxQuantity, Number(e.target.value)))
-                )
-              }
+              onChange={e => setAmount(Math.max(1, Math.min(maxQuantity, Number(e.target.value))))}
               min={1}
               max={maxQuantity}
               className="h-10 text-sm bg-[#0f0a19] border-gray-800/50 text-white text-center w-20"
@@ -215,14 +203,9 @@ export default function MintInfo() {
         <p className="text-sm text-gray-400">
           {isERC1155 && selectedEditionData ? (
             <>
-              Minting {amount} of &quot;{selectedEditionData.name}&quot;
-              edition.
-              {selectedEditionData.remaining <
-                selectedEditionData.perWalletLimit && (
-                <span className="text-orange-400">
-                  {" "}
-                  Limited supply remaining!
-                </span>
+              Minting {amount} of &quot;{selectedEditionData.name}&quot; edition.
+              {selectedEditionData.remaining < selectedEditionData.perWalletLimit && (
+                <span className="text-orange-400"> Limited supply remaining!</span>
               )}
             </>
           ) : isERC721 && SUPPORTS_BATCH ? (
@@ -239,9 +222,7 @@ export default function MintInfo() {
 
         {/* ERC-1155 Edition not selected warning */}
         {isERC1155 && !selectedEdition && (
-          <p className="text-sm text-red-400">
-            Please select an edition above to continue.
-          </p>
+          <p className="text-sm text-red-400">Please select an edition above to continue.</p>
         )}
       </div>
 
@@ -250,7 +231,7 @@ export default function MintInfo() {
         <Checkbox
           id="terms"
           checked={agreedToTerms}
-          onCheckedChange={(checked) => setAgreedToTerms(checked as boolean)}
+          onCheckedChange={checked => setAgreedToTerms(checked as boolean)}
           className="data-[state=checked]:bg-pink-500 data-[state=checked]:border-pink-500 border-gray-300 dark:data-[state=checked]:bg-pink-600 dark:data-[state=checked]:border-pink-600 dark:border-gray-800/50"
           aria-label="Agree to terms of service"
         />

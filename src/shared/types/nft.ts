@@ -167,11 +167,8 @@ export interface NftItem {
 }
 
 /* ========== Type guards hữu ích (tuỳ chọn) ========== */
-export const isEvmRef = (r: NftRef): r is Extract<NftRef, { family: "EVM" }> =>
-  r.family === "EVM";
-export const isSolanaRef = (
-  r: NftRef
-): r is Extract<NftRef, { family: "SOLANA" }> => r.family === "SOLANA";
-export const isBitcoinRef = (
-  r: NftRef
-): r is Extract<NftRef, { family: "BITCOIN" }> => r.family === "BITCOIN";
+export const isEvmRef = (r: NftRef): r is Extract<NftRef, { family: "EVM" }> => r.family === "EVM";
+export const isSolanaRef = (r: NftRef): r is Extract<NftRef, { family: "SOLANA" }> =>
+  r.family === "SOLANA";
+export const isBitcoinRef = (r: NftRef): r is Extract<NftRef, { family: "BITCOIN" }> =>
+  r.family === "BITCOIN";

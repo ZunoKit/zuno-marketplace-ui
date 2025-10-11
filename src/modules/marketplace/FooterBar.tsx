@@ -94,9 +94,7 @@ export default function FooterBar({
     <div className="fixed bottom-0 left-0 right-0 bg-background border-t p-4 z-50">
       <div className="container mx-auto flex items-center justify-between gap-4">
         <div className="flex items-center gap-4 flex-1">
-          <span className="text-sm font-medium whitespace-nowrap">
-            Select Items:
-          </span>
+          <span className="text-sm font-medium whitespace-nowrap">Select Items:</span>
 
           {/* Slider */}
           <div className="flex-1 max-w-md">
@@ -116,7 +114,7 @@ export default function FooterBar({
             <Input
               type="number"
               value={itemCount}
-              onChange={(e) => handleItemCountChange(e.target.value)}
+              onChange={e => handleItemCountChange(e.target.value)}
               className="w-20 text-center"
               min={0}
               max={maxItems}
@@ -126,11 +124,7 @@ export default function FooterBar({
         </div>
 
         {/* Cart Button */}
-        <Button
-          onClick={openCart}
-          disabled={!hasItems}
-          className="min-w-[120px]"
-        >
+        <Button onClick={openCart} disabled={!hasItems} className="min-w-[120px]">
           <ShoppingCart className="h-4 w-4 mr-2" />
           Cart ({itemCount})
         </Button>

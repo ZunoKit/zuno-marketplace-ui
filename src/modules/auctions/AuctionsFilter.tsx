@@ -14,10 +14,7 @@ interface AuctionsFilterProps {
   onFilterChange: (filter: AuctionFilter) => void;
 }
 
-export function AuctionsFilter({
-  filter,
-  onFilterChange,
-}: AuctionsFilterProps) {
+export function AuctionsFilter({ filter, onFilterChange }: AuctionsFilterProps) {
   const handleSortChange = (value: string) => {
     onFilterChange({ ...filter, sortBy: value as AuctionFilter["sortBy"] });
   };
@@ -26,9 +23,7 @@ export function AuctionsFilter({
     <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
       <div>
         <h2 className="text-2xl font-bold">Live Auctions</h2>
-        <p className="text-muted-foreground">
-          Bid on exclusive NFTs in real-time auctions
-        </p>
+        <p className="text-muted-foreground">Bid on exclusive NFTs in real-time auctions</p>
       </div>
 
       <Select value={filter.sortBy} onValueChange={handleSortChange}>

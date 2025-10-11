@@ -43,11 +43,11 @@ export default function CollectionImageCarousel({
   }, [currentIndex, showNavigation, onClose]);
 
   const handlePrevious = () => {
-    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+    setCurrentIndex(prev => (prev === 0 ? images.length - 1 : prev - 1));
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    setCurrentIndex(prev => (prev === images.length - 1 ? 0 : prev + 1));
   };
   const handleCloseClick = () => {
     console.log("Close button clicked");
@@ -111,9 +111,7 @@ export default function CollectionImageCarousel({
             <button
               key={index}
               className={`w-3 h-3 rounded-full transition-colors ${
-                index === currentIndex
-                  ? "bg-white"
-                  : "bg-white/30 dark:bg-white/20"
+                index === currentIndex ? "bg-white" : "bg-white/30 dark:bg-white/20"
               }`}
               onClick={() => setCurrentIndex(index)}
             />

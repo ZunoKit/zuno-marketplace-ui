@@ -6,25 +6,9 @@ import { Card, CardContent } from "@/shared/components/ui/card";
 import { Button } from "@/shared/components/ui/button";
 import { Badge } from "@/shared/components/ui/badge";
 import { Input } from "@/shared/components/ui/input";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/shared/components/ui/avatar";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/shared/components/ui/tabs";
-import {
-  Clock,
-  Gavel,
-  Users,
-  TrendingUp,
-  AlertCircle,
-  Trophy,
-} from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/shared/components/ui/avatar";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/ui/tabs";
+import { Clock, Gavel, Users, TrendingUp, AlertCircle, Trophy } from "lucide-react";
 import { type Auction } from "@/shared/types/auction";
 import { formatDistanceToNow } from "date-fns";
 
@@ -39,8 +23,7 @@ export function AuctionDetail({ auction }: AuctionDetailProps) {
   useEffect(() => {
     const calculateTimeLeft = () => {
       const now = new Date();
-      const target =
-        auction.status === "upcoming" ? auction.startTime : auction.endTime;
+      const target = auction.status === "upcoming" ? auction.startTime : auction.endTime;
       const diff = target.getTime() - now.getTime();
 
       if (diff <= 0) {
@@ -49,9 +32,7 @@ export function AuctionDetail({ auction }: AuctionDetailProps) {
       }
 
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
-        (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
@@ -87,12 +68,7 @@ export function AuctionDetail({ auction }: AuctionDetailProps) {
         <div className="space-y-4">
           <Card className="overflow-hidden">
             <div className="relative aspect-square">
-              <Image
-                src={auction.image}
-                alt={auction.name}
-                fill
-                className="object-cover"
-              />
+              <Image src={auction.image} alt={auction.name} fill className="object-cover" />
               {auction.status === "active" && (
                 <div className="absolute top-4 right-4">
                   <Badge className="bg-red-500 text-white animate-pulse">
@@ -138,16 +114,11 @@ export function AuctionDetail({ auction }: AuctionDetailProps) {
           <div>
             <h1 className="text-3xl font-bold mb-2">{auction.name}</h1>
             <div className="flex items-center gap-2">
-              <Badge
-                variant={auction.status === "active" ? "default" : "secondary"}
-              >
+              <Badge variant={auction.status === "active" ? "default" : "secondary"}>
                 {auction.status}
               </Badge>
               {!isReserveMet && (
-                <Badge
-                  variant="outline"
-                  className="text-yellow-600 border-yellow-600"
-                >
+                <Badge variant="outline" className="text-yellow-600 border-yellow-600">
                   <AlertCircle className="h-3 w-3 mr-1" />
                   Reserve not met
                 </Badge>
@@ -200,8 +171,7 @@ export function AuctionDetail({ auction }: AuctionDetailProps) {
                   <div className="flex items-center gap-2 mt-2">
                     <Trophy className="h-4 w-4 text-yellow-500" />
                     <span className="text-sm">
-                      Leading:{" "}
-                      {leadingBidder.name || leadingBidder.address.slice(0, 8)}
+                      Leading: {leadingBidder.name || leadingBidder.address.slice(0, 8)}
                     </span>
                   </div>
                 )}
@@ -214,15 +184,13 @@ export function AuctionDetail({ auction }: AuctionDetailProps) {
                       type="number"
                       placeholder={`Min bid: ${minBidAmount.toFixed(3)} ${auction.currency}`}
                       value={bidAmount}
-                      onChange={(e) => setBidAmount(e.target.value)}
+                      onChange={e => setBidAmount(e.target.value)}
                       step="0.001"
                       min={minBidAmount}
                     />
                     <Button
                       onClick={handlePlaceBid}
-                      disabled={
-                        !bidAmount || parseFloat(bidAmount) < minBidAmount
-                      }
+                      disabled={!bidAmount || parseFloat(bidAmount) < minBidAmount}
                       className="min-w-[120px]"
                     >
                       <Gavel className="h-4 w-4 mr-2" />
@@ -230,8 +198,7 @@ export function AuctionDetail({ auction }: AuctionDetailProps) {
                     </Button>
                   </div>
                   <p className="text-xs text-muted-foreground">
-                    You must bid at least {minBidAmount.toFixed(3)}{" "}
-                    {auction.currency}
+                    You must bid at least {minBidAmount.toFixed(3)} {auction.currency}
                   </p>
                 </div>
               )}
@@ -239,9 +206,7 @@ export function AuctionDetail({ auction }: AuctionDetailProps) {
               {auction.status === "ended" && auction.winner && (
                 <div className="bg-muted/50 rounded-lg p-4">
                   <p className="text-sm text-muted-foreground mb-1">Winner</p>
-                  <p className="font-medium">
-                    {auction.winner.name || auction.winner.address}
-                  </p>
+                  <p className="font-medium">{auction.winner.name || auction.winner.address}</p>
                   <p className="text-2xl font-bold mt-1">
                     {auction.currentBid} {auction.currency}
                   </p>
@@ -268,30 +233,23 @@ export function AuctionDetail({ auction }: AuctionDetailProps) {
                   className="mt-4 space-y-3 max-h-[400px] overflow-y-auto"
                 >
                   {auction.bids.length === 0 ? (
-                    <p className="text-center text-muted-foreground py-4">
-                      No bids yet
-                    </p>
+                    <p className="text-center text-muted-foreground py-4">No bids yet</p>
                   ) : (
                     auction.bids.map((bid, index) => (
                       <div
                         key={bid.id}
                         className={`flex items-center justify-between p-3 rounded-lg ${
-                          index === 0
-                            ? "bg-primary/10 border border-primary/20"
-                            : "bg-muted/50"
+                          index === 0 ? "bg-primary/10 border border-primary/20" : "bg-muted/50"
                         }`}
                       >
                         <div className="flex items-center gap-3">
                           <Avatar className="h-8 w-8">
                             <AvatarImage src={bid.bidder.avatar} />
-                            <AvatarFallback>
-                              {bid.bidder.name?.[0]}
-                            </AvatarFallback>
+                            <AvatarFallback>{bid.bidder.name?.[0]}</AvatarFallback>
                           </Avatar>
                           <div>
                             <p className="font-medium text-sm">
-                              {bid.bidder.name ||
-                                bid.bidder.address.slice(0, 8)}
+                              {bid.bidder.name || bid.bidder.address.slice(0, 8)}
                             </p>
                             <p className="text-xs text-muted-foreground">
                               {formatDistanceToNow(bid.timestamp, {
@@ -337,9 +295,7 @@ export function AuctionDetail({ auction }: AuctionDetailProps) {
                   </div>
                   {auction.reservePrice && (
                     <div className="flex justify-between py-2">
-                      <span className="text-muted-foreground">
-                        Reserve Price
-                      </span>
+                      <span className="text-muted-foreground">Reserve Price</span>
                       <span>
                         {auction.reservePrice} {auction.currency}
                       </span>

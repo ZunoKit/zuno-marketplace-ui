@@ -1,11 +1,6 @@
 "use client";
 import { Button } from "@/shared/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/shared/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui/card";
 import { redirect } from "next/navigation";
 
 export default function NewCollection() {
@@ -16,8 +11,7 @@ export default function NewCollection() {
       </CardHeader>
       <CardContent>
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
-          Create a Single Edition (ERC-1155) or a Unique Edition (ERC-721)
-          collection
+          Create a Single Edition (ERC-1155) or a Unique Edition (ERC-721) collection
         </p>
 
         <Button

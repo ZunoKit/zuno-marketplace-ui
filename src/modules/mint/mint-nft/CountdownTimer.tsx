@@ -9,11 +9,7 @@ interface CountdownTimerProps {
   isLive?: boolean;
 }
 
-const CountdownTimer = ({
-  endTime,
-  onEnd,
-  isLive = false,
-}: CountdownTimerProps) => {
+const CountdownTimer = ({ endTime, onEnd, isLive = false }: CountdownTimerProps) => {
   const [timeLeft, setTimeLeft] = useState<{
     days: number;
     hours: number;
@@ -63,22 +59,15 @@ const CountdownTimer = ({
 
   const timeText = `${formatNumber(timeLeft.days)} days, ${formatNumber(
     timeLeft.hours
-  )} hours, ${formatNumber(timeLeft.minutes)} minutes, ${formatNumber(
-    timeLeft.seconds
-  )} seconds`;
+  )} hours, ${formatNumber(timeLeft.minutes)} minutes, ${formatNumber(timeLeft.seconds)} seconds`;
 
   return (
     <div
-      className={cn(
-        "flex space-x-1",
-        timeLeft.minutes < 5 && isLive && "animate-pulse"
-      )}
+      className={cn("flex space-x-1", timeLeft.minutes < 5 && isLive && "animate-pulse")}
       aria-live="polite"
-      aria-label={
-        isLive ? `Mint ends in ${timeText}` : `Mint starts in ${timeText}`
-      }
+      aria-label={isLive ? `Mint ends in ${timeText}` : `Mint starts in ${timeText}`}
     >
-      {["days", "hours", "minutes", "seconds"].map((unit) => (
+      {["days", "hours", "minutes", "seconds"].map(unit => (
         <div
           key={unit}
           className={`w-10 h-6 flex items-center justify-center rounded text-sm ${
@@ -87,9 +76,7 @@ const CountdownTimer = ({
               : "bg-gray-200/80 text-gray-600 border border-gray-300/50 dark:bg-gray-800/50 dark:text-gray-400 dark:border-gray-800/50"
           }`}
         >
-          <span className="text-sm">
-            {formatNumber(timeLeft[unit as keyof typeof timeLeft])}
-          </span>
+          <span className="text-sm">{formatNumber(timeLeft[unit as keyof typeof timeLeft])}</span>
         </div>
       ))}
     </div>

@@ -66,10 +66,7 @@ export default function NavLink({
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsOpen(false);
       }
     };
@@ -113,16 +110,12 @@ export default function NavLink({
           className={cn(
             "px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors flex items-center gap-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-500/60",
             "dark:text-white/70 dark:hover:text-white",
-            active &&
-              "bg-gray-100 text-gray-900 dark:bg-white/10 dark:text-white"
+            active && "bg-gray-100 text-gray-900 dark:bg-white/10 dark:text-white"
           )}
         >
           {children}
           <ChevronDown
-            className={cn(
-              "h-3 w-3 transition-transform duration-200",
-              isOpen && "rotate-180"
-            )}
+            className={cn("h-3 w-3 transition-transform duration-200", isOpen && "rotate-180")}
           />
         </Link>
 
@@ -137,7 +130,7 @@ export default function NavLink({
         >
           <div className="rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-[#1A1F2C] dark:ring-white/10 overflow-hidden">
             <div className="py-1" role="menu">
-              {dropdownItems.map((item) => {
+              {dropdownItems.map(item => {
                 const Icon = item.icon ? iconMap[item.icon] : null;
 
                 return (

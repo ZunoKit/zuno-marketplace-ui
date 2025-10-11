@@ -8,12 +8,10 @@ type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const supportedChains = mockChains();
-  const chain = supportedChains.find((c) => String(c.slug) === slug);
+  const chain = supportedChains.find(c => String(c.slug) === slug);
 
   if (!chain) {
     return {
@@ -46,17 +44,13 @@ export async function generateMetadata({
 export default async function DiscoverChainPage({ params }: PageProps) {
   const { slug } = await params;
   const supportedChains = mockChains();
-  const isValidChain = supportedChains.some(
-    (chain) => String(chain.slug) === slug
-  );
+  const isValidChain = supportedChains.some(chain => String(chain.slug) === slug);
 
   if (!isValidChain) {
     notFound();
   }
 
-  const selectedChain = supportedChains.find(
-    (chain) => String(chain.slug) === slug
-  );
+  const selectedChain = supportedChains.find(chain => String(chain.slug) === slug);
 
   return (
     <div>
@@ -68,8 +62,7 @@ export default async function DiscoverChainPage({ params }: PageProps) {
             Discover on {selectedChain?.name}
           </h1>
           <p className="text-gray-600 dark:text-gray-300">
-            Explore NFTs and collections on the {selectedChain?.name}{" "}
-            blockchain.
+            Explore NFTs and collections on the {selectedChain?.name} blockchain.
           </p>
 
           <div className="mt-8 p-6 bg-gray-50 dark:bg-[#1A1F2C] rounded-lg">

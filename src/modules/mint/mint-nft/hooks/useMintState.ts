@@ -21,16 +21,10 @@ export function useMintState() {
   const [nonce, setNonce] = useState<string | undefined>();
 
   const [editionFilter, setEditionFilter] = useState<string>("");
-  const [editionSortBy, setEditionSortBy] = useState<
-    "price" | "remaining" | "newest"
-  >("price");
-  const [editionViewMode, setEditionViewMode] = useState<"grid" | "list">(
-    "grid"
-  );
+  const [editionSortBy, setEditionSortBy] = useState<"price" | "remaining" | "newest">("price");
+  const [editionViewMode, setEditionViewMode] = useState<"grid" | "list">("grid");
   // Single token standard state
-  const [tokenStandard, setTokenStandard] = useState<"ERC721" | "ERC1155">(
-    "ERC1155"
-  );
+  const [tokenStandard, setTokenStandard] = useState<"ERC721" | "ERC1155">("ERC1155");
 
   // Mock constants for demo - replace with actual data
   const SUPPORTS_BATCH = true; // ERC721A support
@@ -48,10 +42,7 @@ export function useMintState() {
   }, [tokenStandard]);
 
   // Computed values based on token standard
-  const isSameArtType = useMemo(
-    () => tokenStandard === "ERC1155",
-    [tokenStandard]
-  );
+  const isSameArtType = useMemo(() => tokenStandard === "ERC1155", [tokenStandard]);
 
   const isERC1155 = useMemo(() => tokenStandard === "ERC1155", [tokenStandard]);
 

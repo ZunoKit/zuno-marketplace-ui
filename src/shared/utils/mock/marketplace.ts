@@ -87,9 +87,7 @@ const generateMockNFT = (index: number): NFT => {
 };
 
 // Generate array of mock NFTs
-export const mockNFTs: NFT[] = Array.from({ length: 48 }, (_, i) =>
-  generateMockNFT(i)
-);
+export const mockNFTs: NFT[] = Array.from({ length: 48 }, (_, i) => generateMockNFT(i));
 
 // Mock marketplace stats
 export const mockMarketplaceStats = {

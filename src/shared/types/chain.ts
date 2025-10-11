@@ -77,7 +77,5 @@ export interface ChainInfo {
   updatedAt?: ISODate;
 }
 
-export const isEvmChain = (
-  c: ChainInfo
-): c is ChainInfo & { evm: { chainId: number } } =>
+export const isEvmChain = (c: ChainInfo): c is ChainInfo & { evm: { chainId: number } } =>
   c.family === "EVM" && !!c.evm;

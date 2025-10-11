@@ -83,7 +83,7 @@ export function useNFTSelection({
 
   // Update visible NFTs when selection changes
   useEffect(() => {
-    const updatedNFTs = initialNFTs.map((nft) => ({
+    const updatedNFTs = initialNFTs.map(nft => ({
       ...nft,
       selected: selectedIds.has(nft.id),
     }));

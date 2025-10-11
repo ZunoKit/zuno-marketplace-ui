@@ -4,11 +4,7 @@ import { useState, useEffect } from "react";
 import { Card, CardContent, CardFooter } from "@/shared/components/ui/card";
 import { Badge } from "@/shared/components/ui/badge";
 import { Button } from "@/shared/components/ui/button";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/shared/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/shared/components/ui/avatar";
 import { Clock, Users, Gavel } from "lucide-react";
 import Image from "next/image";
 import { type Auction } from "@/shared/types/auction";
@@ -20,18 +16,13 @@ interface AuctionCardProps {
   className?: string;
 }
 
-export function AuctionCard({
-  auction,
-  onBidClick,
-  className,
-}: AuctionCardProps) {
+export function AuctionCard({ auction, onBidClick, className }: AuctionCardProps) {
   const [timeLeft, setTimeLeft] = useState<string>("");
 
   useEffect(() => {
     const calculateTimeLeft = () => {
       const now = new Date();
-      const target =
-        auction.status === "upcoming" ? auction.startTime : auction.endTime;
+      const target = auction.status === "upcoming" ? auction.startTime : auction.endTime;
       const diff = target.getTime() - now.getTime();
 
       if (diff <= 0) {
@@ -40,9 +31,7 @@ export function AuctionCard({
       }
 
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
-        (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 
       if (days > 0) {
@@ -101,21 +90,13 @@ export function AuctionCard({
         />
 
         <div className="absolute top-2 left-2 right-2 flex items-center justify-between">
-          <Badge
-            variant="secondary"
-            className="bg-background/80 backdrop-blur-sm"
-          >
-            <span
-              className={cn("w-2 h-2 rounded-full mr-2", getStatusColor())}
-            />
+          <Badge variant="secondary" className="bg-background/80 backdrop-blur-sm">
+            <span className={cn("w-2 h-2 rounded-full mr-2", getStatusColor())} />
             {auction.status}
           </Badge>
 
           {auction.status === "active" && (
-            <Badge
-              variant="secondary"
-              className="bg-background/80 backdrop-blur-sm"
-            >
+            <Badge variant="secondary" className="bg-background/80 backdrop-blur-sm">
               <Clock className="h-3 w-3 mr-1" />
               {timeLeft}
             </Badge>
@@ -128,10 +109,7 @@ export function AuctionCard({
 
         <div className="flex items-center gap-2 mt-2">
           <Avatar className="h-6 w-6">
-            <AvatarImage
-              src={auction.seller.avatar}
-              alt={auction.seller.name}
-            />
+            <AvatarImage src={auction.seller.avatar} alt={auction.seller.name} />
             <AvatarFallback>{auction.seller.name?.[0] || "?"}</AvatarFallback>
           </Avatar>
           <span className="text-sm text-muted-foreground truncate">

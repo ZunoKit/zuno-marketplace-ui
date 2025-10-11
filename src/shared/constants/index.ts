@@ -8,8 +8,7 @@ export * from "./contracts";
 
 // General constants
 export const APP_NAME = "Zuno Marketplace";
-export const APP_DESCRIPTION =
-  "NFT Marketplace for buying, selling, and trading digital assets";
+export const APP_DESCRIPTION = "NFT Marketplace for buying, selling, and trading digital assets";
 
 // Pagination
 export const DEFAULT_PAGE_SIZE = 20;
@@ -17,12 +16,7 @@ export const MAX_PAGE_SIZE = 100;
 
 // File upload
 export const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
-export const ALLOWED_IMAGE_TYPES = [
-  "image/jpeg",
-  "image/png",
-  "image/gif",
-  "image/webp",
-];
+export const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/gif", "image/webp"];
 export const ALLOWED_VIDEO_TYPES = ["video/mp4", "video/webm"];
 
 // Time

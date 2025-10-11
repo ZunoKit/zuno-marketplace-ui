@@ -8,12 +8,7 @@ import { Check, Link, Upload, X } from "lucide-react";
 import { Input } from "@/shared/components/ui/input";
 import Image from "next/image";
 import { useFormContext } from "react-hook-form";
-import {
-  FormField,
-  FormItem,
-  FormControl,
-  FormMessage,
-} from "@/shared/components/ui/form";
+import { FormField, FormItem, FormControl, FormMessage } from "@/shared/components/ui/form";
 import { ArtworkMode } from "@/shared/types/mint";
 
 export function ArtSection() {
@@ -29,9 +24,7 @@ export function ArtSection() {
       // Clear ERC1155 related fields
       setValue("sameArtworkImage", null);
       // Also clear the file input
-      const fileInput = document.getElementById(
-        "nft-artwork"
-      ) as HTMLInputElement;
+      const fileInput = document.getElementById("nft-artwork") as HTMLInputElement;
       if (fileInput) {
         fileInput.value = "";
       }
@@ -161,8 +154,7 @@ export function ArtSection() {
                           <span className="text-blue-600 dark:text-blue-400 underline cursor-pointer">
                             step-by-step guide
                           </span>{" "}
-                          on how to generate and upload your collection assets
-                          and metadata.
+                          on how to generate and upload your collection assets and metadata.
                         </p>
                         <FormField
                           name="metadataBaseUrl"
@@ -194,7 +186,7 @@ export function ArtSection() {
                                   accept="image/jpeg,image/png"
                                   name={field.name}
                                   ref={field.ref}
-                                  onChange={(e) => {
+                                  onChange={e => {
                                     const file = e.target.files?.[0];
                                     field.onChange(file ?? null);
                                   }}
@@ -241,11 +233,7 @@ export function ArtSection() {
                                     {field.value?.name}
                                   </p>
                                   <p className="text-xs text-gray-500 dark:text-gray-500">
-                                    {field.value &&
-                                      (field.value.size / 1024 / 1024).toFixed(
-                                        2
-                                      )}{" "}
-                                    MB
+                                    {field.value && (field.value.size / 1024 / 1024).toFixed(2)} MB
                                   </p>
                                 </div>
                               ) : (
@@ -255,19 +243,16 @@ export function ArtSection() {
                                     Drop your artwork here to upload
                                   </h3>
                                   <p className="text-sm text-gray-600 dark:text-gray-400 text-center mb-4">
-                                    File types allowed: jpg, png. Max file size:
-                                    10MB
+                                    File types allowed: jpg, png. Max file size: 10MB
                                   </p>
                                   <Button
                                     type="button"
                                     variant="outline"
                                     size="sm"
                                     className="bg-white dark:bg-[#1a1525] border-gray-200 dark:border-[#3a3450] text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-[#2a2535]"
-                                    onClick={(e) => {
+                                    onClick={e => {
                                       e.preventDefault();
-                                      document
-                                        .getElementById("nft-artwork")
-                                        ?.click();
+                                      document.getElementById("nft-artwork")?.click();
                                     }}
                                   >
                                     Choose Image...

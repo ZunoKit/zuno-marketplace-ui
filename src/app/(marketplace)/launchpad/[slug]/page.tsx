@@ -31,9 +31,7 @@ export async function generateMetadata({
       collection.description ||
       `Discover and mint unique NFTs from the ${collection.name} collection.`;
     const imageUrl =
-      collection.bannerUrl ||
-      collection.imageUrl ||
-      `/api/collections/${slug}/banner`;
+      collection.bannerUrl || collection.imageUrl || `/api/collections/${slug}/banner`;
 
     return {
       title,
@@ -57,9 +55,7 @@ export async function generateMetadata({
         address: false,
         telephone: false,
       },
-      metadataBase: new URL(
-        process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"
-      ),
+      metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"),
 
       // Open Graph metadata
       openGraph: {
@@ -113,8 +109,7 @@ export async function generateMetadata({
     // Fallback metadata
     return {
       title: "NFT Collection | Mint Now",
-      description:
-        "Discover and mint unique NFTs from our exclusive collections.",
+      description: "Discover and mint unique NFTs from our exclusive collections.",
       robots: {
         index: false,
         follow: false,
@@ -123,11 +118,7 @@ export async function generateMetadata({
   }
 }
 
-export default async function MintPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export default async function MintPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
 
   // Validate slug format
@@ -140,9 +131,7 @@ export default async function MintPage({
 
   return (
     <>
-      {collection && (
-        <StructuredData collection={collection as Collection} slug={slug} />
-      )}
+      {collection && <StructuredData collection={collection as Collection} slug={slug} />}
       <MintNFT slug={slug} />
     </>
   );

@@ -35,7 +35,7 @@ export const StageDurationSchema = z
       .max(23, "Required hours must be less than 24"),
   })
   .refine(
-    (duration) => duration.days > 0 || duration.hours > 0,
+    duration => duration.days > 0 || duration.hours > 0,
     "Total duration must be greater than 0"
   );
 export type StageDuration = z.infer<typeof StageDurationSchema>;
@@ -49,13 +49,7 @@ export type BaseStage = z.infer<typeof BaseStageSchema>;
 export const PresaleStageSchema = BaseStageSchema.extend({
   duration: StageDurationSchema, // bắt buộc và > 0
   allowlistAddresses: z
-    .array(
-      z
-        .string()
-        .trim()
-        .toLowerCase()
-        .regex(EVM_ADDR_REGEX, "Invalid EVM address")
-    )
+    .array(z.string().trim().toLowerCase().regex(EVM_ADDR_REGEX, "Invalid EVM address"))
     .min(1, "Presale requires at least 1 allowlist address")
     .max(5000, "Maximum 5000 allowlist addresses")
     .superRefine((arr, ctx) => {
@@ -97,7 +91,7 @@ export type MintStage = z.infer<typeof MintStageSchema>;
 export const IsoDate = z
   .string()
   .refine(
-    (s) => !Number.isNaN(Date.parse(s)),
+    s => !Number.isNaN(Date.parse(s)),
     "Time must be a valid ISO-8601 (e.g. 2025-08-20T00:00:00Z)"
   );
 
@@ -113,7 +107,7 @@ const FileSchema = z
   // Trong trình duyệt: File tồn tại; trong SSR/test: fallback qua typeof === 'object'
   .any()
   .refine(
-    (f) =>
+    f =>
       f === undefined ||
       f === null ||
       (typeof File !== "undefined" ? f instanceof File : typeof f === "object"),
@@ -156,9 +150,7 @@ export const MintTerminalCreateFormSchema = z
       .optional(),
 
     // Stages
-    stages: z
-      .array(MintStageSchema)
-      .min(1, "At least 1 block stage (public is required)"),
+    stages: z.array(MintStageSchema).min(1, "At least 1 block stage (public is required)"),
 
     // Legal
     agreeTos: z.literal(true, {
@@ -184,8 +176,7 @@ export const MintTerminalCreateFormSchema = z
       } else if (!form.metadataBaseUrl.match(/^https?:\/\/.+/)) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,
-          message:
-            "metadataBaseUrl must be a valid URL when artworkMode = 'ERC721'",
+          message: "metadataBaseUrl must be a valid URL when artworkMode = 'ERC721'",
         });
       }
     }
@@ -194,8 +185,7 @@ export const MintTerminalCreateFormSchema = z
     if (form.stages.length !== 1) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
-        message:
-          "Currently only support 1 block stage (presale and/or public).",
+        message: "Currently only support 1 block stage (presale and/or public).",
       });
       return; // các check dưới dựa trên 1 block
     }
@@ -220,6 +210,4 @@ export const MintTerminalCreateFormSchema = z
     }
   });
 
-export type MintTerminalCreateForm = z.infer<
-  typeof MintTerminalCreateFormSchema
->;
+export type MintTerminalCreateForm = z.infer<typeof MintTerminalCreateFormSchema>;
