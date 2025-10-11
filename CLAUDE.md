@@ -173,6 +173,10 @@ Configured in `next.config.ts`:
 - Test error states and edge cases, not just happy paths
 - Keep tests independent and isolated
 
+### Creating documentation markdown files (\*.md)
+
+**Do not create any documentation files unless I explicitly approve it. If you believe a documentation file is needed, please ask for my confirmation first.**
+
 ### **Adding New Features**
 
 When adding a new feature, follow this structure:
