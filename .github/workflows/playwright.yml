@@ -113,7 +113,7 @@ jobs:
           if [ -d "blob-report" ] && [ "$(ls -A blob-report)" ]; then
             echo "Generating HTML report from $(pwd)/blob-report"
             ls -la blob-report/
-            pnpm exec playwright show-report blob-report --reporter html
+            pnpm exec playwright merge-reports --reporter html ./blob-report
           else
             echo "No blob report found"
             exit 1
